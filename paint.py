@@ -1,2 +1,2 @@
 import pygame
-screen=pygame.display.set_mode()
+screen=pygame.display.set_mode([500,500])
