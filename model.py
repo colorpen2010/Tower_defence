@@ -11,6 +11,11 @@ backgrounds=[sbackground1,sbackground2,gbackground1,gbackground2,gbackground3,gb
 
 regeneration=entity.generation()
 enemy1=enemy_factory.enem_factory(pygame.image.load('images/Monsters/move/blue_ right.png'))
+imaging=pygame.Surface([220,320],pygame.SRCALPHA)
+imaging.blit(enemy1.enemy,[0,0],[20,15,246,320])
+imaging=pygame. transform.scale(imaging,[220/7,320/7])
+
+
 
 for o in backgrounds:
     kva.append(pygame.transform.scale(o, [50, 50]))
