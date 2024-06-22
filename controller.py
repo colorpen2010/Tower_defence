@@ -9,4 +9,4 @@ def control():
             exit()
         if o.type==pygame.KEYDOWN and o.key==pygame.K_SPACE:
             model.regeneration.restart()
-            model.regeneration.map_generation(model.backgrounds, model.backgrounds[0])
+            model.regeneration.map_generation(model.backgrounds,model.background, model.backgrounds[0])

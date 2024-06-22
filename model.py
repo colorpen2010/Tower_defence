@@ -15,6 +15,7 @@ imaging=pygame.Surface([220,320],pygame.SRCALPHA)
 imaging.blit(enemy1.enemy,[0,0],[20,15,246,320])
 imaging=pygame. transform.scale(imaging,[220/7,320/7])
 
+background=pygame.Surface(pygame.display.get_window_size(),pygame.SRCALPHA)
 
 
 for o in backgrounds:
