@@ -16,12 +16,10 @@ class generation():
                 screen.blit(random.choice(backgrounds), [self.x, self.y])
                 self.x += msize[0]
                 self.cordinatssave.append([self.x,self.y])
-                print('eve')
             elif self.y < mapsize[1]:
                 self.y += msize[1]
                 self.x = 0
                 self.cordinatssave.append([self.x,self.y])
-                print('yiy')
         else:
             for o in self.cordinatssave:
 

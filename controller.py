@@ -2,7 +2,7 @@ import time
 
 import pygame,entity,model
 def control():
-    time.sleep(0.01)
+    # time.sleep(0.01)
     events = pygame.event.get()
     for o in events:
         if o.type == pygame.QUIT:

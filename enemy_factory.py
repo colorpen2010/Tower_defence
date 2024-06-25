@@ -9,4 +9,3 @@ class enem_factory():
     def paint(self,screen):
         # screen=pygame.display.get_surface()
         screen.blit(self.enemy, [50,400],[0,0,100,100])
-        print('kva')
