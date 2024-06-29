@@ -4,15 +4,17 @@ screen = pygame.display.set_mode([800, 800])
 x = 0
 y = 0
 
-
 imx=100
 import model
+
+
+
 def risovanie():
     global imx
     pygame.display.flip()
-    model.regeneration.map_generation(model.backgrounds,model.background,model.backgrounds[0])
     model.enemy1.paint(screen)
     screen.blit(model.background,[0,0])
+    pygame.draw.rect(screen,[255,0,0],[150,150,50,50],3)
     screen.blit(model.imaging,[100,imx])
     imx+=0.5
 
