@@ -6,13 +6,14 @@ class generation():
         self.xy = xy
         self.background = background
         self.backgrounds = backgrounds
+        self.spisoc=[]
         self.pixels = 10
 
 
     def map_generation(self, dest=0, height=0):
         while height < 800:
             if dest <= 800:
-                self.background.blit(random.choice(self.backgrounds), [dest, height])
+                self.spisoc.append(self.background.blit(random.choice(self.backgrounds), [dest, height]))
                 dest += self.xy
             elif height != 800:
                 height += self.xy
@@ -23,6 +24,8 @@ class generation():
     def restart(self):
         self.x = 0
         self.y = 0
+        self.spisoc.clear()
+
 
     def resize_randomizer(self):
         # return

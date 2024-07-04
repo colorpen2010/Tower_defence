@@ -9,6 +9,7 @@ gbackground3=pygame.image.load('images/Tiles/grass_03.png')
 gbackground4=pygame.image.load('images/Tiles/grass_04.png')
 backgrounds=[sbackground1,sbackground2,gbackground1,gbackground2,gbackground3,gbackground4]
 
+perecluthatel=False
 
 xy=50
 enemy1=enemy_factory.enem_factory(pygame.image.load('images/Monsters/move/blue_ right.png'))

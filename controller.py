@@ -10,3 +10,5 @@ def control():
         if o.type==pygame.KEYDOWN and o.key==pygame.K_SPACE:
             model.regeneration.restart()
             model.regeneration.map_generation()
+        if o.type==pygame.KEYDOWN and o.key==pygame.K_TAB:
+            model.perecluthatel= not model.perecluthatel
