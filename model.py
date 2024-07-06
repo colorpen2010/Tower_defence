@@ -9,6 +9,11 @@ gbackground3=pygame.image.load('images/Tiles/grass_03.png')
 gbackground4=pygame.image.load('images/Tiles/grass_04.png')
 backgrounds=[sbackground1,sbackground2,gbackground1,gbackground2,gbackground3,gbackground4]
 
+tower=pygame.image.load('images/Towers/PoisonIdle/PoisonIdle_0000_Layer-70.png')
+toweronisreximus2=entity.generation(tower,types=1)
+toweronisreximus2.resize_randomizer()
+toweronisreximus2.resive()
+
 perecluthatel=False
 
 xy=50
@@ -19,7 +24,7 @@ imaging=pygame. transform.scale(imaging,[220/7,320/7])
 
 background=pygame.Surface(pygame.display.get_window_size(),pygame.SRCALPHA)
 
-regeneration=entity.generation(background,backgrounds)
+regeneration=entity.generation(backgrounds,background)
 
 regeneration.resize_randomizer()
 regeneration.resive(kva)
