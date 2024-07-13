@@ -11,8 +11,8 @@ backgrounds=[sbackground1,sbackground2,gbackground1,gbackground2,gbackground3,gb
 
 tower=pygame.image.load('images/Towers/PoisonIdle/PoisonIdle_0000_Layer-70.png')
 toweronisreximus2=entity.generation(tower,types=1)
-toweronisreximus2.resize_randomizer()
-toweronisreximus2.resive()
+pixels_public=toweronisreximus2.resize_randomizer()
+toweronisreximus2.resive(pixels_public)
 
 perecluthatel=False
 
@@ -26,6 +26,5 @@ background=pygame.Surface(pygame.display.get_window_size(),pygame.SRCALPHA)
 
 regeneration=entity.generation(backgrounds,background)
 
-regeneration.resize_randomizer()
-regeneration.resive(kva)
+regeneration.resive(pixels_public,kva)
 regeneration.map_generation()
