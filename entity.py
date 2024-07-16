@@ -12,10 +12,10 @@ class generation():
         self.pixels = 10
 
 
-    def map_generation(self, dest=0, height=0):
+    def map_generation(self, dest=0, height=0,yurik=0):
         while height < 800:
             if dest <= 800:
-                self.spisoc.append(self.background.blit(random.choice(self.backgrounds), [dest, height]))
+                self.spisoc.append(self.background.blit(random.choice(self.backgrounds), [dest, height+yurik]))
                 dest += self.x
                 self.y=self.x
             elif height != 800:
