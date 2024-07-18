@@ -9,6 +9,17 @@ gbackground3=pygame.image.load('images/Tiles/grass_03.png')
 gbackground4=pygame.image.load('images/Tiles/grass_04.png')
 backgrounds=[sbackground1,sbackground2,gbackground1,gbackground2,gbackground3,gbackground4]
 
+map="""
+05003400
+22002000
+02000200
+00020000
+30564534
+40220203
+35645603
+43453524
+"""
+
 tower=pygame.image.load('images/Towers/PoisonIdle/PoisonIdle_0000_Layer-70.png')
 toweronisreximus2=entity.generation(tower,types=1)
 pixels_public=toweronisreximus2.resize_randomizer()
@@ -25,6 +36,6 @@ imaging=pygame. transform.scale(imaging,[220/7,320/7])
 background=pygame.Surface(pygame.display.get_window_size(),pygame.SRCALPHA)
 
 regeneration=entity.generation(backgrounds,background)
-
+regeneration.map_regeneration(map,backgrounds)
 regeneration.resive(pixels_public,kva)
 regeneration.map_generation()
