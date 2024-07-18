@@ -15,7 +15,8 @@ def risovanie():
     screen.blit(model.background, [0, 0])
     for i in model.regeneration.spisoc:
         if i.collidepoint(pygame.mouse.get_pos()):
-            screen.blit(model.toweronisreximus2.backgrounds,[i.x,i.y-model.toweronisreximus2.backgrounds.get_height()])
+            igrik =i.y-(model.toweronisreximus2.backgrounds.get_height()-i.height)
+            screen.blit(model.toweronisreximus2.backgrounds,[i.x,igrik])
             print(i)
     if model.perecluthatel:
         for o in model.regeneration.spisoc:
