@@ -29,20 +29,22 @@ class generation():
 
     def map_regeneration(self,map,backgrounds):
         height=0
+
         dest=height
-        while height < 800:
+        while height < len(map.split('\n'))*self.x:
             for i in map:
-                if i==0:
-                    if dest <=800:
-                        self.spisoc.append(self.backgrounds[0],dest,height)
+                if i=='0':
+                    if dest <=len(map.split('\n'))*self.x:
+                        self.spisoc.append(self.background.blit(self.backgrounds[0],[dest,height]))
                         dest+=self.x
                         self.y=self.x
-                    elif height != 800:
+                    elif height != len(map.split('\n'))*self.x:
                         height += self.x
                         self.y = self.x
                         dest = 0
+                else:
+                    dest+=self.x
 
-                        pass
             print(i)
 
     def restart(self):
@@ -53,6 +55,9 @@ class generation():
 
     def resize_randomizer(self):
         self.pixels = random.randint(4, 40)
+        return self.pixels
+    def resizer_part(self,map):
+        self.pixels = len(map.split('\n'))
         return self.pixels
     def resive(self,pixels=10, kva=None):
         self.pixels=pixels
