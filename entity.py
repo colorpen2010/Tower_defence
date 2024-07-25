@@ -33,18 +33,27 @@ class generation():
         dest=height
         while height < len(map.split('\n'))*self.x:
             for i in map:
-                if i=='0':
-                    if dest <len(map.split('\n'))*self.x:
-                        self.spisoc.append(self.background.blit(self.backgrounds[0],[dest,height]))
-                        dest+=self.x
-                        self.y=self.x
-                if height != len(map.split('\n'))*self.x:
+                if i!= "\n":
+                    image=backgrounds[int(i)]
+                # elif i=='2':
+                #     image=self.backgrounds[1]
+                # elif i==''
+                else:
+                    image=None
+
+                if dest <len(map.split('\n'))*self.x and image!=None:
+                    self.spisoc.append(self.background.blit(image,[dest,height]))
+                    dest+=self.x
+                    self.y=self.x
+                elif height != len(map.split('\n'))*self.x and i=="\n":
                     height += self.x
                     self.y = self.x
                     dest = 0
                     print(dest)
                 elif dest < len(map.split('\n'))*self.x:
                     dest+=self.x
+
+
 
 
     def restart(self):

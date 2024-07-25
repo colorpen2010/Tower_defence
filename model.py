@@ -1,4 +1,7 @@
 import pygame,entity,enemy_factory
+
+import image_worker
+
 # map_rect=pygame.rect.Rect()
 kva=[]
 sbackground1=pygame.image.load('images/Tiles/sand_01.png')
@@ -9,16 +12,19 @@ gbackground3=pygame.image.load('images/Tiles/grass_03.png')
 gbackground4=pygame.image.load('images/Tiles/grass_04.png')
 backgrounds=[sbackground1,sbackground2,gbackground1,gbackground2,gbackground3,gbackground4]
 
-map="""05003400
-22002000
-02000200
-00020000
-30564534
-40220203
-35645603
-43453524"""
+
+map="""04002300
+11001000
+01000100
+00010000
+20453423
+30110102
+24534502
+32342413"""
 
 tower=pygame.image.load('images/Towers/PoisonIdle/PoisonIdle_0000_Layer-70.png')
+tower2=image_worker.to_grayscale(tower)
+tower2=image_worker.poly_prosrathnost(tower,150)
 toweronisreximus2=entity.generation(tower,types=1)
 # pixels_public=toweronisreximus2.resize_randomizer()
 pixels_public=toweronisreximus2.resizer_part(map)
