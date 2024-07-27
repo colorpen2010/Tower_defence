@@ -23,8 +23,6 @@ map="""04002300
 32342413"""
 
 tower=pygame.image.load('images/Towers/PoisonIdle/PoisonIdle_0000_Layer-70.png')
-tower2=image_worker.to_grayscale(tower)
-tower2=image_worker.poly_prosrathnost(tower,150)
 toweronisreximus2=entity.generation(tower,types=1)
 # pixels_public=toweronisreximus2.resize_randomizer()
 pixels_public=toweronisreximus2.resizer_part(map)
@@ -40,7 +38,7 @@ imaging=pygame. transform.scale(imaging,[220/7,320/7])
 
 background=pygame.Surface(pygame.display.get_window_size(),pygame.SRCALPHA)
 
-regeneration=entity.generation(backgrounds,background)
+regeneration=entity.generation(backgrounds,background=background)
 regeneration.resive(pixels_public,kva)
 regeneration.map_regeneration(map,backgrounds)
 # regeneration.map_generation()

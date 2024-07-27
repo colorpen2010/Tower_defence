@@ -1,16 +1,18 @@
-import pygame, random
+import pygame, random,image_worker
 
 
 class generation():
-    def __init__(self, backgrounds,background=None,types=0 ,xy=50):
+    def __init__(self, backgrounds,backgrounds2=None,background=None,types=0 ,xy=50):
         self.xy=xy
         self.x = xy
         self.y=xy
         self.type=types
+        self.backgrounds2 = backgrounds2
         self.background = background
         self.backgrounds = backgrounds
         self.spisoc=[]
         self.pixels = 10
+        self.grass_or_sand=[]
 
 
     def map_generation(self, dest=0, height=0,):
@@ -43,6 +45,10 @@ class generation():
 
                 if dest <len(map.split('\n'))*self.x and image!=None:
                     self.spisoc.append(self.background.blit(image,[dest,height]))
+                    if i=='0' or i=='1':
+                        self.grass_or_sand.append('s')
+                    else:
+                        self.grass_or_sand.append('g')
                     dest+=self.x
                     self.y=self.x
                 elif height != len(map.split('\n'))*self.x and i=="\n":
@@ -83,3 +89,6 @@ class generation():
             self.x = round(800 / self.pixels, 0)
             self.y = self.backgrounds.get_height()*self.x/self.backgrounds.get_width()
             self.backgrounds=pygame.transform.scale(self.backgrounds, [self.x, self.y])
+            self.backgrounds2=image_worker.to_grayscale(self.backgrounds)
+            self.backgrounds2=image_worker.poly_prosrathnost(self.backgrounds2,150)
+
