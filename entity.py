@@ -38,17 +38,16 @@ class generation():
                 if i!= "\n":
                     image=backgrounds[int(i)]
                 # elif i=='2':
-                #     image=self.backgrounds[1]
+                #     image=self.backgrounds[1]*
                 # elif i==''
                 else:
                     image=None
 
                 if dest <len(map.split('\n'))*self.x and image!=None:
-                    self.spisoc.append(self.background.blit(image,[dest,height]))
                     if i=='0' or i=='1':
-                        self.grass_or_sand.append('s')
+                        self.spisoc.append([self.background.blit(image, [dest, height]),'s'])
                     else:
-                        self.grass_or_sand.append('g')
+                        self.spisoc.append([self.background.blit(image, [dest, height]),'g'])
                     dest+=self.x
                     self.y=self.x
                 elif height != len(map.split('\n'))*self.x and i=="\n":
