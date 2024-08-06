@@ -45,9 +45,9 @@ class generation():
 
                 if dest <len(map.split('\n'))*self.x and image!=None:
                     if i=='0' or i=='1':
-                        self.spisoc.append([self.background.blit(image, [dest, height]),'s'])
+                        self.spisoc.append([self.background.blit(image, [dest, height]),'s',True])
                     else:
-                        self.spisoc.append([self.background.blit(image, [dest, height]),'g'])
+                        self.spisoc.append([self.background.blit(image, [dest, height]),'g',False])
                     dest+=self.x
                     self.y=self.x
                 elif height != len(map.split('\n'))*self.x and i=="\n":

@@ -12,6 +12,7 @@ gbackground3=pygame.image.load('images/Tiles/grass_03.png')
 gbackground4=pygame.image.load('images/Tiles/grass_04.png')
 backgrounds=[sbackground1,sbackground2,gbackground1,gbackground2,gbackground3,gbackground4]
 
+change=False
 
 map="""04002300
 11001000
