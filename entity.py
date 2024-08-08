@@ -6,8 +6,9 @@ class generation():
         self.xy=xy
         self.x = xy
         self.y=xy
+        self.kartinka=backgrounds
         self.type=types
-        self.backgrounds2 = backgrounds2
+        self.zapreshenaia_kartinka = backgrounds2
         self.background = background
         self.backgrounds = backgrounds
         self.spisoc=[]
@@ -19,7 +20,7 @@ class generation():
         self.background.fill([0,0,0])
         while height < 800:
             if dest <= 800:
-                self.spisoc.append(self.background.blit(random.choice(self.backgrounds), [dest, height]))
+                self.spisoc.append(self.background.blit(random.choice(self.kartinka), [dest, height]))
                 dest += self.x
                 self.y=self.x
             elif height != 800:
@@ -46,7 +47,9 @@ class generation():
                 if dest <len(map.split('\n'))*self.x and image!=None:
                     if i=='0' or i=='1':
                         self.spisoc.append([self.background.blit(image, [dest, height]),'s',True])
+
                     else:
+                        pass
                         self.spisoc.append([self.background.blit(image, [dest, height]),'g',False])
                     dest+=self.x
                     self.y=self.x
@@ -86,8 +89,8 @@ class generation():
                 self.backgrounds.append(i)
         if self.type==1:
             self.x = round(800 / self.pixels, 0)
-            self.y = self.backgrounds.get_height()*self.x/self.backgrounds.get_width()
-            self.backgrounds=pygame.transform.scale(self.backgrounds, [self.x, self.y])
-            self.backgrounds2=image_worker.to_grayscale(self.backgrounds)
-            self.backgrounds2=image_worker.poly_prosrathnost(self.backgrounds2,150)
+            self.y = self.kartinka.get_height()*self.x/self.kartinka.get_width()
+            self.kartinka=pygame.transform.scale(self.kartinka, [self.x, self.y])
+            self.zapreshenaia_kartinka=image_worker.to_grayscale(self.kartinka)
+            self.zapreshenaia_kartinka=image_worker.poly_prosrathnost(self.zapreshenaia_kartinka, 150)
 

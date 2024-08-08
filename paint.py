@@ -14,19 +14,19 @@ def risovanie():
     model.enemy1.paint(screen)
     screen.blit(model.background, [0, 0])
     for i in model.regeneration.spisoc:
-        igrik = i[0].y - (model.toweronisreximus2.backgrounds.get_height() - i[0].height)
+        igrik = i[0].y - (model.toweronisreximus2.kartinka.get_height() - i[0].height)
         if i[0].collidepoint(pygame.mouse.get_pos()):
             if i[1]=='g':
-                screen.blit(model.toweronisreximus2.backgrounds,[i[0].x,igrik])
+                screen.blit(model.toweronisreximus2.kartinka,[i[0].x,igrik])
                 # if model.change==True:
                 #     # model.change=False
                 #     screen.blit(model.toweronisreximus2.backgrounds, [i[0].x, igrik])
                 #     print('working')
             elif i[1]=='s':
-                screen.blit(model.toweronisreximus2.backgrounds2,[i[0].x,igrik])
+                screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [i[0].x, igrik])
         if i[2]==True:
             print('realy')
-            screen.blit(model.toweronisreximus2.backgrounds, [i[0].x, igrik])
+            screen.blit(model.toweronisreximus2.kartinka, [i[0].x, igrik])
     if model.perecluthatel:
         for o in model.regeneration.spisoc:
             pygame.draw.rect(screen, [255, 0, 0], o[0], 3)
