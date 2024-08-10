@@ -14,20 +14,20 @@ backgrounds=[sbackground1,sbackground2,gbackground1,gbackground2,gbackground3,gb
 
 change=False
 
-# map="""04002300
-# 11001000
-# 01000100
-# 00010000
-# 20453423
-# 30110102
-# 24534502
-# 32342413"""
+map="""04002300
+11001000
+01000100
+00010000
+20453423
+30110102
+24534502
+32342413"""
 
-map="""02354
-15344
-04233
-01322
-32453"""
+# map="""02354
+# 15344
+# 04233
+# 01322
+# 20253"""
 
 tower=pygame.image.load('images/Towers/PoisonIdle/PoisonIdle_0000_Layer-70.png')
 toweronisreximus2=entity.generation(tower,types=1)
