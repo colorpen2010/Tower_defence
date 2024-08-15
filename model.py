@@ -46,9 +46,13 @@ imaging = pygame.transform.scale(imaging, [220 / 7, 320 / 7])
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
 def ystanowka_bashni(pos):
+    i=poisk_kletki(pos)
+    if i[1] == 'g':
+        i[2] = True
+def poisk_kletki(pos):
     for i in regeneration.spisoc:
-        if i[0].collidepoint(pos) and i[1] == 'g':
-            i[2] = True
+        if i[0].collidepoint(pos):
+            return i
 
 regeneration = entity.generation(backgrounds, background=background)
 regeneration.resive(pixels_public, kva)
