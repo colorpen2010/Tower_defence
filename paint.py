@@ -13,6 +13,7 @@ def risovanie():
     pygame.display.flip()
     model.enemy1.paint(screen)
     screen.blit(model.background, [0, 0])
+    screen.blit(model.bpbackground5,[100,50])
 
 
     #рисование поставленных башень
