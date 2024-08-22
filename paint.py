@@ -13,15 +13,19 @@ def risovanie():
     pygame.display.flip()
     model.enemy1.paint(screen)
     screen.blit(model.background, [0, 0])
-    screen.blit(model.bpbackground5,[100,50])
+    # screen.blit(model.bpbackground5,[100,50])
 
 
     #рисование поставленных башень
     for i in model.regeneration.spisoc:
         igrik = i[0].y - (model.toweronisreximus2.kartinka.get_height() - i[0].height)
-        if i[2] == True:
-            print('realy')
+        if i[2] == 'tower':
             screen.blit(model.toweronisreximus2.kartinka, [i[0].x, igrik])
+        if i[2]=='blue_portal':
+            screen.blit(model.blue_portalius2.kartinka,[i[0].x,igrik])
+        if i[2]=='red_portal':
+            screen.blit(model.red_portaliuinus2.kartinka,[i[0].x,igrik])
+
 
 
     # рисование башни на квадрате с мышкой

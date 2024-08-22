@@ -29,10 +29,10 @@ class generation():
 
             if dest < visota_pola and image != None:
                 if i == '0' or i == '1':
-                    self.spisoc.append([self.background.blit(image, [dest, height]), 's', False])
+                    self.spisoc.append([self.background.blit(image, [dest, height]), 's', False,False])
 
                 else:
-                    self.spisoc.append([self.background.blit(image, [dest, height]), 'g', False])
+                    self.spisoc.append([self.background.blit(image, [dest, height]), 'g', False,False])
                 dest += self.x
                 # self.y=self.x
             elif height != visota_pola and i == "\n":
