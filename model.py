@@ -1,4 +1,6 @@
-import pygame, entity, enemy_factory
+import os
+
+import pygame, entity, enemy_factory,animator
 
 import image_worker
 
@@ -16,12 +18,17 @@ map = """25342352
 # 04233
 # 01322
 # 20253"""
+spisok = []
+file_list=os.listdir('images/Towers/PoisonIdle')
+for p in file_list:
+    spisok.append('images/Towers/PoisonIdle'+p)
+animation= animator.Animator(spisok)
+
 
 tower = pygame.image.load('images/Towers/PoisonIdle/PoisonIdle_0000_Layer-70.png')
 toweronisreximus2 = entity.generation(tower, types=1)
 pixels_public = toweronisreximus2.resizer_part(map)
 toweronisreximus2.resive(pixels_public)
-
 # map_rect=pygame.rect.Rect()
 kva = []
 sbackground1 = pygame.image.load('images/Tiles/sand_01.png')

@@ -1,5 +1,7 @@
 import random, pygame, entity
 
+import animator
+
 screen = pygame.display.set_mode([800, 800])
 x = 0
 y = 0
@@ -21,6 +23,7 @@ def risovanie():
         igrik = i[0].y - (model.toweronisreximus2.kartinka.get_height() - i[0].height)
         if i[2] == 'tower':
             screen.blit(model.toweronisreximus2.kartinka, [i[0].x, igrik])
+            model.animation.paint()
         if i[2]=='blue_portal':
             screen.blit(model.blue_portalius2.kartinka,[i[0].x,igrik])
         if i[2]=='red_portal':

@@ -65,3 +65,4 @@ class generation():
             self.kartinka = pygame.transform.scale(self.kartinka, [self.x, self.y])
             self.zapreshenaia_kartinka = image_worker.to_grayscale(self.kartinka)
             self.zapreshenaia_kartinka = image_worker.poly_prosrathnost(self.zapreshenaia_kartinka, 150)
+
