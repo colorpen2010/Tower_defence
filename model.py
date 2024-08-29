@@ -18,14 +18,14 @@ map = """25342352
 # 04233
 # 01322
 # 20253"""
+
 spisok = []
 file_list=os.listdir('images/Towers/PoisonIdle')
 for p in file_list:
-    spisok.append('images/Towers/PoisonIdle'+p)
+    spisok.append('images/Towers/PoisonIdle/'+p)
 animation= animator.Animator(spisok)
 
-
-tower = pygame.image.load('images/Towers/PoisonIdle/PoisonIdle_0000_Layer-70.png')
+tower = pygame.image.load('images/Towers/PoisonIdle/0.png')
 toweronisreximus2 = entity.generation(tower, types=1)
 pixels_public = toweronisreximus2.resizer_part(map)
 toweronisreximus2.resive(pixels_public)

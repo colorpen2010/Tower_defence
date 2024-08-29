@@ -1,4 +1,4 @@
-import pygame,paint,controller
+import paint,controller
 while True:
     controller.control()
     paint.risovanie()
