@@ -3,10 +3,13 @@ import time
 import pygame, entity, model
 
 
+
 def control():
     # time.sleep(0.01)
     events = pygame.event.get()
+
     model.animation.control_center(events)
+
     for o in events:
         if o.type == pygame.QUIT:
             exit()
