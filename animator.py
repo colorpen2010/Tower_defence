@@ -1,6 +1,8 @@
 import pygame
 from pygame.examples.vgrade import timer
 
+import entity
+
 
 class Animator:
     def __init__(self,pictures:list,mili_sec):
@@ -9,6 +11,7 @@ class Animator:
         self.one=0
         self.wrema=pygame.event.custom_type()
         pygame.time.set_timer(self.wrema, mili_sec)
+        self.imaging_this_beautiful_image=[]
 
     def control_center(self,events):
         for o in events:
@@ -19,11 +22,17 @@ class Animator:
                 self.one+=1
         else:
             self.one=0
+    def resizer(self):
+        for o in self.pictures:
+            self.imaging_this_beautiful_image.append(pygame.image.load(o))
+        print('yes')
+        self.image=entity.generation(self.imaging_this_beautiful_image)
+
 
 
 
     def paint(self,x,y):
+        self.resizer()
         screen=pygame.display.get_surface()
-        self.imaging_this_beautiful_image=pygame.image.load(self.pictures[self.one])
-
-        screen.blit(self.imaging_this_beautiful_image,[x,y])
+        for i in self.image.resive():
+            screen.blit(i,[x,y])

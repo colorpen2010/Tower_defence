@@ -43,7 +43,7 @@ blue_portal = pygame.image.load('images/Portal/Idle__/blue_idle/1.png')
 blue_portalius2=entity.generation(blue_portal,types=1)
 blue_portalius2.resive(pixels_public)
 
-red_portal = pygame.image.load('images/Portal/Idle__/red_idle/1.png')
+red_portal = pygame.image.load('images/Portal/Idle__/red_idle/01.png')
 red_portaliuinus2=entity.generation(red_portal,types=1)
 red_portaliuinus2.resive(pixels_public)
 
@@ -73,7 +73,7 @@ def poisk_kletki(pos):
             return i
 
 regeneration = entity.generation(backgrounds, background=background)
-regeneration.resive(pixels_public, kva)
+regeneration.resive(pixels_public)
 regeneration.map_regeneration(map, backgrounds)
 print('a')
 # regeneration.map_generation()

@@ -48,7 +48,8 @@ class generation():
         self.pixels = len(map.split('\n'))
         return self.pixels
 
-    def resive(self, pixels=10, kva=None):
+    def resive(self, pixels=10):
+        kva=[]
         self.pixels = pixels
         if self.type == 0:
             for o in self.backgrounds:
