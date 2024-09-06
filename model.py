@@ -1,6 +1,6 @@
 import os
 
-import pygame, entity, enemy_factory,animator
+import pygame, entity, enemy_factory,animator,kakoito_resizer
 
 import image_worker
 
@@ -25,7 +25,9 @@ for p in file_list:
     spisok.append('images/Portal/Idle__/red_idle/'+p)
 animation= animator.Animator(spisok,50)
 
-tower = pygame.image.load('images/Towers/PoisonIdle/0.png')
+test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
+
+tower = (pygame.image.load('images/Towers/PoisonIdle/0.png'))
 toweronisreximus2 = entity.generation(tower, types=1)
 pixels_public = toweronisreximus2.resizer_part(map)
 toweronisreximus2.resive(pixels_public)
