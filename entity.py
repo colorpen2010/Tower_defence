@@ -28,11 +28,13 @@ class generation():
                 image = None
 
             if dest < visota_pola and image != None:
+                rectik = self.background.blit(image, [dest, height])
                 if i == '0' or i == '1':
-                    self.spisoc.append([self.background.blit(image, [dest, height]), 's', False,False])
+                    self.spisoc.append([rectik, 's', False,False])
+
 
                 else:
-                    self.spisoc.append([self.background.blit(image, [dest, height]), 'g', False,False])
+                    self.spisoc.append([rectik, 'g', False,False])
                 dest += self.x
                 # self.y=self.x
             elif height != visota_pola and i == "\n":
