@@ -8,6 +8,7 @@ def creating_objects(pyt, map, x=20,pixels=10):
     :return:
     """
 
+
     # x = round(800 / pixels, 0)
     kolithestwo_strok = len(map.split('\n'))
     visota_pola = kolithestwo_strok * x
