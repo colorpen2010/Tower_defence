@@ -11,7 +11,8 @@ def creating_objects(pyt, map, x=20,pixels=10):
 
     # x = round(800 / pixels, 0)
     kolithestwo_strok = len(map.split('\n'))
-    visota_pola = kolithestwo_strok * x
+
+    visota_pola = 800/kolithestwo_strok
 
     image = pygame.image.load(pyt)
     image = pygame.transform.scale(image, [visota_pola,visota_pola+172/3])
@@ -26,5 +27,5 @@ map = """25342352
 30110102
 24534502
 32342453"""
-project=creating_objects('images/Tiles/wall.png', map)
-pygame.image.save(project,'test/test_3.png')
+project=creating_objects('images/Towers/PoisonIdle/0.png', map)
+pygame.image.save(project,'test/test_4.png')

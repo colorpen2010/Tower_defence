@@ -25,7 +25,7 @@ for p in file_list:
     spisok.append('images/Portal/Idle__/red_idle/'+p)
 animation= animator.Animator(spisok,50)
 
-test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
+# test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
 
 tower = (pygame.image.load('images/Towers/PoisonIdle/0.png'))
 toweronisreximus2 = entity.generation(tower, types=1)
