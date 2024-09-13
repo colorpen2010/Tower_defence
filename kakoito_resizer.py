@@ -1,9 +1,10 @@
 import pygame
 
 
-def creating_objects(pyt, map, x=20,pixels=10):
+def creating_objects(pyt, map):
     """
     создаёт картинку нужного размера
+
     :param pyt:
     :return:
     """
@@ -12,10 +13,16 @@ def creating_objects(pyt, map, x=20,pixels=10):
     # x = round(800 / pixels, 0)
     kolithestwo_strok = len(map.split('\n'))
 
-    visota_pola = 800/kolithestwo_strok
+    cell_size = 800/kolithestwo_strok
 
     image = pygame.image.load(pyt)
-    image = pygame.transform.scale(image, [visota_pola,visota_pola+172/3])
+
+    visota_imeiga = image.get_height()
+    shirina_imeiga = image.get_width()
+
+    visota_kartinki= visota_imeiga*cell_size/shirina_imeiga
+
+    image = pygame.transform.scale(image, [cell_size,visota_kartinki])
     return image
 
 
@@ -28,4 +35,4 @@ map = """25342352
 24534502
 32342453"""
 project=creating_objects('images/Towers/PoisonIdle/0.png', map)
-pygame.image.save(project,'test/test_4.png')
+pygame.image.save(project,'test/test_5.png')

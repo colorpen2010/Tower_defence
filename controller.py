@@ -8,7 +8,8 @@ def control():
     # time.sleep(0.01)
     events = pygame.event.get()
 
-    model.animation.control_center(events)
+    model.animated_red_portal.control_center(events)
+    model.animated_tower.control_center(events)
 
     for o in events:
         if o.type == pygame.QUIT:

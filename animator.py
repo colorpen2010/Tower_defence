@@ -2,16 +2,20 @@ import pygame
 from pygame.examples.vgrade import timer
 
 import entity
+import kakoito_resizer
 
 
 class Animator:
-    def __init__(self,pictures:list,mili_sec):
+    def __init__(self,pictures:list,mili_sec,map):
+        self.map=map
         self.pictures=pictures
         self.pictures.sort(reverse=True)
         self.one=0
         self.wrema=pygame.event.custom_type()
         pygame.time.set_timer(self.wrema, mili_sec)
         self.imaging_this_beautiful_image=[]
+        self.resizer()
+
 
     def control_center(self,events):
         for o in events:
@@ -24,15 +28,12 @@ class Animator:
             self.one=0
     def resizer(self):
         for o in self.pictures:
-            self.imaging_this_beautiful_image.append(pygame.image.load(o))
-        print('yes')
-        self.image=entity.generation(self.imaging_this_beautiful_image)
+            self.imaging_this_beautiful_image.append(kakoito_resizer.creating_objects(o, self.map))
+
 
 
 
 
     def paint(self,x,y):
-        self.resizer()
         screen=pygame.display.get_surface()
-        for i in self.image.resive():
-            screen.blit(i,[x,y])
+        screen.blit(self.imaging_this_beautiful_image[self.one],[x,y])
