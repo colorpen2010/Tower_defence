@@ -18,22 +18,15 @@ map = """25342352
 # 04233
 # 01322
 # 20253"""
-
-spisok = []
-file_list=os.listdir('images/Portal/Idle__/red_idle')
-for p in file_list:
-    spisok.append('images/Portal/Idle__/red_idle/'+p)
-animated_red_portal=animator.Animator(spisok,40,map)
+animated_red_portal=animator.Animator('images/Portal/Idle__/red_idle',40,map)
 # test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
 
 tower = (pygame.image.load('images/Towers/PoisonIdle/0.png'))
 
-spisok2=[]
-file_list=os.listdir('images/Towers/PoisonIdle')
-for p in file_list:
-    spisok2.append('images/Towers/PoisonIdle/'+p)
+animated_towers=[]
 
-animated_tower=animator.Animator(spisok2,50,map)
+animated_tower=animator.Animator('images/Towers/PoisonIdle',50,map)
+animated_towers.append(animated_tower)
 
 toweronisreximus2 = entity.generation(tower, types=1)
 pixels_public = toweronisreximus2.resizer_part(map)

@@ -2,13 +2,16 @@ import pygame
 from pygame.examples.vgrade import timer
 
 import entity
-import kakoito_resizer
-
+import kakoito_resizer,os
 
 class Animator:
-    def __init__(self,pictures:list,mili_sec,map):
+    def __init__(self,pyt,mili_sec,map):
+        spisok = []
+        file_list = os.listdir(pyt)
+        for p in file_list:
+            spisok.append(pyt+'/' + p)
         self.map=map
-        self.pictures=pictures
+        self.pictures=spisok
         self.pictures.sort(reverse=True)
         self.one=0
         self.wrema=pygame.event.custom_type()
