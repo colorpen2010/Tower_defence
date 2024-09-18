@@ -1,13 +1,11 @@
-import time
-
-import pygame, entity, model
-
+import pygame, model
 
 
 def control():
     # time.sleep(0.01)
     events = pygame.event.get()
 
+    model.apple.control_point(events)
     model.animated_red_portal.control_center(events)
     model.animated_tower.control_center(events)
 

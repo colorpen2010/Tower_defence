@@ -1,7 +1,6 @@
 import pygame
 from pygame.examples.vgrade import timer
 
-import entity
 import kakoito_resizer,os
 
 class Animator:

@@ -1,6 +1,4 @@
-import random, pygame, entity
-
-import animator,os
+import pygame
 
 screen = pygame.display.set_mode([800, 800])
 x = 0
@@ -36,7 +34,8 @@ def risovanie():
     j = model.poisk_kletki(pygame.mouse.get_pos())
     igrik = j[0].y - (model.toweronisreximus2.kartinka.get_height() - j[0].height)
     if j[1] == 'g' and j[2]==False:
-        screen.blit(model.toweronisreximus2.kartinka, [j[0].x, igrik])
+        model.apple.drawer(screen,j[0].x,igrik)
+        # screen.blit(model.toweronisreximus2.kartinka, [j[0].x, igrik])
     else:
         screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [j[0].x, igrik])
 

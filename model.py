@@ -1,8 +1,5 @@
-import os
-
-import pygame, entity, enemy_factory,animator,kakoito_resizer
-
-import image_worker
+import pygame
+from classes import animator, enemy_factory, entity, tower_class
 
 map = """25342352
 31001103
@@ -18,15 +15,17 @@ map = """25342352
 # 04233
 # 01322
 # 20253"""
-animated_red_portal=animator.Animator('images/Portal/Idle__/red_idle',40,map)
+
+apple=tower_class.towernicsemus3_alhabethangerald3(map)
+
+animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map)
 # test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
 
 tower = (pygame.image.load('images/Towers/PoisonIdle/0.png'))
 
 animated_towers=[]
 
-animated_tower=animator.Animator('images/Towers/PoisonIdle',50,map)
-animated_towers.append(animated_tower)
+animated_tower= animator.Animator('images/Towers/PoisonIdle', 50, map)
 
 toweronisreximus2 = entity.generation(tower, types=1)
 pixels_public = toweronisreximus2.resizer_part(map)
@@ -42,16 +41,16 @@ gbackground4 = pygame.image.load('images/Tiles/grass_04.png')
 
 bpbackground5=pygame.surface.Surface([400,487],pygame.SRCALPHA)
 blue_portal = pygame.image.load('images/Portal/Idle__/blue_idle/1.png')
-blue_portalius2=entity.generation(blue_portal,types=1)
+blue_portalius2= entity.generation(blue_portal, types=1)
 blue_portalius2.resive(pixels_public)
 
 red_portal = pygame.image.load('images/Portal/Idle__/red_idle/01.png')
-red_portaliuinus2=entity.generation(red_portal,types=1)
+red_portaliuinus2= entity.generation(red_portal, types=1)
 red_portaliuinus2.resive(pixels_public)
 
 backgrounds = [sbackground1, sbackground2, gbackground1, gbackground2, gbackground3, gbackground4]
 
-bportal=entity.generation(blue_portal,types=1)
+bportal= entity.generation(blue_portal, types=1)
 bportal.resive(pixels_public)
 change = False
 
