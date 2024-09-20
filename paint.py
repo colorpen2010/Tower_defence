@@ -22,7 +22,7 @@ def risovanie():
     for i in model.regeneration.spisoc:
         igrik = i[0].y - (model.toweronisreximus2.kartinka.get_height() - i[0].height)
         if i[2] == 'tower':
-            model.animated_tower.paint(i[0].x, igrik)
+            model.apple.drawer(screen, i[0].x, igrik)
         if i[2]=='blue_portal':
             screen.blit(model.blue_portalius2.kartinka,[i[0].x,igrik])
         if i[2]=='red_portal':

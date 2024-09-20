@@ -15,8 +15,9 @@ map = """25342352
 # 04233
 # 01322
 # 20253"""
-
 apple=tower_class.towernicsemus3_alhabethangerald3(map)
+korzina=[]
+korzina.append(apple)
 
 animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map)
 # test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
