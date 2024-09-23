@@ -67,11 +67,12 @@ background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
 def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
-    if i[1] == 'g':
-        i[2] = 'tower'
+    if i['type'] == 'g':
+        i['building'] = 'tower'
+        i['tower'] = tower_class.towernicsemus3_alhabethangerald3(map)
 def poisk_kletki(pos):
     for i in regeneration.spisoc:
-        if i[0].collidepoint(pos):
+        if i['rect'].collidepoint(pos):
             return i
 
 regeneration = entity.generation(backgrounds, background=background)
@@ -79,5 +80,5 @@ regeneration.resive(pixels_public)
 regeneration.map_regeneration(map, backgrounds)
 print('a')
 # regeneration.map_generation()
-regeneration.spisoc[9][2]='blue_portal'
-regeneration.spisoc[54][2]='red_portal'
+regeneration.spisoc[9]['building']='blue_portal'
+regeneration.spisoc[54]['building']='red_portal'

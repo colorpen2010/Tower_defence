@@ -20,24 +20,24 @@ def risovanie():
 
     #рисование поставленных башень
     for i in model.regeneration.spisoc:
-        igrik = i[0].y - (model.toweronisreximus2.kartinka.get_height() - i[0].height)
-        if i[2] == 'tower':
-            model.apple.drawer(screen, i[0].x, igrik)
-        if i[2]=='blue_portal':
-            screen.blit(model.blue_portalius2.kartinka,[i[0].x,igrik])
-        if i[2]=='red_portal':
-            model.animated_red_portal.paint(i[0].x,igrik)
+        igrik = i['rect'].y - (model.toweronisreximus2.kartinka.get_height() - i['rect'].height)
+        if i['building'] == 'tower':
+            i['tower'].drawer(screen, i['rect'].x, igrik)
+        if i['building']=='blue_portal':
+            screen.blit(model.blue_portalius2.kartinka,[i['rect'].x,igrik])
+        if i['building']=='red_portal':
+            model.animated_red_portal.paint(i['rect'].x,igrik)
 
 
 
     # рисование башни на квадрате с мышкой
     j = model.poisk_kletki(pygame.mouse.get_pos())
-    igrik = j[0].y - (model.toweronisreximus2.kartinka.get_height() - j[0].height)
-    if j[1] == 'g' and j[2]==False:
-        model.apple.drawer(screen,j[0].x,igrik)
+    igrik = j['rect'].y - (model.toweronisreximus2.kartinka.get_height() - j['rect'].height)
+    if j['type'] == 'g' and j['building']==False:
+        model.apple.drawer(screen,j['rect'].x,igrik)
         # screen.blit(model.toweronisreximus2.kartinka, [j[0].x, igrik])
     else:
-        screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [j[0].x, igrik])
+        screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [j['rect'].x, igrik])
 
 
 if model.perecluthatel:
