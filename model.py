@@ -46,8 +46,6 @@ blue_portalius2= entity.generation(blue_portal, types=1)
 blue_portalius2.resive(pixels_public)
 
 red_portal = pygame.image.load('images/Portal/Idle__/red_idle/01.png')
-red_portaliuinus2= entity.generation(red_portal, types=1)
-red_portaliuinus2.resive(pixels_public)
 
 backgrounds = [sbackground1, sbackground2, gbackground1, gbackground2, gbackground3, gbackground4]
 

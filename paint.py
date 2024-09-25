@@ -22,7 +22,7 @@ def risovanie():
     for i in model.regeneration.spisoc:
         igrik = i['rect'].y - (model.toweronisreximus2.kartinka.get_height() - i['rect'].height)
         if i['building'] == 'tower':
-            i['tower'].drawer(screen, i['rect'].x, igrik)
+            i['tower'].drawer( i['rect'].x, igrik)
         if i['building']=='blue_portal':
             screen.blit(model.blue_portalius2.kartinka,[i['rect'].x,igrik])
         if i['building']=='red_portal':
@@ -34,11 +34,11 @@ def risovanie():
     j = model.poisk_kletki(pygame.mouse.get_pos())
     igrik = j['rect'].y - (model.toweronisreximus2.kartinka.get_height() - j['rect'].height)
     if j['type'] == 'g' and j['building']==False:
-        model.apple.drawer(screen,j['rect'].x,igrik)
-        # screen.blit(model.toweronisreximus2.kartinka, [j[0].x, igrik])
+        # model.apple.drawer(j['rect'].x,igrik)
+        model.apple.colored_drawer('images/Towers/PoisonIdle/0.png',j['rect'].x, igrik,prozrathnost=200)
     else:
-        screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [j['rect'].x, igrik])
-
+        # screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [j['rect'].x, igrik])
+        model.apple.colored_drawer('images/Towers/PoisonIdle/0.png',j['rect'].x, igrik,True)
 
 if model.perecluthatel:
     for o in model.regeneration.spisoc:
