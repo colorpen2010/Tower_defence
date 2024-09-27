@@ -12,8 +12,6 @@ def control():
 
     model.apple.control_point(events)
     model.animated_red_portal.control_center(events)
-    model.animated_tower.control_center(events)
-
     for o in events:
         if o.type == pygame.QUIT:
             exit()

@@ -1,6 +1,7 @@
 import pygame
-
+pygame.init()
 screen = pygame.display.set_mode([800, 800])
+font = pygame.font.SysFont('arial', 50)
 x = 0
 y = 0
 
@@ -12,10 +13,15 @@ import model
 
 def risovanie():
     global imx
+    model.clock.tick()
+    fps=model.clock.get_fps()
     pygame.display.flip()
     model.enemy1.paint(screen)
     screen.blit(model.background, [0, 0])
     # screen.blit(model.bpbackground5,[100,50])
+
+    #надписи
+
 
 
     #рисование поставленных башень
@@ -35,14 +41,15 @@ def risovanie():
     igrik = j['rect'].y - (model.toweronisreximus2.kartinka.get_height() - j['rect'].height)
     if j['type'] == 'g' and j['building']==False:
         # model.apple.drawer(j['rect'].x,igrik)
-        model.apple.colored_drawer('images/Towers/PoisonIdle/0.png',j['rect'].x, igrik,prozrathnost=200)
+        model.apple.colored_drawer(j['rect'].x, igrik,prozrathnost=200)
     else:
         # screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [j['rect'].x, igrik])
-        model.apple.colored_drawer('images/Towers/PoisonIdle/0.png',j['rect'].x, igrik,True)
+        model.apple.colored_drawer(j['rect'].x, igrik,True)
 
-if model.perecluthatel:
-    for o in model.regeneration.spisoc:
-        pygame.draw.rect(screen, [255, 0, 0], o[0], 3)
+    if model.perecluthatel:
+        for o in model.regeneration.spisoc:
+            show_fps=font.render(str(int(fps)),True,[255,0,0])
+            screen.blit(show_fps,[10,20])
 
 screen.blit(model.imaging, [100, imx])
 imx += 0.5

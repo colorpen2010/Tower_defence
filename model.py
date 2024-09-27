@@ -1,6 +1,8 @@
 import pygame
 from classes import animator, enemy_factory, entity, tower_class
 
+clock = pygame.time.Clock()
+
 map = """25342352
 31001103
 22543205
@@ -15,7 +17,7 @@ map = """25342352
 # 04233
 # 01322
 # 20253"""
-apple=tower_class.towernicsemus3_alhabethangerald3(map)
+apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/IceAttack_cleared/0.png')
 korzina=[]
 korzina.append(apple)
 
@@ -25,8 +27,6 @@ animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map)
 tower = (pygame.image.load('images/Towers/PoisonIdle/0.png'))
 
 animated_towers=[]
-
-animated_tower= animator.Animator('images/Towers/PoisonIdle', 50, map)
 
 toweronisreximus2 = entity.generation(tower, types=1)
 pixels_public = toweronisreximus2.resizer_part(map)
@@ -67,7 +67,8 @@ def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
     if i['type'] == 'g':
         i['building'] = 'tower'
-        i['tower'] = tower_class.towernicsemus3_alhabethangerald3(map)
+        i['tower'] = tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/IceAttack_cleared/0.png')
+
 def poisk_kletki(pos):
     for i in regeneration.spisoc:
         if i['rect'].collidepoint(pos):
