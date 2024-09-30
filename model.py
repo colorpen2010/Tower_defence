@@ -17,7 +17,7 @@ map = """25342352
 # 04233
 # 01322
 # 20253"""
-apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/IceAttack_cleared/0.png')
+apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
 korzina=[]
 korzina.append(apple)
 
@@ -67,7 +67,7 @@ def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
     if i['type'] == 'g':
         i['building'] = 'tower'
-        i['tower'] = tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/IceAttack_cleared/0.png')
+        i['tower'] = tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
 
 def poisk_kletki(pos):
     for i in regeneration.spisoc:
