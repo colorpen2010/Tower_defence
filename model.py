@@ -24,6 +24,7 @@ korzina.append(apple)
 animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map)
 # test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
 
+
 tower = (pygame.image.load('images/Towers/PoisonIdle/0.png'))
 
 animated_towers=[]
