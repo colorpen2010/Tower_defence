@@ -8,7 +8,6 @@ def control():
     for i in model.regeneration.spisoc:
         if len(i)== 4:
             i['tower'].control_point(events)
-        print(len(i))
 
     model.apple.control_point(events)
     model.animated_red_portal.control_center(events)

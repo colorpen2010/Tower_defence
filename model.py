@@ -1,5 +1,5 @@
 import pygame
-from classes import animator, enemy_factory, entity, tower_class
+from classes import animator, enemy_factory, entity, tower_class,plitochniy_zavod
 
 clock = pygame.time.Clock()
 
@@ -50,6 +50,10 @@ red_portal = pygame.image.load('images/Portal/Idle__/red_idle/01.png')
 
 backgrounds = [sbackground1, sbackground2, gbackground1, gbackground2, gbackground3, gbackground4]
 
+
+plitka=plitochniy_zavod.Tsekh('sand',0,0,map)
+
+
 bportal= entity.generation(blue_portal, types=1)
 bportal.resive(pixels_public)
 change = False
@@ -78,7 +82,6 @@ def poisk_kletki(pos):
 regeneration = entity.generation(backgrounds, background=background)
 regeneration.resive(pixels_public)
 regeneration.map_regeneration(map, backgrounds)
-print('a')
 # regeneration.map_generation()
 regeneration.spisoc[9]['building']='blue_portal'
 regeneration.spisoc[54]['building']='red_portal'

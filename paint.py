@@ -16,8 +16,9 @@ def risovanie():
     model.clock.tick()
     fps=model.clock.get_fps()
     pygame.display.flip()
+    # screen.blit(model.background, [0, 0])
     model.enemy1.paint(screen)
-    screen.blit(model.background, [0, 0])
+    model.plitka.okraska()
     # screen.blit(model.bpbackground5,[100,50])
 
     #надписи
