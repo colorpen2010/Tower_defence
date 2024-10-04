@@ -3,20 +3,20 @@ from classes import animator, enemy_factory, entity, tower_class,plitochniy_zavo
 
 clock = pygame.time.Clock()
 
-map = """25342352
-31001103
-22543205
-30110014
-20453423
-30110102
-24534502
-32342453"""
+# map = """25342352
+# 31001103
+# 22543205
+# 30110014
+# 20453423
+# 30110102
+# 24534502
+# 32342453"""
 
-# map="""02354
-# 15344
-# 04233
-# 01322
-# 20253"""
+map="""02354
+15344
+04233
+01322
+20253"""
 apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
 korzina=[]
 korzina.append(apple)
@@ -51,7 +51,8 @@ red_portal = pygame.image.load('images/Portal/Idle__/red_idle/01.png')
 backgrounds = [sbackground1, sbackground2, gbackground1, gbackground2, gbackground3, gbackground4]
 
 
-plitka=plitochniy_zavod.Tsekh('sand',0,0,map)
+plitka=plitochniy_zavod.Tsekh('sky',0,0,map)
+plitka2=plitochniy_zavod.Tsekh('grass',200,0,map)
 
 
 bportal= entity.generation(blue_portal, types=1)
@@ -68,6 +69,34 @@ imaging = pygame.transform.scale(imaging, [220 / 7, 320 / 7])
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
+
+def map_regeneration(x,map, korobka_s_plitami):
+    height = 0
+    kolvo_strok = len(map.split('\n'))
+    visota_pola = kolvo_strok * x
+
+    dest = height
+    for i in map:
+        if i != "\n":
+            image = korobka_s_plitami[int(i)]
+        else:
+            image = None
+
+        if dest < visota_pola and image != None:
+            rectik = background.blit(image, [dest, height])
+            if i == '0' or i == '1':
+                spisoc.append({'rect': rectik, 'type': 's', 'building': False})
+
+
+            else:
+                spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
+            dest += x
+            # self.y=self.x
+        elif height != visota_pola and i == "\n":
+            height += x
+            # self.y = self.x
+            dest = 0
+
 def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
     if i['type'] == 'g':
@@ -83,5 +112,5 @@ regeneration = entity.generation(backgrounds, background=background)
 regeneration.resive(pixels_public)
 regeneration.map_regeneration(map, backgrounds)
 # regeneration.map_generation()
-regeneration.spisoc[9]['building']='blue_portal'
-regeneration.spisoc[54]['building']='red_portal'
+# regeneration.spisoc[9]['building']='blue_portal'
+# regeneration.spisoc[54]['building']='red_portal'
