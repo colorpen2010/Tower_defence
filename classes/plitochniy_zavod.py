@@ -35,8 +35,8 @@ class Tsekh:
 
         pass
 
-    def okraska(self):
-        screen=pygame.display.get_surface()
+    def okraska(self,screen):
+        # screen=pygame.display.get_surface()
         if self.no_image==False:
             screen.blit(self.plitka,[self.x,self.y])
         else:

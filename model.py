@@ -1,4 +1,6 @@
 import pygame
+from pygame.examples.cursors import image
+
 from classes import animator, enemy_factory, entity, tower_class,plitochniy_zavod
 
 clock = pygame.time.Clock()
@@ -20,6 +22,8 @@ map="""02354
 apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
 korzina=[]
 korzina.append(apple)
+
+spisoc=[]
 
 animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map)
 # test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
@@ -51,7 +55,7 @@ red_portal = pygame.image.load('images/Portal/Idle__/red_idle/01.png')
 backgrounds = [sbackground1, sbackground2, gbackground1, gbackground2, gbackground3, gbackground4]
 
 
-plitka=plitochniy_zavod.Tsekh('sky',0,0,map)
+plitka=plitochniy_zavod.Tsekh('sky',100,200,map)
 plitka2=plitochniy_zavod.Tsekh('grass',200,0,map)
 
 
@@ -69,33 +73,19 @@ imaging = pygame.transform.scale(imaging, [220 / 7, 320 / 7])
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
-
-def map_regeneration(x,map, korobka_s_plitami):
+def map_regeneration(map):
     height = 0
-    kolvo_strok = len(map.split('\n'))
-    visota_pola = kolvo_strok * x
-
     dest = height
     for i in map:
-        if i != "\n":
-            image = korobka_s_plitami[int(i)]
+        if i == '0' or i == '1':
+            spisoc.append(plitochniy_zavod.Tsekh('sand',dest,height,map))
+            # spisoc.append({'rect': rectik, 'type': 's', 'building': False})
+
         else:
-            image = None
-
-        if dest < visota_pola and image != None:
-            rectik = background.blit(image, [dest, height])
-            if i == '0' or i == '1':
-                spisoc.append({'rect': rectik, 'type': 's', 'building': False})
-
-
-            else:
-                spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
-            dest += x
+            spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
+            # spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
+        dest += x
             # self.y=self.x
-        elif height != visota_pola and i == "\n":
-            height += x
-            # self.y = self.x
-            dest = 0
 
 def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
@@ -107,6 +97,14 @@ def poisk_kletki(pos):
     for i in regeneration.spisoc:
         if i['rect'].collidepoint(pos):
             return i
+1
+map_regeneration(map)
+number=0
+for o in spisoc:
+    image=pygame.Surface([100,100])
+    o.okraska(image)
+    number+=1
+    pygame.image.save(image,'test/test_spisok'+str(number)+'.png')
 
 regeneration = entity.generation(backgrounds, background=background)
 regeneration.resive(pixels_public)

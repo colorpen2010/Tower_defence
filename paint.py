@@ -18,9 +18,12 @@ def risovanie():
     pygame.display.flip()
     # screen.blit(model.background, [0, 0])
     model.enemy1.paint(screen)
-    model.plitka.okraska()
-    model.plitka2.okraska()
+    model.plitka.okraska(screen)
+    model.plitka2.okraska(screen)
     # screen.blit(model.bpbackground5,[100,50])
+
+    for p in model.spisoc:
+        p.okraska(screen)
 
     #надписи
 
