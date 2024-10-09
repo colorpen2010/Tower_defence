@@ -7,6 +7,7 @@ import kakoito_resizer
 
 class Tsekh:
     def __init__(self,type,x,y,map):
+        self.type=type
         self.nothing=pygame.Surface([100,100])
         rect=pygame.Rect(0,0,100,100)
         pygame.draw.rect(self.nothing,[255,255,255],rect,50)
@@ -17,11 +18,9 @@ class Tsekh:
         # self.plitka=pygame.Surface([50,50])
         self.x,self.y=x,y
         path = 'images/Tiles/' + type + '_0' + str(random.randint(1, 4)) + '.png'
-        print(path)
 
         while os.path.exists(path)==False and self.no_image==False:
             path='images/Tiles/'+type+'_0'+str(random.randint(1,4))+'.png'
-            print(path)
             attempt+=1
             if attempt==50:
                 self.no_image=True
@@ -34,6 +33,12 @@ class Tsekh:
             self.nothing=kakoito_resizer.creating_objects('no_image.png',map)
 
         pass
+
+    def get_product_size(self):
+        if self.no_image==False:
+            return self.plitka.get_size()
+        else:
+            return self.nothing.get_size()
 
     def okraska(self,screen):
         # screen=pygame.display.get_surface()

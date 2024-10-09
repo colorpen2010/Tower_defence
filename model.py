@@ -5,20 +5,20 @@ from classes import animator, enemy_factory, entity, tower_class,plitochniy_zavo
 
 clock = pygame.time.Clock()
 
-# map = """25342352
-# 31001103
-# 22543205
-# 30110014
-# 20453423
-# 30110102
-# 24534502
-# 32342453"""
+map = """25342352
+31001103
+22543205
+30110014
+20453423
+30110102
+24534502
+32342453"""
 
-map="""02354
-15344
-04233
-01322
-20253"""
+# map="""02354
+# 15344
+# 04233
+# 01322
+# 20253"""
 apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
 korzina=[]
 korzina.append(apple)
@@ -77,6 +77,8 @@ def map_regeneration(map):
     height = 0
     dest = height
     for i in map:
+        if i=='\n':
+            continue
         if i == '0' or i == '1':
             spisoc.append(plitochniy_zavod.Tsekh('sand',dest,height,map))
             # spisoc.append({'rect': rectik, 'type': 's', 'building': False})
@@ -84,7 +86,12 @@ def map_regeneration(map):
         else:
             spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
             # spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
-        dest += x
+        print(dest,height,i,spisoc[-1].type)
+        if dest!=pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
+            dest +=spisoc[-1].get_product_size()[0]
+        else:
+            dest=0
+            height+=spisoc[-1].get_product_size()[1]
             # self.y=self.x
 
 def ystanowka_bashni(pos):
@@ -99,12 +106,12 @@ def poisk_kletki(pos):
             return i
 1
 map_regeneration(map)
-number=0
-for o in spisoc:
-    image=pygame.Surface([100,100])
-    o.okraska(image)
-    number+=1
-    pygame.image.save(image,'test/test_spisok'+str(number)+'.png')
+# number=0
+# for o in spisoc:
+#     image=pygame.Surface([100,100])
+#     o.okraska(image)
+#     number+=1
+    # pygame.image.save(image,'test/test_spisok'+str(number)+'.png')
 
 regeneration = entity.generation(backgrounds, background=background)
 regeneration.resive(pixels_public)
