@@ -55,8 +55,8 @@ red_portal = pygame.image.load('images/Portal/Idle__/red_idle/01.png')
 backgrounds = [sbackground1, sbackground2, gbackground1, gbackground2, gbackground3, gbackground4]
 
 
-plitka=plitochniy_zavod.Tsekh('sky',100,200,map)
-plitka2=plitochniy_zavod.Tsekh('grass',200,0,map)
+# plitka=plitochniy_zavod.Tsekh('sky',100,200,map)
+# plitka2=plitochniy_zavod.Tsekh('grass',200,0,map)
 
 
 bportal= entity.generation(blue_portal, types=1)
@@ -96,13 +96,13 @@ def map_regeneration(map):
 
 def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
-    if i['type'] == 'g':
-        i['building'] = 'tower'
-        i['tower'] = tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
+    if i.type == 'grass':
+        i.building = 'tower'
+        i.tower = tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
 
 def poisk_kletki(pos):
-    for i in regeneration.spisoc:
-        if i['rect'].collidepoint(pos):
+    for i in spisoc:
+        if i.get_rect():
             return i
 1
 map_regeneration(map)
@@ -115,7 +115,6 @@ map_regeneration(map)
 
 regeneration = entity.generation(backgrounds, background=background)
 regeneration.resive(pixels_public)
-regeneration.map_regeneration(map, backgrounds)
 # regeneration.map_generation()
 # regeneration.spisoc[9]['building']='blue_portal'
 # regeneration.spisoc[54]['building']='red_portal'

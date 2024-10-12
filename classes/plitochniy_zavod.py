@@ -4,15 +4,17 @@ import pygame,random,os
 
 import kakoito_resizer
 
+nothing = pygame.Surface([100, 100])
+
+rect = pygame.Rect(0, 0, 100, 100)
+pygame.draw.rect(nothing, [255, 255, 255], rect, 50)
+pygame.draw.rect(nothing, [255, 0, 0], rect, 10)
+pygame.image.save(nothing, 'no_image.png')
 
 class Tsekh:
     def __init__(self,type,x,y,map):
+        self.building=False
         self.type=type
-        self.nothing=pygame.Surface([100,100])
-        rect=pygame.Rect(0,0,100,100)
-        pygame.draw.rect(self.nothing,[255,255,255],rect,50)
-        pygame.draw.rect(self.nothing,[255,0,0],rect,10)
-        pygame.image.save(self.nothing,'no_image.png')
         attempt=0
         self.no_image=False
         # self.plitka=pygame.Surface([50,50])
@@ -39,6 +41,10 @@ class Tsekh:
             return self.plitka.get_size()
         else:
             return self.nothing.get_size()
+    def get_rect(self):
+        return pygame.Rect([self.x,self.y],self.plitka.get_size())
+
+
 
     def okraska(self,screen):
         # screen=pygame.display.get_surface()

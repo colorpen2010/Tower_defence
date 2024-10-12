@@ -15,32 +15,32 @@ class generation():
         self.pixels = 10
         self.grass_or_sand = []
 
-    def map_regeneration(self, map, korobka_s_plitami):
-        height = 0
-        kolvo_strok = len(map.split('\n'))
-        visota_pola = kolvo_strok * self.x
-
-        dest = height
-        for i in map:
-            if i != "\n":
-                image = korobka_s_plitami[int(i)]
-            else:
-                image = None
-
-            if dest < visota_pola and image != None:
-                rectik = self.background.blit(image, [dest, height])
-                if i == '0' or i == '1':
-                    self.spisoc.append({'rect':rectik, 'type':'s', 'building':False})
-
-
-                else:
-                    self.spisoc.append({'rect':rectik, 'type':'g', 'building':False})
-                dest += self.x
-                # self.y=self.x
-            elif height != visota_pola and i == "\n":
-                height += self.x
-                # self.y = self.x
-                dest = 0
+    # def map_regeneration(self, map, korobka_s_plitami):
+    #     height = 0
+    #     kolvo_strok = len(map.split('\n'))
+    #     visota_pola = kolvo_strok * self.x
+    #
+    #     dest = height
+    #     for i in map:
+    #         if i != "\n":
+    #             image = korobka_s_plitami[int(i)]
+    #         else:
+    #             image = None
+    #
+    #         if dest < visota_pola and image != None:
+    #             rectik = self.background.blit(image, [dest, height])
+    #             if i == '0' or i == '1':
+    #                 self.spisoc.append({'rect':rectik, 'type':'s', 'building':False})
+    #
+    #
+    #             else:
+    #                 self.spisoc.append({'rect':rectik, 'type':'g', 'building':False})
+    #             dest += self.x
+    #             # self.y=self.x
+    #         elif height != visota_pola and i == "\n":
+    #             height += self.x
+    #             # self.y = self.x
+    #             dest = 0
 
     def resize_randomizer(self):
         self.pixels = random.randint(4, 40)
