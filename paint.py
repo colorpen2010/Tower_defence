@@ -1,4 +1,7 @@
 import pygame
+
+import kakoito_resizer
+
 pygame.init()
 screen = pygame.display.set_mode([800, 800])
 font = pygame.font.SysFont('arial', 50)
@@ -38,18 +41,19 @@ def risovanie():
 
     # рисование башни на квадрате с мышкой
     j = model.poisk_kletki(pygame.mouse.get_pos())
-    igrik = j.y - (model.toweronisreximus2.kartinka.get_height() - j.y)
+    igrik=kakoito_resizer.schoti()
+    # igrik = j.y - (model.toweronisreximus2.kartinka.get_height() - j.y)
     if j.type == 'grass' and j.building==False:
         # model.apple.drawer(j['rect'].x,igrik)
+        print(j.x)
         model.apple.colored_drawer(j.x, igrik,prozrathnost=200)
     else:
         # screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [j['rect'].x, igrik])
         model.apple.colored_drawer(j.x, igrik,True)
 
     if model.perecluthatel:
-        for o in model.regeneration.spisoc:
-            show_fps=font.render(str(int(fps)),True,[255,0,0])
-            screen.blit(show_fps,[10,20])
+        show_fps=font.render(str(int(fps)),True,[255,0,0])
+        screen.blit(show_fps,[10,20])
 
 screen.blit(model.imaging, [100, imx])
 imx += 0.5

@@ -102,9 +102,10 @@ def ystanowka_bashni(pos):
 
 def poisk_kletki(pos):
     for i in spisoc:
-        if i.get_rect():
+        rect=i.get_rect()
+        if rect.collidepoint(pos):
             return i
-1
+
 map_regeneration(map)
 # number=0
 # for o in spisoc:
