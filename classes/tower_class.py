@@ -15,13 +15,13 @@ class towernicsemus3_alhabethangerald3():
     def drawer(self, x, y):
         self.animated_tower.paint(x, y)
 
-    def colored_drawer(self, x, y, colored=False, prozrathnost=150):
+    def colored_drawer(self, x, bottom, colored=False, prozrathnost=150):
         if not colored:
             image = image_worker.poly_prosrathnost(self.image, prozrathnost)
-            self.screen.blit(image,[x,y])
+            self.screen.blit(image, [x, bottom - image.get_height()])
         else:
             zapreshenaia_kartinka = image_worker.poly_prosrathnost(self.zapreshenaia_kartinka, prozrathnost)
-            self.screen.blit(zapreshenaia_kartinka, [x, y])
+            self.screen.blit(zapreshenaia_kartinka, [x, bottom-zapreshenaia_kartinka.get_height()])
 
     def control_point(self, events):
         self.animated_tower.control_center(events)

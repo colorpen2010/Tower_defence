@@ -37,19 +37,22 @@ def risovanie():
     #     if i['building']=='red_portal':
     #         model.animated_red_portal.paint(i['rect'].x,igrik)
 
-
+    for i in model.spisoc:
+        if i.building == True:
+            i['tower'].drawer( i['rect'].x, igrik)
+    #     if i['building']=='blue_portal':
+    #         screen.blit(model.blue_portalius2.kartinka,[i['rect'].x,igrik])
+    #     if i['building']=='red_portal':
+    #         model.animated_red_portal.paint(i['rect'].x,igrik)
 
     # рисование башни на квадрате с мышкой
     j = model.poisk_kletki(pygame.mouse.get_pos())
-    igrik=kakoito_resizer.schoti()
-    # igrik = j.y - (model.toweronisreximus2.kartinka.get_height() - j.y)
+    rect=j.get_rect()
     if j.type == 'grass' and j.building==False:
-        # model.apple.drawer(j['rect'].x,igrik)
         print(j.x)
-        model.apple.colored_drawer(j.x, igrik,prozrathnost=200)
+        model.apple.colored_drawer(j.x,rect.bottom ,prozrathnost=200)
     else:
-        # screen.blit(model.toweronisreximus2.zapreshenaia_kartinka, [j['rect'].x, igrik])
-        model.apple.colored_drawer(j.x, igrik,True)
+        model.apple.colored_drawer(j.x, rect.bottom,True)
 
     if model.perecluthatel:
         show_fps=font.render(str(int(fps)),True,[255,0,0])

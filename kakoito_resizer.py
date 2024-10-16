@@ -1,12 +1,6 @@
 import pygame
 
-def schoti():
-    """
-    считает игрик обьекта
-    :return:
-    """
-    # igrik=
-    pass
+
 def creating_objects(pyt, map):
     """
     создаёт картинку нужного размера
