@@ -36,6 +36,6 @@ class Animator:
 
 
 
-    def paint(self,x,y):
+    def paint(self,x,bottom):
         screen=pygame.display.get_surface()
-        screen.blit(self.imaging_this_beautiful_image[self.one],[x,y])
+        screen.blit(self.imaging_this_beautiful_image[self.one],[x,bottom - self.imaging_this_beautiful_image[self.one].get_height()])

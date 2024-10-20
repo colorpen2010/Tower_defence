@@ -86,7 +86,6 @@ def map_regeneration(map):
         else:
             spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
             # spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
-        print(dest,height,i,spisoc[-1].type)
         if dest!=pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
             dest +=spisoc[-1].get_product_size()[0]
         else:

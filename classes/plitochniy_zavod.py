@@ -15,6 +15,7 @@ class Tsekh:
     def __init__(self,type,x,y,map):
         self.building=False
         self.type=type
+        self.tower=None
         attempt=0
         self.no_image=False
         # self.plitka=pygame.Surface([50,50])

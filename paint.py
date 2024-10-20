@@ -38,10 +38,10 @@ def risovanie():
     #         model.animated_red_portal.paint(i['rect'].x,igrik)
 
     for i in model.spisoc:
-        if i.building == True:
-            i['tower'].drawer( i['rect'].x, igrik)
-    #     if i['building']=='blue_portal':
-    #         screen.blit(model.blue_portalius2.kartinka,[i['rect'].x,igrik])
+        if i.building == 'tower':
+            i.tower.drawer( i.x,i.get_rect().bottom)
+        # if i['building']=='blue_portal':
+            # screen.blit(model.blue_portalius2.kartinka,[i['rect'].x,igrik])
     #     if i['building']=='red_portal':
     #         model.animated_red_portal.paint(i['rect'].x,igrik)
 
@@ -49,7 +49,7 @@ def risovanie():
     j = model.poisk_kletki(pygame.mouse.get_pos())
     rect=j.get_rect()
     if j.type == 'grass' and j.building==False:
-        print(j.x)
+        # print(j.x)
         model.apple.colored_drawer(j.x,rect.bottom ,prozrathnost=200)
     else:
         model.apple.colored_drawer(j.x, rect.bottom,True)
