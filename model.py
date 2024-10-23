@@ -1,7 +1,7 @@
 import pygame
 from pygame.examples.cursors import image
 
-from classes import animator, enemy_factory, entity, tower_class,plitochniy_zavod
+from classes import animator, enemy_factory, tower_class,plitochniy_zavod
 
 clock = pygame.time.Clock()
 
@@ -25,42 +25,9 @@ korzina.append(apple)
 
 spisoc=[]
 
+animated_blue_portal= animator.Animator('images/Portal/Idle__/blue_idle', 40, map)
 animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map)
-# test_tower=kakoito_resizer.creating_objects('images/Towers/PoisonIdle/0.png')
 
-
-tower = (pygame.image.load('images/Towers/PoisonIdle/0.png'))
-
-animated_towers=[]
-
-toweronisreximus2 = entity.generation(tower, types=1)
-pixels_public = toweronisreximus2.resizer_part(map)
-toweronisreximus2.resive(pixels_public)
-# map_rect=pygame.rect.Rect()
-kva = []
-sbackground1 = pygame.image.load('images/Tiles/sand_01.png')
-sbackground2 = pygame.image.load('images/Tiles/sand_02.png')
-gbackground1 = pygame.image.load('images/Tiles/grass_01.png')
-gbackground2 = pygame.image.load('images/Tiles/grass_02.png')
-gbackground3 = pygame.image.load('images/Tiles/grass_03.png')
-gbackground4 = pygame.image.load('images/Tiles/grass_04.png')
-
-bpbackground5=pygame.surface.Surface([400,487],pygame.SRCALPHA)
-blue_portal = pygame.image.load('images/Portal/Idle__/blue_idle/1.png')
-blue_portalius2= entity.generation(blue_portal, types=1)
-blue_portalius2.resive(pixels_public)
-
-red_portal = pygame.image.load('images/Portal/Idle__/red_idle/01.png')
-
-backgrounds = [sbackground1, sbackground2, gbackground1, gbackground2, gbackground3, gbackground4]
-
-
-# plitka=plitochniy_zavod.Tsekh('sky',100,200,map)
-# plitka2=plitochniy_zavod.Tsekh('grass',200,0,map)
-
-
-bportal= entity.generation(blue_portal, types=1)
-bportal.resive(pixels_public)
 change = False
 
 perecluthatel = False
@@ -81,7 +48,6 @@ def map_regeneration(map):
             continue
         if i == '0' or i == '1':
             spisoc.append(plitochniy_zavod.Tsekh('sand',dest,height,map))
-            # spisoc.append({'rect': rectik, 'type': 's', 'building': False})
 
         else:
             spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
@@ -92,6 +58,13 @@ def map_regeneration(map):
             dest=0
             height+=spisoc[-1].get_product_size()[1]
             # self.y=self.x
+
+def ystanowka_portala(nomer,type):
+    with_portal=spisoc[nomer]
+    if type=='red':
+        with_portal.building='red_portal'
+    if type=='blue':
+        with_portal.building='blue_portal'
 
 def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
@@ -106,15 +79,5 @@ def poisk_kletki(pos):
             return i
 
 map_regeneration(map)
-# number=0
-# for o in spisoc:
-#     image=pygame.Surface([100,100])
-#     o.okraska(image)
-#     number+=1
-    # pygame.image.save(image,'test/test_spisok'+str(number)+'.png')
-
-regeneration = entity.generation(backgrounds, background=background)
-regeneration.resive(pixels_public)
-# regeneration.map_generation()
-# regeneration.spisoc[9]['building']='blue_portal'
-# regeneration.spisoc[54]['building']='red_portal'
+ystanowka_portala(54,'red')
+ystanowka_portala(9,'blue')

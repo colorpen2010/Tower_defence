@@ -1,8 +1,5 @@
 import image_worker, pygame, os, kakoito_resizer
 from classes import animator
-# print(os.path.dirname('images/Images_for_tests/tower/Tower_Entity.png'))
-# print(os.path.basename('images/Images_for_tests/tower/Tower_Entity.png'))
-
 
 class towernicsemus3_alhabethangerald3():
     def __init__(self, map,pyt='images/Images_for_tests/tower/Tower_Entity.png'):

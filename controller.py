@@ -9,7 +9,10 @@ def control():
     for r in model.spisoc:
         if r.tower!= None:
             r.tower.control_point(events)
+
+    model.animated_blue_portal.control_center(events)
     model.animated_red_portal.control_center(events)
+
     for o in events:
         if o.type == pygame.QUIT:
             exit()
