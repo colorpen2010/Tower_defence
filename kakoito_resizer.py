@@ -35,4 +35,4 @@ map = """25342352
 24534502
 32342453"""
 project=creating_objects('images/Towers/PoisonIdle/0.png', map)
-pygame.image.save(project,'test/test_5.png')
+# pygame.image.save(project,'test/test_5.png')

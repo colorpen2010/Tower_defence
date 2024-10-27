@@ -4,14 +4,14 @@ from pygame.examples.vgrade import timer
 import kakoito_resizer,os
 
 class Animator:
-    def __init__(self,pyt,mili_sec,map):
+    def __init__(self,pyt,mili_sec,map,reverse=False):
         spisok = []
         file_list = os.listdir(pyt)
         for p in file_list:
             spisok.append(pyt+'/' + p)
         self.map=map
         self.pictures=spisok
-        self.pictures.sort(reverse=True)
+        self.pictures.sort(reverse=reverse)
         self.one=0
         self.wrema=pygame.event.custom_type()
         pygame.time.set_timer(self.wrema, mili_sec)

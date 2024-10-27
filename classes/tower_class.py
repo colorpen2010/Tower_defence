@@ -5,7 +5,7 @@ class towernicsemus3_alhabethangerald3():
     def __init__(self, map,pyt='images/Images_for_tests/tower/Tower_Entity.png'):
         self.screen = pygame.display.get_surface()
         self.image=kakoito_resizer.creating_objects(pyt,map)
-        self.animated_tower = animator.Animator(os.path.dirname(pyt), 40, map)
+        self.animated_tower = animator.Animator(os.path.dirname(pyt), 40, map,False)
         self.zapreshenaia_kartinka = image_worker.to_grayscale(self.image)
         pygame.image.save(self.zapreshenaia_kartinka, 'test1.png')
 

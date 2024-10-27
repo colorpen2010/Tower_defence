@@ -1,18 +1,18 @@
 import pygame
 from pygame.examples.cursors import image
 
-from classes import animator, enemy_factory, tower_class,plitochniy_zavod
+from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop
 
 clock = pygame.time.Clock()
 
-map = """25342352
-31001103
-22543205
-30110014
-20453423
-30110102
-24534502
-32342453"""
+map = """253423520
+310011030
+225432050
+301100140
+204534230
+301101020
+245345020
+323424530"""
 
 # map="""02354
 # 15344
@@ -25,8 +25,10 @@ korzina.append(apple)
 
 spisoc=[]
 
-animated_blue_portal= animator.Animator('images/Portal/Idle__/blue_idle', 40, map)
-animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map)
+magaz=shop.Magazin(800,100,'images/UI/TowerButtons/button_1.png',10)
+
+animated_blue_portal= animator.Animator('images/Portal/Idle__/blue_idle', 40, map,False)
+animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map,False)
 
 change = False
 
@@ -70,7 +72,7 @@ def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
     if i.type == 'grass':
         i.building = 'tower'
-        i.tower = tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
+        i.tower = tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/IceIdle_cleared/00.png')
 
 def poisk_kletki(pos):
     for i in spisoc:
