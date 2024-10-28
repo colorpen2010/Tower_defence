@@ -26,6 +26,9 @@ def risovanie():
 
     #надписи
     model.magaz.paint()
+    model.magaz2.paint()
+    model.magaz3.paint()
+    model.magaz4.paint()
 
 
     #рисование поставленных башень

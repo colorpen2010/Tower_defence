@@ -13,6 +13,12 @@ def control():
     model.animated_blue_portal.control_center(events)
     model.animated_red_portal.control_center(events)
 
+    model.magaz.controller(events)
+    model.magaz2.controller(events)
+    model.magaz3.controller(events)
+    model.magaz4.controller(events)
+
+
     for o in events:
         if o.type == pygame.QUIT:
             exit()
