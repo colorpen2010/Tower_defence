@@ -25,10 +25,8 @@ def risovanie():
 
 
     #надписи
-    model.magaz.paint()
-    model.magaz2.paint()
-    model.magaz3.paint()
-    model.magaz4.paint()
+    for g in model.bazar:
+        g.paint()
 
 
     #рисование поставленных башень
@@ -43,16 +41,17 @@ def risovanie():
 
     # рисование башни на квадрате с мышкой
     j = model.poisk_kletki(pygame.mouse.get_pos())
-    if j!=None:
-        rect=j.get_rect()
-        if j.type == 'grass' and j.building==False:
-            model.apple.colored_drawer(j.x,rect.bottom ,prozrathnost=200)
-        else:
-            model.apple.colored_drawer(j.x, rect.bottom,True)
+    for r in model.bazar:
+        if j!=None and r.selected!=False:
+            rect=j.get_rect()
+            if j.type == 'grass' and j.building==False:
+                model.apple.colored_drawer(j.x,rect.bottom ,prozrathnost=200)
+            else:
+                model.apple.colored_drawer(j.x, rect.bottom,True)
 
-        if model.perecluthatel:
-            show_fps=font.render(str(int(fps)),True,[255,0,0])
-            screen.blit(show_fps,[10,20])
+            if model.perecluthatel:
+                show_fps=font.render(str(int(fps)),True,[255,0,0])
+                screen.blit(show_fps,[10,20])
 
 screen.blit(model.imaging, [100, imx])
 imx += 0.5

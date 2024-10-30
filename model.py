@@ -25,10 +25,16 @@ korzina.append(apple)
 
 spisoc=[]
 
-magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',213419999)
-magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',213412)
-magaz3=shop.Magazin(803,300,'images/UI/TowerButtons/button_3.png',2112)
-magaz4=shop.Magazin(803,410,'images/UI/TowerButtons/button_4.png',21342)
+y=80
+
+# magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',213419999)
+# magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',213412)
+# magaz3=shop.Magazin(803,300,'images/UI/TowerButtons/button_3.png',2112)
+# magaz4=shop.Magazin(803,410,'images/UI/TowerButtons/button_4.png',21342)
+bazar=[]
+for o in range(1,5):
+    bazar.append(shop.Magazin(803,y,'images/UI/TowerButtons/button_'+str(o)+'.png',213412))
+    y+=110
 
 
 animated_blue_portal= animator.Animator('images/Portal/Idle__/blue_idle', 40, map,False)
@@ -64,6 +70,9 @@ def map_regeneration(map):
             dest=0
             height+=spisoc[-1].get_product_size()[1]
             # self.y=self.x
+
+# def vibor_bashni(bashnia):
+    # apple
 
 def ystanowka_portala(nomer,type):
     with_portal=spisoc[nomer]
