@@ -5,7 +5,8 @@ def control():
     # time.sleep(0.01)
     events = pygame.event.get()
 
-    model.apple.control_point(events)
+    if model.apple!=None:
+        model.apple.control_point(events)
     for r in model.spisoc:
         if r.tower!= None:
             r.tower.control_point(events)
@@ -24,3 +25,5 @@ def control():
             model.perecluthatel = not model.perecluthatel
         if o.type == pygame.MOUSEBUTTONDOWN and o.button == pygame.BUTTON_LEFT:
             model.ystanowka_bashni(o.pos)
+        if o.type == pygame.KEYDOWN and o.key == pygame.K_ESCAPE:
+            model.apple=None

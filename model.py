@@ -3,55 +3,6 @@ from pygame.examples.cursors import image
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop
 
-clock = pygame.time.Clock()
-
-map = """253423520
-310011030
-225432050
-301100140
-204534230
-301101020
-245345020
-323424530"""
-
-# map="""02354
-# 15344
-# 04233
-# 01322
-# 20253"""
-apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
-korzina=[]
-korzina.append(apple)
-
-spisoc=[]
-
-y=80
-
-# magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',213419999)
-# magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',213412)
-# magaz3=shop.Magazin(803,300,'images/UI/TowerButtons/button_3.png',2112)
-# magaz4=shop.Magazin(803,410,'images/UI/TowerButtons/button_4.png',21342)
-bazar=[]
-for o in range(1,5):
-    bazar.append(shop.Magazin(803,y,'images/UI/TowerButtons/button_'+str(o)+'.png',213412))
-    y+=110
-
-
-animated_blue_portal= animator.Animator('images/Portal/Idle__/blue_idle', 40, map,False)
-animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map,False)
-
-change = False
-
-perecluthatel = False
-
-xy = 50
-enemy1 = enemy_factory.enem_factory(pygame.image.load('images/Monsters/move/blue_right.png'))
-imaging = pygame.Surface([220, 320], pygame.SRCALPHA)
-imaging.blit(enemy1.enemy, [0, 0], [20, 15, 246, 320])
-imaging = pygame.transform.scale(imaging, [220 / 7, 320 / 7])
-
-background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
-
 def map_regeneration(map):
     height = 0
     dest = height
@@ -71,8 +22,10 @@ def map_regeneration(map):
             height+=spisoc[-1].get_product_size()[1]
             # self.y=self.x
 
-# def vibor_bashni(bashnia):
-    # apple
+def vibor_bashni(bashnia):
+    global apple
+    text= 'images/Towers/'+str(bashnia)+'Idle_cleared/00.png'
+    apple=tower_class.towernicsemus3_alhabethangerald3(map,text)
 
 def ystanowka_portala(nomer,type):
     with_portal=spisoc[nomer]
@@ -83,15 +36,65 @@ def ystanowka_portala(nomer,type):
 
 def ystanowka_bashni(pos):
     i=poisk_kletki(pos)
-    if i.type == 'grass':
+    if i.type == 'grass' and apple!=None:
         i.building = 'tower'
-        i.tower = tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/IceIdle_cleared/00.png')
+        i.tower = tower_class.towernicsemus3_alhabethangerald3(map,apple.pyt)
 
 def poisk_kletki(pos):
     for i in spisoc:
         rect=i.get_rect()
         if rect.collidepoint(pos):
             return i
+
+
+clock = pygame.time.Clock()
+
+map = """253423520
+310011030
+225432050
+301100140
+204534230
+301101020
+245345020
+323424530"""
+
+# map="""02354
+# 15344
+# 04233
+# 01322
+# 20253"""
+apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
+apple=None
+korzina=[]
+korzina.append(apple)
+
+spisoc=[]
+
+y=80
+
+magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',213419999,'Poison',vibor_bashni)
+magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',213412,'Fire',vibor_bashni)
+magaz3=shop.Magazin(803,300,'images/UI/TowerButtons/button_3.png',2112,'Storm',vibor_bashni)
+magaz4=shop.Magazin(803,410,'images/UI/TowerButtons/button_4.png',21342,'Ice',vibor_bashni)
+bazar=[magaz,magaz2,magaz3,magaz4]
+
+
+animated_blue_portal= animator.Animator('images/Portal/Idle__/blue_idle', 40, map,False)
+animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map,False)
+
+change = False
+
+perecluthatel = False
+
+xy = 50
+enemy1 = enemy_factory.enem_factory(pygame.image.load('images/Monsters/move/blue_right.png'))
+imaging = pygame.Surface([220, 320], pygame.SRCALPHA)
+imaging.blit(enemy1.enemy, [0, 0], [20, 15, 246, 320])
+imaging = pygame.transform.scale(imaging, [220 / 7, 320 / 7])
+
+background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
+
+
 
 map_regeneration(map)
 ystanowka_portala(54,'red')
