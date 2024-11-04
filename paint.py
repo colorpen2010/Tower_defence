@@ -27,6 +27,7 @@ def risovanie():
     #надписи
     for g in model.bazar:
         g.paint()
+    model.wallet.grafiti(800,0)
 
 
     #рисование поставленных башень

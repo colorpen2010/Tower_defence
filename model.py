@@ -1,7 +1,7 @@
 import pygame
 from pygame.examples.cursors import image
 
-from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop
+from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet
 
 def map_regeneration(map):
     height = 0
@@ -46,6 +46,7 @@ def poisk_kletki(pos):
         if rect.collidepoint(pos):
             return i
 
+wallet=wallet.get_wallet(0 )
 
 clock = pygame.time.Clock()
 
@@ -97,5 +98,5 @@ background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
 
 map_regeneration(map)
-ystanowka_portala(54,'red')
-ystanowka_portala(9,'blue')
+ystanowka_portala(60,'red')
+ystanowka_portala(10,'blue')
