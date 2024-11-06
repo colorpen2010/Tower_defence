@@ -13,9 +13,14 @@ def get_wallet(money):
 class Wallet():
     def __init__(self,wallett):
         wallet=wallett
-        self.money=fontik.render('$'+str(wallet),True,[0,0,0])
+        self.money=wallet
+        self.outmoney=fontik.render('$' + str(self.money), True, [0, 0, 0])
+
+    def otnimanie(self,zena):
+            self.money-=zena
+            self.outmoney=fontik.render('$' + str(self.money), True, [0, 0, 0])
 
 
     def grafiti(self,x,y):
         screen=pygame.display.get_surface()
-        screen.blit(self.money,[x,y])
+        screen.blit(self.outmoney, [x, y])

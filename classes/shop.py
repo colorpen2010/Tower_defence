@@ -6,6 +6,7 @@ class Magazin():
         self.towar=towar
         self.click_def=click_def
         self.x,self.y=x,y
+        self.numprice=price
         if price>999 and price< 1000000:
             price=str(round(price/1000,1))+'K'
         elif price>999999:
@@ -20,7 +21,7 @@ class Magazin():
         event=events
         for o in event:
             if o.type == pygame.MOUSEBUTTONDOWN and self.image_rect.collidepoint(o.pos):
-                self.click_def(self.towar)
+                self.click_def(self.towar,self)
 
 
     def paint(self):

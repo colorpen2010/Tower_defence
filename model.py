@@ -22,10 +22,13 @@ def map_regeneration(map):
             height+=spisoc[-1].get_product_size()[1]
             # self.y=self.x
 
-def vibor_bashni(bashnia):
+def vibor_bashni(bashnia,shop):
     global apple
-    text= 'images/Towers/'+str(bashnia)+'Idle_cleared/00.png'
-    apple=tower_class.towernicsemus3_alhabethangerald3(map,text)
+    if shop.numprice<=wallet.money:
+        text = 'images/Towers/' + str(bashnia) + 'Idle_cleared/00.png'
+        apple=tower_class.towernicsemus3_alhabethangerald3(map,text)
+        apple.shop=shop
+
 
 def ystanowka_portala(nomer,type):
     with_portal=spisoc[nomer]
@@ -35,10 +38,14 @@ def ystanowka_portala(nomer,type):
         with_portal.building='blue_portal'
 
 def ystanowka_bashni(pos):
+    global apple
     i=poisk_kletki(pos)
-    if i.type == 'grass' and apple!=None:
+    if i.type == 'grass' and apple!=None and wallet.money>=apple.shop.numprice:
+        wallet.otnimanie(apple.shop.numprice)
         i.building = 'tower'
         i.tower = tower_class.towernicsemus3_alhabethangerald3(map,apple.pyt)
+        if wallet.money<apple.shop.numprice:
+            apple=None
 
 def poisk_kletki(pos):
     for i in spisoc:
@@ -46,7 +53,7 @@ def poisk_kletki(pos):
         if rect.collidepoint(pos):
             return i
 
-wallet=wallet.get_wallet(0 )
+wallet=wallet.get_wallet(10000 )
 
 clock = pygame.time.Clock()
 

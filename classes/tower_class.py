@@ -3,6 +3,7 @@ from classes import animator
 
 class towernicsemus3_alhabethangerald3():
     def __init__(self, map,pyt='images/Images_for_tests/tower/Tower_Entity.png'):
+        self.shop=None
         self.pyt=pyt
         self.screen = pygame.display.get_surface()
         self.image=kakoito_resizer.creating_objects(pyt,map)
