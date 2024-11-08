@@ -1,16 +1,16 @@
 import pygame
+
+import kakoito_resizer
+
 fontik=pygame.font.SysFont('Arial',120,True)
 
 class Magazin():
     def __init__(self,x,y,pyt,price,towar,click_def):
         self.towar=towar
-        self.click_def=click_def
         self.x,self.y=x,y
+        self.click_def=click_def
         self.numprice=price
-        if price>999 and price< 1000000:
-            price=str(round(price/1000,1))+'K'
-        elif price>999999:
-            price=str(round(price/1000000,1))+'M'
+        price=kakoito_resizer.sheti(price)
         self.price=fontik.render('$'+str(price),True,[0,0,0])
         self.image=pygame.image.load(pyt)
         self.image.blit(self.price,[self.image.get_width()/2-self.price.get_width()/2,590])

@@ -1,5 +1,12 @@
 import pygame
 
+def sheti(money):
+    output=str(money)
+    if money > 999 and money < 999999:
+        output = str(round(money / 1000, 1)) + 'K'
+    elif money > 999999 and money < 999999999:
+        output = str(round(money / 1000000, 1)) + 'M'
+    return output
 
 def creating_objects(pyt, map):
     """
