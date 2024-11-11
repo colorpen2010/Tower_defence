@@ -2,13 +2,14 @@ import image_worker, pygame, os, kakoito_resizer
 from classes import animator
 
 class towernicsemus3_alhabethangerald3():
-    def __init__(self, map,pyt='images/Images_for_tests/tower/Tower_Entity.png'):
+    def __init__(self, map,reversed,pyt='images/Images_for_tests/tower/Tower_Entity.png'):
         self.shop=None
         self.pyt=pyt
+        self.reversed=reversed
         self.screen = pygame.display.get_surface()
         self.image=kakoito_resizer.creating_objects(pyt,map)
-        self.animated_tower = animator.Animator(os.path.dirname(pyt), 40, map,True)
-        self.zapreshenaia_kartinka = image_worker.to_grayscale(self.image)
+        self.animated_tower = animator.Animator(os.path.dirname(pyt), 40, map,self.reversed)
+        self.zapreshenaia_kartinka = image_worker.to_grayscale_with_color(self.image,[255,0,0])
         pygame.image.save(self.zapreshenaia_kartinka, 'test1.png')
 
     def drawer(self, x, bottom):

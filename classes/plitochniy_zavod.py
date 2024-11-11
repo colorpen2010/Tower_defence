@@ -13,7 +13,7 @@ pygame.image.save(nothing, 'no_image.png')
 
 class Tsekh:
     def __init__(self,type,x,y,map):
-        self.building=False
+        self.building=None
         self.type=type
         self.tower=None
         attempt=0

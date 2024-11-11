@@ -1,5 +1,6 @@
 import pygame
 
+import image_worker
 import kakoito_resizer
 
 fontik=pygame.font.SysFont('Arial',120,True)
@@ -16,14 +17,18 @@ class Magazin():
         self.image.blit(self.price,[self.image.get_width()/2-self.price.get_width()/2,590])
         self.image=pygame.transform.scale(self.image,[self.image.get_width()/7,self.image.get_height()/7])
         self.image_rect=pygame.Rect(self.x,self.y,self.image.get_width(),self.image.get_height())
+        self.antiimage=image_worker.to_grayscale_with_color(self.image,[125,125,125])
 
     def controller(self,events):
         event=events
         for o in event:
             if o.type == pygame.MOUSEBUTTONDOWN and self.image_rect.collidepoint(o.pos):
-                self.click_def(self.towar,self)
+                self.click_def(self.towar,self,self.reversed)
 
 
-    def paint(self):
+    def paint(self,hvataet=True):
         screen=pygame.display.get_surface()
-        screen.blit(self.image,[self.x,self.y])
+        if hvataet:
+            screen.blit(self.image,[self.x,self.y])
+        else:
+            screen.blit(self.antiimage,[self.x,self.y])

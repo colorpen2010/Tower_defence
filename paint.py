@@ -26,7 +26,7 @@ def risovanie():
 
     #надписи
     for g in model.bazar:
-        g.paint()
+        g.paint(model.wallet.money>=g.numprice)
     model.wallet.grafiti(800,0)
 
 
@@ -44,7 +44,7 @@ def risovanie():
     j = model.poisk_kletki(pygame.mouse.get_pos())
     if j!=None and model.apple!=None:
         rect=j.get_rect()
-        if j.type == 'grass' and j.building==False:
+        if j.type == 'grass' and j.building==None:
             model.apple.colored_drawer(j.x,rect.bottom ,prozrathnost=200)
         else:
             model.apple.colored_drawer(j.x, rect.bottom,True)

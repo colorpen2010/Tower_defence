@@ -1,7 +1,6 @@
 import pygame
-from pygame.examples.cursors import image
 
-from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet
+from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower
 
 def map_regeneration(map):
     height = 0
@@ -40,10 +39,10 @@ def ystanowka_portala(nomer,type):
 def ystanowka_bashni(pos):
     global apple
     i=poisk_kletki(pos)
-    if i.type == 'grass' and apple!=None and wallet.money>=apple.shop.numprice:
+    if i.type == 'grass' and apple!=None and wallet.money>=apple.shop.numprice and i.building==None:
         wallet.otnimanie(apple.shop.numprice)
         i.building = 'tower'
-        i.tower = tower_class.towernicsemus3_alhabethangerald3(map,apple.pyt)
+        i.tower = tower_class.towernicsemus3_alhabethangerald3(map,apple.reversed,apple.pyt)
         if wallet.money<apple.shop.numprice:
             apple=None
 
@@ -53,7 +52,7 @@ def poisk_kletki(pos):
         if rect.collidepoint(pos):
             return i
 
-wallet=wallet.get_wallet(10000 )
+wallet=wallet.get_wallet(100 )
 
 clock = pygame.time.Clock()
 
@@ -80,10 +79,10 @@ spisoc=[]
 
 y=80
 
-magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',213419999,'Poison',vibor_bashni)
-magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',213412,'Fire',vibor_bashni)
-magaz3=shop.Magazin(803,300,'images/UI/TowerButtons/button_3.png',2112,'Storm',vibor_bashni)
-magaz4=shop.Magazin(803,410,'images/UI/TowerButtons/button_4.png',21342,'Ice',vibor_bashni)
+magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.Poison_tower,vibor_bashni)
+magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',70,firetower.Fire_tower,vibor_bashni)
+magaz3=shop.Magazin(803,300,'images/UI/TowerButtons/button_3.png',140,stormtower.Storm_tower,vibor_bashni)
+magaz4=shop.Magazin(803,410,'images/UI/TowerButtons/button_4.png',240,icetower.Ice_tower,vibor_bashni)
 bazar=[magaz,magaz2,magaz3,magaz4]
 
 
