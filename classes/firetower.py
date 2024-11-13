@@ -1,4 +1,4 @@
-import pygame,tower_class
+from classes import tower_class
 
 class Fire_tower(tower_class.towernicsemus3_alhabethangerald3):
     def __init__(self):

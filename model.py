@@ -24,8 +24,7 @@ def map_regeneration(map):
 def vibor_bashni(bashnia,shop):
     global apple
     if shop.numprice<=wallet.money:
-        text = 'images/Towers/' + str(bashnia) + 'Idle_cleared/00.png'
-        apple=tower_class.towernicsemus3_alhabethangerald3(map,text)
+        apple=bashnia()
         apple.shop=shop
 
 

@@ -23,7 +23,7 @@ class Magazin():
         event=events
         for o in event:
             if o.type == pygame.MOUSEBUTTONDOWN and self.image_rect.collidepoint(o.pos):
-                self.click_def(self.towar,self,self.reversed)
+                self.click_def(self.towar,self)
 
 
     def paint(self,hvataet=True):
