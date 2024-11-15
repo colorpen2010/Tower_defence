@@ -23,6 +23,8 @@ def risovanie():
     for p in model.spisoc:
         p.okraska(screen)
 
+    #снаряды
+
 
     #надписи
     for g in model.bazar:
@@ -52,6 +54,9 @@ def risovanie():
         if model.perecluthatel:
             show_fps=font.render(str(int(fps)),True,[255,0,0])
             screen.blit(show_fps,[10,20])
+
+    model.bullet.okraska()
+
 
 screen.blit(model.imaging, [100, imx])
 imx += 0.5

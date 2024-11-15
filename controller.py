@@ -13,6 +13,7 @@ def control():
 
     model.animated_blue_portal.control_center(events)
     model.animated_red_portal.control_center(events)
+    model.bullet.controler(events)
 
     for q in model.bazar:
         q.controller(events)

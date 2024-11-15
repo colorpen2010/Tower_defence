@@ -1,6 +1,8 @@
 import pygame
 
-from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower
+from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
+    warehouse
+
 
 def map_regeneration(map):
     height = 0
@@ -63,6 +65,8 @@ map = """253423520
 301101020
 245345020
 323424530"""
+
+bullet=warehouse.Ammunition('images/ammo/PoisonTower.png',110,101,500,500,10)
 
 # map="""02354
 # 15344
