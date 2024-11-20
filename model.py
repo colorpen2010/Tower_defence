@@ -66,7 +66,9 @@ map = """253423520
 245345020
 323424530"""
 
-bullet=warehouse.Ammunition('images/ammo/PoisonTower.png',110,101,500,500,10)
+fly=False
+
+bullet=warehouse.Ammunition('images/ammo/PoisonTower.png',110,101,500,500,1,fly)
 
 # map="""02354
 # 15344
