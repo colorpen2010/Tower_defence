@@ -2,7 +2,6 @@ import pygame, model
 
 
 def control():
-    # time.sleep(0.01)
     events = pygame.event.get()
 
     if model.apple!=None:
