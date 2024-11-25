@@ -5,9 +5,9 @@ from numpy.ma.core import angle
 
 
 class Ammunition():
-    def __init__(self,pyt,x,y,to_x,to_y,skorost,fly):
+    def __init__(self,pyt,x,y,to_x,to_y,skorost):
         self.x,self.y,self.to_x,self.to_y=x,y,to_x,to_y
-        self.fly=fly
+        self.fly=True
         self.mouse_mode = False
         self.skorost=skorost
         self.bullet=pygame.image.load(pyt)
@@ -21,8 +21,6 @@ class Ammunition():
 
     def controler(self,events):
         for i in events:
-            if i.type == pygame.KEYDOWN and i.key == pygame.K_SPACE:
-                self.fly=not self.fly
             if i.type == pygame.KEYDOWN and i.key == pygame.K_e:
                 self.mouse_mode= not self.mouse_mode
             if self.fly and i.type == self.wrema:

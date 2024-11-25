@@ -68,15 +68,16 @@ map = """253423520
 
 fly=False
 
-bullet=warehouse.Ammunition('images/ammo/PoisonTower.png',110,101,500,500,1,fly)
 
 # map="""02354
 # 15344
 # 04233
 # 01322
 # 20253"""
-apple=tower_class.towernicsemus3_alhabethangerald3(map,'images/Towers/PoisonIdle/0.png')
+
+bullet=None
 apple=None
+
 korzina=[]
 korzina.append(apple)
 
