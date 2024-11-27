@@ -1,5 +1,8 @@
 import pygame, model
 from classes import warehouse
+from classes.firetower import Fire_tower
+from classes.poisontower import Poison_tower
+
 
 def control():
     events = pygame.event.get()
@@ -12,8 +15,8 @@ def control():
 
     model.animated_blue_portal.control_center(events)
     model.animated_red_portal.control_center(events)
-    if model.bullet!=None:
-        model.bullet.controler(events)
+    for m in model.bullets:
+        m.controler(events)
 
     for q in model.bazar:
         q.controller(events)
@@ -24,8 +27,11 @@ def control():
             exit()
         if o.type == pygame.KEYDOWN and o.key == pygame.K_SPACE:
             for i in model.spisoc:
-                if i.tower!=None:
-                    model.bullet = warehouse.Ammunition('images/ammo/PoisonTower.png', i.x, i.y, 500, 500, 1)
+                print(i.tower)
+                if type(i.tower) is Poison_tower:
+                    model.bullets.append(warehouse.Ammunition('images/ammo/PoisonTower.png', i.x, i.y, 500, 500, 1))
+                elif type(i.tower) is Fire_tower:
+                    model.bullets.append(warehouse.Ammunition('images/ammo/FireTower.png', i.x, i.y, 500, 500, 2))
         if o.type == pygame.KEYDOWN and o.key == pygame.K_TAB:
             model.perecluthatel = not model.perecluthatel
         if o.type == pygame.KEYDOWN and o.key == pygame.K_r:

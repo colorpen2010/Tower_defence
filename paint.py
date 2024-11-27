@@ -55,8 +55,8 @@ def risovanie():
             show_fps=font.render(str(int(fps)),True,[255,0,0])
             screen.blit(show_fps,[10,20])
 
-    if model.bullet!=None:
-        model.bullet.okraska()
+    for m in model.bullets:
+        m.okraska()
 
 
 screen.blit(model.imaging, [100, imx])

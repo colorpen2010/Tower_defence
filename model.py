@@ -43,7 +43,8 @@ def ystanowka_bashni(pos):
     if i.type == 'grass' and apple!=None and wallet.money>=apple.shop.numprice and i.building==None:
         wallet.otnimanie(apple.shop.numprice)
         i.building = 'tower'
-        i.tower = tower_class.towernicsemus3_alhabethangerald3(map,apple.reversed,apple.pyt)
+        tyipiok=type(apple)
+        i.tower=tyipiok()
         if wallet.money<apple.shop.numprice:
             apple=None
 
@@ -75,7 +76,7 @@ fly=False
 # 01322
 # 20253"""
 
-bullet=None
+bullets=[]
 apple=None
 
 korzina=[]
