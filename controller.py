@@ -28,10 +28,12 @@ def control():
         if o.type == pygame.KEYDOWN and o.key == pygame.K_SPACE:
             for i in model.spisoc:
                 print(i.tower)
-                if type(i.tower) is Poison_tower:
-                    model.bullets.append(warehouse.Ammunition('images/ammo/PoisonTower.png', i.x, i.y, 500, 500, 1))
-                elif type(i.tower) is Fire_tower:
-                    model.bullets.append(warehouse.Ammunition('images/ammo/FireTower.png', i.x, i.y, 500, 500, 2))
+                if i.tower!=None:
+                    model.bullets.append(i.tower.vistrel())
+        if o.type==pygame.MOUSEMOTION and model.apple!=None:
+            i = model.poisk_kletki(pygame.mouse.get_pos())
+            model.apple.x=i.x
+            model.apple.bottom=i.get_rect().bottom
         if o.type == pygame.KEYDOWN and o.key == pygame.K_TAB:
             model.perecluthatel = not model.perecluthatel
         if o.type == pygame.KEYDOWN and o.key == pygame.K_r:

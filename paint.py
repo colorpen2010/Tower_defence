@@ -36,7 +36,7 @@ def risovanie():
 
     for i in model.spisoc:
         if i.building == 'tower':
-            i.tower.drawer( i.x,i.get_rect().bottom)
+            i.tower.drawer()
         if i.building== 'red_portal':
             model.animated_red_portal.paint(i.x,i.get_rect().bottom)
         if i.building== 'blue_portal':
@@ -47,9 +47,9 @@ def risovanie():
     if j!=None and model.apple!=None:
         rect=j.get_rect()
         if j.type == 'grass' and j.building==None:
-            model.apple.colored_drawer(j.x,rect.bottom ,prozrathnost=200)
+            model.apple.colored_drawer(prozrathnost=200)
         else:
-            model.apple.colored_drawer(j.x, rect.bottom,True)
+            model.apple.colored_drawer(True)
 
         if model.perecluthatel:
             show_fps=font.render(str(int(fps)),True,[255,0,0])

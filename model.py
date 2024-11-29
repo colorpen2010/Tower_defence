@@ -25,8 +25,9 @@ def map_regeneration(map):
 
 def vibor_bashni(bashnia,shop):
     global apple
+    i=poisk_kletki(pygame.mouse.get_pos())
     if shop.numprice<=wallet.money:
-        apple=bashnia()
+        apple=bashnia(i.x,i.get_rect().bottom)
         apple.shop=shop
 
 
@@ -44,7 +45,7 @@ def ystanowka_bashni(pos):
         wallet.otnimanie(apple.shop.numprice)
         i.building = 'tower'
         tyipiok=type(apple)
-        i.tower=tyipiok()
+        i.tower=tyipiok(i.x,i.get_rect().bottom)
         if wallet.money<apple.shop.numprice:
             apple=None
 
