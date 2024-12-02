@@ -5,21 +5,16 @@ import kakoito_resizer
 pygame.init()
 screen = pygame.display.set_mode([900, 800])
 font = pygame.font.SysFont('arial', 50)
-x = 0
-y = 0
 
 
 
-imx = 100
 import model
 
 
 def risovanie():
-    global imx
     model.clock.tick()
     fps=model.clock.get_fps()
     pygame.display.flip()
-    model.enemy1.paint(screen)
     for p in model.spisoc:
         p.okraska(screen)
 
@@ -30,6 +25,8 @@ def risovanie():
     for g in model.bazar:
         g.paint(model.wallet.money>=g.numprice)
     model.wallet.grafiti(800,0)
+
+    model.enemy1.paint()
 
 
     #рисование поставленных башень
@@ -59,5 +56,3 @@ def risovanie():
         m.okraska()
 
 
-screen.blit(model.imaging, [100, imx])
-imx += 0.5
