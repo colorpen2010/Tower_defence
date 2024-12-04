@@ -3,15 +3,17 @@ import math,math_utils
 import pygame,time
 from numpy.ma.core import angle
 
+import kakoito_resizer
+
 
 class Ammunition():
-    def __init__(self,pyt,x,y,to_x,to_y,skorost):
+    def __init__(self,size,pyt,map,x,y,to_x,to_y,skorost):
         self.x,self.y,self.to_x,self.to_y=x,y,to_x,to_y
         self.fly=True
         self.mouse_mode = False
         self.skorost=skorost
-        self.bullet=pygame.image.load(pyt)
-        self.bullet2=pygame.image.load(pyt)
+        self.bullet=kakoito_resizer.creating_objects(pyt,map,size)
+        self.bullet2=self.bullet
         self.wrema=pygame.event.custom_type()
         pygame.time.set_timer(self.wrema, 10)
     def okraska(self,):

@@ -4,11 +4,13 @@ from pygame.examples.vgrade import timer
 import kakoito_resizer,os
 
 class Animator:
-    def __init__(self,pyt,mili_sec,map,reverse=False):
+    def __init__(self,pyt,mili_sec,map,reverse=False,procent=1):
         spisok = []
         file_list = os.listdir(pyt)
         for p in file_list:
             spisok.append(pyt+'/' + p)
+
+        self.procent=procent
         self.map=map
         self.pictures=spisok
         self.pictures.sort(reverse=reverse)
@@ -30,7 +32,7 @@ class Animator:
             self.one=0
     def resizer(self):
         for o in self.pictures:
-            self.imaging_this_beautiful_image.append(kakoito_resizer.creating_objects(o, self.map))
+            self.imaging_this_beautiful_image.append(kakoito_resizer.creating_objects(o, self.map,self.procent))
 
 
 

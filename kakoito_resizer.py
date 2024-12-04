@@ -8,7 +8,7 @@ def sheti(money):
         output = str(round(money / 1000000, 1)) + 'M'
     return output
 
-def creating_objects(pyt, map):
+def creating_objects(pyt, map,procent=1):
     """
     создаёт картинку нужного размера
 
@@ -20,7 +20,7 @@ def creating_objects(pyt, map):
     # x = round(800 / pixels, 0)
     kolithestwo_strok = len(map.split('\n'))
 
-    cell_size = 800/kolithestwo_strok
+    cell_size = 800/(kolithestwo_strok/procent)
 
     image = pygame.image.load(pyt)
 

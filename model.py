@@ -16,7 +16,7 @@ def map_regeneration(map):
         else:
             spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
             # spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
-        if dest<=pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
+        if dest<pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
             dest +=spisoc[-1].get_product_size()[0]
         else:
             dest=0
@@ -59,23 +59,23 @@ wallet=wallet.get_wallet(100 )
 
 clock = pygame.time.Clock()
 
-# map = """253423520
-# 310011030
-# 225432050
-# 301100140
-# 204534230
-# 301101020
-# 245345020
-# 323424530"""
+map = """253423520
+310011030
+225432050
+301100140
+204534230
+301101020
+245345020
+323424530"""
 
 fly=False
 
 
-map="""023540
-153440
-042330
-013220
-202530"""
+# map="""023540
+# 153440
+# 042330
+# 013220
+# 202530"""
 
 bullets=[]
 apple=None
@@ -103,6 +103,8 @@ perecluthatel = False
 
 xy = 50
 enemy1 = enemy_factory.enem_factory('images/Monsters/move/blue_left/00.png',map,True)
+enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1)
+enemys=[enemy1,enemy2]
 
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)

@@ -26,7 +26,8 @@ def risovanie():
         g.paint(model.wallet.money>=g.numprice)
     model.wallet.grafiti(800,0)
 
-    model.enemy1.paint()
+    for p in model.enemys:
+        p.paint()
 
 
     #рисование поставленных башень

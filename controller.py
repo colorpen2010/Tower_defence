@@ -13,6 +13,9 @@ def control():
         if r.tower!= None:
             r.tower.control_point(events)
 
+    for p in model.enemys:
+        p.control(events)
+
     model.animated_blue_portal.control_center(events)
     model.animated_red_portal.control_center(events)
     for m in model.bullets:
