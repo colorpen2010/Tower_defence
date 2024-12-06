@@ -101,9 +101,11 @@ change = False
 
 perecluthatel = False
 
+spisok_tochek=[[650,150],[650,350],[150,350],[150,550],[650,550]]
+
 xy = 50
-enemy1 = enemy_factory.enem_factory('images/Monsters/move/blue_left/00.png',map,True)
-enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1)
+enemy1 = enemy_factory.enem_factory('images/Monsters/move/blue_left/00.png',map,True,0.5,spisok_tochek=spisok_tochek)
+enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek,bottom=200)
 enemys=[enemy1,enemy2]
 
 
@@ -112,5 +114,5 @@ background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
 
 map_regeneration(map)
-# ystanowka_portala(60,'red')
-# ystanowka_portala(10,'blue')
+ystanowka_portala(60,'red')
+ystanowka_portala(10,'blue')

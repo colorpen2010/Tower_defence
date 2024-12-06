@@ -49,9 +49,16 @@ def risovanie():
         else:
             model.apple.colored_drawer(True)
 
-        if model.perecluthatel:
-            show_fps=font.render(str(int(fps)),True,[255,0,0])
-            screen.blit(show_fps,[10,20])
+    if model.perecluthatel:
+        shoti=0
+        for u in model.spisok_tochek:
+            pygame.draw.circle(screen,[0,0,0],u,10)
+            pos=font.render(str(shoti),True,[255,0,0])
+            screen.blit(pos,u)
+            shoti+=1
+
+        show_fps=font.render(str(int(fps)),True,[255,0,0])
+        screen.blit(show_fps,[10,20])
 
     for m in model.bullets:
         m.okraska()
