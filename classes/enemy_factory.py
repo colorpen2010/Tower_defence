@@ -10,16 +10,27 @@ class enem_factory():
         self.x=x
         self.scorost=scorost
         self.bottom=bottom
+
         # self.enemy=pygame.transform.flip(flipped,False)
-    # def enemy(self):
+    # def enemy(self):z
     #     return
     def control(self,events):
+        self.center=self.enemy.get_center(self.x,self.bottom)
         self.enemy.control_center(events)
-        if self.spisok_tochek!=None:
-            if self.x+25!=self.spisok_tochek[0][0]:
+        if self.spisok_tochek!=[]:
+            print(self.center)
+            if self.center[0]<=self.spisok_tochek[0][0]:
                 self.x+=self.scorost
-            elif self.bottom-25!=self.spisok_tochek[0][1]:
+            elif self.center[1]>=self.spisok_tochek[0][1]:
                 self.bottom-=self.scorost
+            elif self.center[0]>=self.spisok_tochek[0][0]:
+                self.x-=self.scorost
+            elif self.center[1]<=self.spisok_tochek[0][1]:
+                self.bottom+=self.scorost
+            else:
+                del self.spisok_tochek[0]
+            # self.center[0]=self.x
+            # self.center[1]=self.bottom
 
     def paint(self):
         screen=pygame.display.get_surface()

@@ -34,6 +34,12 @@ class Animator:
         for o in self.pictures:
             self.imaging_this_beautiful_image.append(kakoito_resizer.creating_objects(o, self.map,self.procent))
 
+    def get_center(self,x,bottom):
+        center=[]
+        center.append(x+self.imaging_this_beautiful_image[0].get_size()[0] / 2)
+        center.append(bottom-self.imaging_this_beautiful_image[0].get_size()[1] / 2)
+        return center
+
 
 
 
@@ -41,3 +47,4 @@ class Animator:
     def paint(self,x,bottom):
         screen=pygame.display.get_surface()
         screen.blit(self.imaging_this_beautiful_image[self.one],[x,bottom - self.imaging_this_beautiful_image[self.one].get_height()])
+        pygame.draw.circle(screen,[255,0,0],self.get_center(x,bottom),10)
