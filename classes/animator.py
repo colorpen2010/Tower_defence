@@ -5,20 +5,26 @@ import kakoito_resizer,os
 
 class Animator:
     def __init__(self,pyt,mili_sec,map,reverse=False,procent=1):
-        spisok = []
-        file_list = os.listdir(pyt)
-        for p in file_list:
-            spisok.append(pyt+'/' + p)
-
         self.procent=procent
         self.map=map
-        self.pictures=spisok
-        self.pictures.sort(reverse=reverse)
+
         self.one=0
         self.wrema=pygame.event.custom_type()
         pygame.time.set_timer(self.wrema, mili_sec)
-        self.imaging_this_beautiful_image=[]
-        self.resizer()
+        self.imaging_this_beautiful_image=self.downloader(pyt,map,procent,reverse,False)
+
+    @staticmethod
+    def downloader(pyt,map,procent,reverse,flip):
+        spisok=[]
+        imaging_this_beautiful_image=[]
+        file_list = os.listdir(pyt)
+        for p in file_list:
+            spisok.append(pyt+'/' + p)
+        spisok.sort(reverse=reverse)
+        for o in spisok:
+            imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects(o, map,procent),flip,False))
+        return imaging_this_beautiful_image
+
 
 
     def control_center(self,events):
@@ -26,14 +32,10 @@ class Animator:
             if o.type == self.wrema:
                 self.smena_kartinki()
     def smena_kartinki(self):
-        if len(self.pictures)-1>self.one:
+        if len(self.imaging_this_beautiful_image)-1>self.one:
                 self.one+=1
         else:
             self.one=0
-    def resizer(self):
-        for o in self.pictures:
-            self.imaging_this_beautiful_image.append(kakoito_resizer.creating_objects(o, self.map,self.procent))
-
     def get_center(self,x,bottom):
         center=[]
         center.append(x+self.imaging_this_beautiful_image[0].get_size()[0] / 2)

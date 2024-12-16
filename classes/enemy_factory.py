@@ -1,15 +1,15 @@
 import pygame,os
 
-from classes.animator import Animator
-
+from classes import animator,povorot
 
 class enem_factory():
     def __init__(self,pyt,map,flipped=False,procent=1,mili_sec=100,scorost=5,spisok_tochek=None,x=100,bottom=175):
-        self.enemy=Animator(os.path.dirname(pyt),mili_sec,map,procent=procent)
+        self.enemy=animator.Animator(os.path.dirname(pyt),mili_sec,map,procent=procent)
         self.spisok_tochek=spisok_tochek
         self.x=x
         self.scorost=scorost
         self.bottom=bottom
+        # self.povort=povorot.Rotating()
 
         # self.enemy=pygame.transform.flip(flipped,False)
     # def enemy(self):z
