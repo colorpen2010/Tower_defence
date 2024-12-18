@@ -67,6 +67,11 @@ map = """253423520
 301101020
 245345020
 323424530"""
+map2 = """430320
+341230
+430320
+231530
+430230"""
 
 fly=False
 
@@ -102,11 +107,16 @@ change = False
 perecluthatel = False
 
 spisok_tochek=[[650,150],[650,350],[150,350],[150,550],[650,550]]
+spisok_tochek2=[[400,700],[400,50]]
 
 xy = 50
-enemy1 = enemy_factory.enem_factory('images/Monsters/move/blue_left/00.png',map,True,0.5,spisok_tochek=spisok_tochek.copy())
-enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
-enemys=[enemy1,enemy2]
+enemy1 = enemy_factory.enem_factory('blue',map,True,0.5,spisok_tochek=spisok_tochek.copy())
+enemy2 = enemy_factory.enem_factory('purple',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
+enemy3 = enemy_factory.enem_factory('green',map,True,0.5,spisok_tochek=spisok_tochek.copy())
+enemy4 = enemy_factory.enem_factory('red',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
+
+# enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
+enemys=[enemy1,enemy2,enemy3,enemy4]
 
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
@@ -114,5 +124,5 @@ background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
 
 map_regeneration(map)
-ystanowka_portala(60,'red')
-ystanowka_portala(10,'blue')
+ystanowka_portala(26,'red')
+ystanowka_portala(2,'blue')

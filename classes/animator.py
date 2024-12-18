@@ -11,10 +11,10 @@ class Animator:
         self.one=0
         self.wrema=pygame.event.custom_type()
         pygame.time.set_timer(self.wrema, mili_sec)
-        self.imaging_this_beautiful_image=self.downloader(pyt,map,procent,reverse,False)
+        self.imaging_this_beautiful_image=self.downloader(pyt,map,procent,reverse,True)
 
     @staticmethod
-    def downloader(pyt,map,procent,reverse,flip):
+    def downloader(pyt,map,procent,reverse,flip,flip_y=False):
         spisok=[]
         imaging_this_beautiful_image=[]
         file_list = os.listdir(pyt)
@@ -22,7 +22,7 @@ class Animator:
             spisok.append(pyt+'/' + p)
         spisok.sort(reverse=reverse)
         for o in spisok:
-            imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects(o, map,procent),flip,False))
+            imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects(o, map,procent),flip,flip_y))
         return imaging_this_beautiful_image
 
 
