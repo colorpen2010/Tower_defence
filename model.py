@@ -110,10 +110,10 @@ spisok_tochek=[[650,150],[650,350],[150,350],[150,550],[650,550]]
 spisok_tochek2=[[400,700],[400,50]]
 
 xy = 50
-enemy1 = enemy_factory.enem_factory('blue',map,True,0.5,spisok_tochek=spisok_tochek.copy())
-enemy2 = enemy_factory.enem_factory('purple',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
-enemy3 = enemy_factory.enem_factory('green',map,True,0.5,spisok_tochek=spisok_tochek.copy())
-enemy4 = enemy_factory.enem_factory('red',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
+enemy1 = enemy_factory.enem_factory('blue',map,True,0.5,scorost=1.50,spisok_tochek=spisok_tochek.copy())
+enemy2 = enemy_factory.enem_factory('purple',map,True,1,scorost=0.50,spisok_tochek=spisok_tochek.copy(),bottom=200)
+enemy3 = enemy_factory.enem_factory('green',map,True,0.5,scorost=1.25,spisok_tochek=spisok_tochek.copy())
+enemy4 = enemy_factory.enem_factory('red',map,True,0.9,scorost=0.80,spisok_tochek=spisok_tochek.copy(),bottom=200)
 
 # enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
 enemys=[enemy1,enemy2,enemy3,enemy4]

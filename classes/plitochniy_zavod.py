@@ -31,9 +31,9 @@ class Tsekh:
                 raise Exception('Ошибка 404 Объект не найден "'+path+'"')
 
         if self.no_image==False:
-            self.plitka=kakoito_resizer.creating_objects(path,map)
+            self.plitka=kakoito_resizer.creating_objects_x(path, map)
         else:
-            self.nothing=kakoito_resizer.creating_objects('no_image.png',map)
+            self.nothing=kakoito_resizer.creating_objects_x('no_image.png', map)
 
         pass
 

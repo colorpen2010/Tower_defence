@@ -36,9 +36,11 @@ def risovanie():
         if i.building == 'tower':
             i.tower.drawer()
         if i.building== 'red_portal':
-            model.animated_red_portal.paint(i.x,i.get_rect().bottom)
+            # model.animated_red_portal.paint(i.x,i.get_rect().bottom)
+            model.animated_red_portal.paint()
         if i.building== 'blue_portal':
-            model.animated_blue_portal.paint(i.x,i.get_rect().bottom)
+            # model.animated_blue_portal.paint(i.x,i.get_rect().bottom)
+            model.animated_blue_portal.paint()
 
     # рисование башни на квадрате с мышкой
     j = model.poisk_kletki(pygame.mouse.get_pos())

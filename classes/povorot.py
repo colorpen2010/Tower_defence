@@ -28,12 +28,12 @@ class Rotating(animator.Animator):
 
     def move_down(self):
         if self.way!=0:
-            self.imaging_this_beautiful_image=self.downloader(self.down_pack[0],self.map,self.procent,False,False,self.down_pack[1])
+            self.imaging_this_beautiful_image=self.downloader(self.down_pack[0],self.map,self.procent,False,False,'y',self.down_pack[1])
             self.one=0
             self.way=0
     def move_up(self):
         if self.way!=2:
-            self.imaging_this_beautiful_image=self.downloader(self.up_pack[0],self.map,self.procent,False,False,self.up_pack[1])
+            self.imaging_this_beautiful_image=self.downloader(self.up_pack[0],self.map,self.procent,False,False,'y',self.up_pack[1])
             self.one = 0
             self.way =2
     def move_left(self):

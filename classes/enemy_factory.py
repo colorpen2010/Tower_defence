@@ -16,7 +16,7 @@ class enem_factory():
     # def enemy(self):z
     #     return
     def control(self,events):
-        self.center=self.enemy.get_center(self.x,self.bottom)
+        self.center=self.enemy.get_center()
         self.center[0]=int(self.center[0])
         self.center[1]=int(self.center[1])
         self.enemy.control_center(events)
@@ -25,15 +25,15 @@ class enem_factory():
             if self.center[0]<self.spisok_tochek[0][0]:
                 self.enemy.move_right()
                 if self.center[0]<=self.spisok_tochek[0][0]-self.scorost:
-                    self.x+=self.scorost
+                    self.enemy.x+=self.scorost
                 else:
-                    self.x+=1
+                    self.enemy.x+=1
             elif self.center[1]>self.spisok_tochek[0][1]:
                 self.enemy.move_up()
                 if self.center[1]>=self.spisok_tochek[0][1]+self.scorost:
-                    self.bottom-=self.scorost
+                    self.enemy.bottom-=self.scorost
                 else:
-                    self.bottom-=1
+                    self.enemy.bottom-=1
             elif self.center[0]>self.spisok_tochek[0][0]:
                 self.enemy.move_left()
                 if self.center[0] >= self.spisok_tochek[0][0] + self.scorost:
@@ -43,9 +43,9 @@ class enem_factory():
             elif self.center[1]<self.spisok_tochek[0][1]:
                 self.enemy.move_down()
                 if self.center[1]<=self.spisok_tochek[0][1]-self.scorost:
-                    self.bottom+=self.scorost
+                    self.enemy.bottom+=self.scorost
                 else:
-                    self.bottom+=1
+                    self.enemy.bottom+=1
             else:
                 del self.spisok_tochek[0]
             # self.center[0]=self.x
@@ -53,4 +53,4 @@ class enem_factory():
 
     def paint(self):
         screen=pygame.display.get_surface()
-        self.enemy.paint(self.x,self.bottom)
+        self.enemy.paint()

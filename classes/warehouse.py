@@ -12,7 +12,7 @@ class Ammunition():
         self.fly=True
         self.mouse_mode = False
         self.skorost=skorost
-        self.bullet=kakoito_resizer.creating_objects(pyt,map,size)
+        self.bullet=kakoito_resizer.creating_objects_x(pyt, map, size)
         self.bullet2=self.bullet
         self.wrema=pygame.event.custom_type()
         pygame.time.set_timer(self.wrema, 10)
