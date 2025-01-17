@@ -51,6 +51,7 @@ class enem_factory():
             # self.center[0]=self.x
             # self.center[1]=self.bottom
 
+# label = text()
     def paint(self):
         screen=pygame.display.get_surface()
         self.enemy.paint()

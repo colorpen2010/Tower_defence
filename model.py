@@ -2,26 +2,38 @@ import pygame
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
     warehouse
-
+switch=False
+door=[]
+etasch=[]
 
 def map_regeneration(map):
+    global switch,door,etasch
     height = 0
     dest = height
     for i in map:
-        if i=='\n':
-            continue
-        if i == '0' or i == '1':
-            spisoc.append(plitochniy_zavod.Tsekh('sand',dest,height,map))
+        if i == '[' or switch==True:
+            switch=True
+            if i==']':
+                switch=False
+                etasch.append(door)
+                door=[]
+            elif i!='[':
+                door.append(i)
+        if i == '\n':
+            if len(etasch)!=0:
+                print(etasch)
+                etasch.clear()
 
-        else:
-            spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
-            # spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
-        if dest<pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
-            dest +=spisoc[-1].get_product_size()[0]
-        else:
-            dest=0
-            height+=spisoc[-1].get_product_size()[1]
-            # self.y=self.x
+
+        # else:
+        #     spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
+        #     # spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
+        # if dest<pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
+        #     dest +=spisoc[-1].get_product_size()[0]
+        # else:
+        #     dest=0
+        #     height+=spisoc[-1].get_product_size()[1]
+        #     # self.y=self.x
 
 def vibor_bashni(bashnia,shop):
     global apple
@@ -67,11 +79,26 @@ map = """253423520
 301101020
 245345020
 323424530"""
-map2 = """430320
-341230
-430320
-231530
-430230"""
+# map2 = """430320
+# 341230
+# 430320
+# 231530
+# 430230"""
+
+future_map_idea_1= """
+_______*
+_(***1_*
+_4***5_*
+_**_76_*
+_39*82_*
+_*a**)_*
+_______*"""
+
+map= """
+[(*][*4][**][*1][__]
+[__][**][__][**][__]
+[__][*3][**][*2][*)]
+"""
 
 fly=False
 
@@ -124,5 +151,5 @@ background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
 
 map_regeneration(map)
-ystanowka_portala(26,'red')
-ystanowka_portala(2,'blue')
+# ystanowka_portala(26,'red')
+# ystanowka_portala(2,'blue')
