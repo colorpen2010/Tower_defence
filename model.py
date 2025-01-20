@@ -2,12 +2,13 @@ import pygame
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
     warehouse
-switch=False
-door=[]
-etasch=[]
+
 
 def map_regeneration(map):
-    global switch,door,etasch
+    switch = False
+    house= []
+    door = []
+    etasch = []
     height = 0
     dest = height
     for i in map:
@@ -21,18 +22,24 @@ def map_regeneration(map):
                 door.append(i)
         if i == '\n':
             if len(etasch)!=0:
-                print(etasch)
-                etasch.clear()
+                house.append(etasch)
+                print(house)
+                etasch=[]
+    for etasch in house:
+        for door in etasch:
+            for shitel in door:
+                if shitel == '*':
+                    spisoc.append(plitochniy_zavod.Tsekh('sand', dest, height,len(house) ))
+                elif shitel == '_':
+                    spisoc.append(plitochniy_zavod.Tsekh('grass', dest, height,len(house) ))
+            if dest<pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
+                dest +=spisoc[-1].get_product_size()[0]
+            # else:
+            # spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
 
-
-        # else:
-        #     spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
-        #     # spisoc.append({'rect': rectik, 'type': 'g', 'building': False})
-        # if dest<pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
-        #     dest +=spisoc[-1].get_product_size()[0]
-        # else:
-        #     dest=0
-        #     height+=spisoc[-1].get_product_size()[1]
+            else:
+                dest=0
+                height+=spisoc[-1].get_product_size()[1]
         #     # self.y=self.x
 
 def vibor_bashni(bashnia,shop):
