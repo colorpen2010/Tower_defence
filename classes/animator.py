@@ -52,4 +52,4 @@ class Animator:
     def paint(self):
         screen=pygame.display.get_surface()
         screen.blit(self.imaging_this_beautiful_image[self.one],[self.x,self.bottom - self.imaging_this_beautiful_image[self.one].get_height()])
-        pygame.draw.circle(screen,[255,0,0],self.get_center(),10)
+        # pygame.draw.circle(screen,[255,0,0],self.get_center(),10)

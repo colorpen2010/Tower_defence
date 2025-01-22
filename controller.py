@@ -16,8 +16,10 @@ def control():
     for p in model.enemys:
         p.control(events)
 
-    model.animated_blue_portal.control_center(events)
-    model.animated_red_portal.control_center(events)
+    if model.animated_blue_portal!=None:
+        model.animated_blue_portal.control_center(events)
+    if model.animated_red_portal!=None:
+        model.animated_red_portal.control_center(events)
     for m in model.bullets:
         m.controler(events)
 

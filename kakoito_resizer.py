@@ -8,7 +8,7 @@ def sheti(money):
         output = str(round(money / 1000000, 1)) + 'M'
     return output
 
-def creating_objects_x(pyt, map, procent=1):
+def creating_objects_x(pyt, kolithestvo_etashei, procent=1):
     """
     создаёт картинку нужного размера
 
@@ -18,9 +18,9 @@ def creating_objects_x(pyt, map, procent=1):
 
 
     # x = round(800 / pixels, 0)
-    kolithestwo_strok = len(map.split('\n'))
 
-    cell_size = 800/(kolithestwo_strok/procent)
+
+    cell_size = 800/(kolithestvo_etashei/procent)
 
     image = pygame.image.load(pyt)
 
@@ -42,7 +42,7 @@ def creating_objects_y(pyt, map,procent=1):
 
 
     # x = round(800 / pixels, 0)
-    kolithestwo_strok = len(map.split('\n'))
+    kolithestwo_strok = map
 
     cell_size = 800/(kolithestwo_strok/procent)
 
@@ -57,13 +57,4 @@ def creating_objects_y(pyt, map,procent=1):
     return image
 
 
-map = """25342352
-31001103
-22543205
-30110014
-20453423
-30110102
-24534502
-32342453"""
-project=creating_objects_x('images/Towers/PoisonIdle/0.png', map)
 # pygame.image.save(project,'test/test_5.png')

@@ -5,8 +5,8 @@ from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,w
 
 
 def map_regeneration(map):
+    global house,animated_blue_portal,animated_red_portal
     switch = False
-    house= []
     door = []
     etasch = []
     height = 0
@@ -32,6 +32,14 @@ def map_regeneration(map):
                     spisoc.append(plitochniy_zavod.Tsekh('sand', dest, height,len(house) ))
                 elif shitel == '_':
                     spisoc.append(plitochniy_zavod.Tsekh('grass', dest, height,len(house) ))
+                elif shitel == '(':
+                    animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False,x=100,bottom=100)
+                elif shitel == ')':
+                    animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False,x=200,bottom=200)
+                elif shitel == int:
+                    spisoc.append(plitochniy_zavod.Tsekh('sand', dest, height,len(house) ))
+
+
             if dest<pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
                 dest +=spisoc[-1].get_product_size()[0]
             # else:
@@ -76,6 +84,10 @@ def poisk_kletki(pos):
 
 wallet=wallet.get_wallet(100 )
 
+house = []
+
+
+
 clock = pygame.time.Clock()
 
 map = """253423520
@@ -102,10 +114,12 @@ _*a**)_*
 _______*"""
 
 map= """
-[(*][*4][**][*1][__]
-[__][**][__][**][__]
-[__][*3][**][*2][*)]
+[(*][*4][+*][51][+_]
+[+_][+*][+_][+*][+_]
+[+_][*3][+*][62][*)]
+[+_][+_][+_][+_][+_]
 """
+
 
 fly=False
 
@@ -125,6 +139,9 @@ korzina.append(apple)
 spisoc=[]
 
 y=80
+animated_blue_portal=None
+animated_red_portal=None
+map_regeneration(map)
 
 magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.Poison_tower,vibor_bashni)
 magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',70,firetower.Fire_tower,vibor_bashni)
@@ -133,8 +150,7 @@ magaz4=shop.Magazin(803,410,'images/UI/TowerButtons/button_4.png',240,icetower.I
 bazar=[magaz,magaz2,magaz3,magaz4]
 
 
-animated_blue_portal= animator.Animator('images/Portal/Idle__/blue_idle', 40, map,False)
-animated_red_portal= animator.Animator('images/Portal/Idle__/red_idle', 40, map,False)
+
 
 change = False
 
@@ -144,10 +160,10 @@ spisok_tochek=[[650,150],[650,350],[150,350],[150,550],[650,550]]
 spisok_tochek2=[[400,700],[400,50]]
 
 xy = 50
-enemy1 = enemy_factory.enem_factory('blue',map,True,0.5,scorost=1.50,spisok_tochek=spisok_tochek.copy())
-enemy2 = enemy_factory.enem_factory('purple',map,True,1,scorost=0.50,spisok_tochek=spisok_tochek.copy(),bottom=200)
-enemy3 = enemy_factory.enem_factory('green',map,True,0.5,scorost=1.25,spisok_tochek=spisok_tochek.copy())
-enemy4 = enemy_factory.enem_factory('red',map,True,0.9,scorost=0.80,spisok_tochek=spisok_tochek.copy(),bottom=200)
+enemy1 = enemy_factory.enem_factory('blue',len(house),True,0.5,scorost=1.50,spisok_tochek=spisok_tochek.copy())
+enemy2 = enemy_factory.enem_factory('purple',len(house),True,1,scorost=0.50,spisok_tochek=spisok_tochek.copy(),bottom=200)
+enemy3 = enemy_factory.enem_factory('green',len(house),True,0.5,scorost=1.25,spisok_tochek=spisok_tochek.copy())
+enemy4 = enemy_factory.enem_factory('red',len(house),True,0.9,scorost=0.80,spisok_tochek=spisok_tochek.copy(),bottom=200)
 
 # enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
 enemys=[enemy1,enemy2,enemy3,enemy4]
@@ -157,6 +173,5 @@ background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
 
 
-map_regeneration(map)
 # ystanowka_portala(26,'red')
 # ystanowka_portala(2,'blue')

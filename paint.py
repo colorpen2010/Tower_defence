@@ -35,10 +35,10 @@ def risovanie():
     for i in model.spisoc:
         if i.building == 'tower':
             i.tower.drawer()
-        if i.building== 'red_portal':
+        if model.animated_red_portal!=None:
             # model.animated_red_portal.paint(i.x,i.get_rect().bottom)
             model.animated_red_portal.paint()
-        if i.building== 'blue_portal':
+        if model.animated_blue_portal!=None:
             # model.animated_blue_portal.paint(i.x,i.get_rect().bottom)
             model.animated_blue_portal.paint()
 
