@@ -23,22 +23,30 @@ def map_regeneration(map):
         if i == '\n':
             if len(etasch)!=0:
                 house.append(etasch)
-                print(house)
                 etasch=[]
     for etasch in house:
         for door in etasch:
+            kletka=['sand', dest, height, len(house)]
             for shitel in door:
                 if shitel == '*':
-                    spisoc.append(plitochniy_zavod.Tsekh('sand', dest, height,len(house) ))
+                    kletka[0]='sand'
                 elif shitel == '_':
-                    spisoc.append(plitochniy_zavod.Tsekh('grass', dest, height,len(house) ))
+                    kletka[0]='grass'
                 elif shitel == '(':
-                    animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False,x=100,bottom=100)
+                    kletka[0]='sand'
+                    kletka.append('(')
                 elif shitel == ')':
-                    animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False,x=200,bottom=200)
-                elif shitel == int:
-                    spisoc.append(plitochniy_zavod.Tsekh('sand', dest, height,len(house) ))
+                    kletka[0]='sand'
+                    kletka.append(')')
+                elif shitel.isnumeric():
+                    kletka[0]='sand'
 
+
+            spisoc.append(plitochniy_zavod.Tsekh(kletka[0],kletka[1],kletka[2],kletka[3]))
+            if kletka[-1]=='(':
+                animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False,x=dest,bottom=height+height+spisoc[-1].get_product_size()[0])
+            if kletka[-1]==')':
+                animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False,x=dest,bottom=height+spisoc[-1].get_product_size()[0])
 
             if dest<pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
                 dest +=spisoc[-1].get_product_size()[0]
@@ -48,6 +56,8 @@ def map_regeneration(map):
             else:
                 dest=0
                 height+=spisoc[-1].get_product_size()[1]
+    print(len(spisoc))
+
         #     # self.y=self.x
 
 def vibor_bashni(bashnia,shop):

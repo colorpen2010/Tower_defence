@@ -21,7 +21,6 @@ class enem_factory():
         self.center[1]=int(self.center[1])
         self.enemy.control_center(events)
         if self.spisok_tochek!=[]:
-            print(self.center)
             if self.center[0]<self.spisok_tochek[0][0]:
                 self.enemy.move_right()
                 if self.center[0]<=self.spisok_tochek[0][0]-self.scorost:

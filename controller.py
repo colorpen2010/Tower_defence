@@ -32,7 +32,6 @@ def control():
             exit()
         if o.type == pygame.KEYDOWN and o.key == pygame.K_SPACE:
             for i in model.spisoc:
-                print(i.tower)
                 if i.tower!=None:
                     model.bullets.append(i.tower.vistrel())
         if o.type==pygame.MOUSEMOTION and model.apple!=None:
