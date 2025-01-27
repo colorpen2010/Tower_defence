@@ -53,7 +53,7 @@ def risovanie():
 
     if model.perecluthatel:
         shoti=0
-        for u in model.spisok_tochek:
+        for u in model.route:
             pygame.draw.circle(screen,[0,0,0],u,10)
             pos=font.render(str(shoti),True,[255,0,0])
             screen.blit(pos,u)

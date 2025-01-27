@@ -6,11 +6,15 @@ from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,w
 
 def map_regeneration(map):
     global house,animated_blue_portal,animated_red_portal
+
     switch = False
     door = []
     etasch = []
+
+
     height = 0
     dest = height
+
     for i in map:
         if i == '[' or switch==True:
             switch=True
@@ -40,6 +44,9 @@ def map_regeneration(map):
                     kletka.append(')')
                 elif shitel.isnumeric():
                     kletka[0]='sand'
+                    route.append([dest+spisoc[-1].get_product_size()[0]/2,height+spisoc[-1].get_product_size()[0]/2,int(shitel)])
+
+
 
 
             spisoc.append(plitochniy_zavod.Tsekh(kletka[0],kletka[1],kletka[2],kletka[3]))
@@ -57,7 +64,9 @@ def map_regeneration(map):
                 dest=0
                 height+=spisoc[-1].get_product_size()[1]
     print(len(spisoc))
-
+    route.sort(key=lambda element: element[2])
+    for o in route:
+        del o[-1]
         #     # self.y=self.x
 
 def vibor_bashni(bashnia,shop):
@@ -124,9 +133,9 @@ _*a**)_*
 _______*"""
 
 map= """
-[(*][*4][+*][51][+_]
+[(*][*4][+)][51][+_]
 [+_][+*][+_][+*][+_]
-[+_][*3][+*][62][*)]
+[+_][*3][+*][62][**]
 [+_][+_][+_][+_][+_]
 """
 
@@ -148,10 +157,14 @@ korzina.append(apple)
 
 spisoc=[]
 
+route=[]
+
 y=80
 animated_blue_portal=None
 animated_red_portal=None
 map_regeneration(map)
+
+
 
 magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.Poison_tower,vibor_bashni)
 magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',70,firetower.Fire_tower,vibor_bashni)
@@ -166,14 +179,12 @@ change = False
 
 perecluthatel = False
 
-spisok_tochek=[[650,150],[650,350],[150,350],[150,550],[650,550]]
-spisok_tochek2=[[400,700],[400,50]]
 
 xy = 50
-enemy1 = enemy_factory.enem_factory('blue',len(house),True,0.5,scorost=1.50,spisok_tochek=spisok_tochek.copy())
-enemy2 = enemy_factory.enem_factory('purple',len(house),True,1,scorost=0.50,spisok_tochek=spisok_tochek.copy(),bottom=200)
-enemy3 = enemy_factory.enem_factory('green',len(house),True,0.5,scorost=1.25,spisok_tochek=spisok_tochek.copy())
-enemy4 = enemy_factory.enem_factory('red',len(house),True,0.9,scorost=0.80,spisok_tochek=spisok_tochek.copy(),bottom=200)
+enemy1 = enemy_factory.enem_factory('blue', len(house), True, 0.5, scorost=1.50, spisok_tochek=route.copy())
+enemy2 = enemy_factory.enem_factory('purple', len(house), True, 1, scorost=0.50, spisok_tochek=route.copy(), bottom=200)
+enemy3 = enemy_factory.enem_factory('green', len(house), True, 0.5, scorost=1.25, spisok_tochek=route.copy())
+enemy4 = enemy_factory.enem_factory('red', len(house), True, 0.9, scorost=0.80, spisok_tochek=route.copy(), bottom=200)
 
 # enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
 enemys=[enemy1,enemy2,enemy3,enemy4]
