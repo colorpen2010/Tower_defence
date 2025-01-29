@@ -5,7 +5,7 @@ from classes import animator
 
 class Rotating(animator.Animator):
     def __init__(self,mili_sec,map,procent,left_pack=None,right_pack=None,up_pack=None,down_pack=None):
-        assert left_pack is not None or right_pack is not None, "cocacola ili babaji"
+        assert left_pack is not None or right_pack is not None, "add left_pack or right_pack of images / добавьте левый пак или правый пак картинок"
         assert up_pack is not None or down_pack is not None, "babaji ili fortinaiti"
         animator.Animator.__init__(self,left_pack,mili_sec,map,procent=procent)
         self.way=0
