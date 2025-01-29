@@ -10,7 +10,7 @@ class towernicsemus3_alhabethangerald3():
         self.reversed=reversed
         self.screen = pygame.display.get_surface()
         self.image=kakoito_resizer.creating_objects_x(pyt, map)
-        self.animated_tower = animator.Animator(os.path.dirname(pyt), 40, map,self.reversed)
+        self.animated_tower = animator.Animator(os.path.dirname(pyt), 40, map,self.reversed,x=x,bottom=bottom)
         self.zapreshenaia_kartinka = image_worker.to_grayscale_with_color(self.image,[255,0,0])
         pygame.image.save(self.zapreshenaia_kartinka, 'test1.png')
 

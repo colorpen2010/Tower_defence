@@ -15,7 +15,7 @@ def risovanie():
     model.clock.tick()
     fps=model.clock.get_fps()
     pygame.display.flip()
-    for p in model.spisoc:
+    for p in model.plitki:
         p.okraska(screen)
 
     #снаряды
@@ -32,7 +32,7 @@ def risovanie():
 
     #рисование поставленных башень
 
-    for i in model.spisoc:
+    for i in model.plitki:
         if i.building == 'tower':
             i.tower.drawer()
         if model.animated_red_portal!=None:

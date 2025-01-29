@@ -4,7 +4,7 @@ from pygame.examples.vgrade import timer
 import kakoito_resizer,os
 
 class Animator:
-    def __init__(self,pyt,mili_sec,map,reverse=False,procent=1,x=100,bottom=175):
+    def __init__(self,pyt,mili_sec,map,reverse=False,procent=1,x=200,bottom=275):
         self.procent=procent
         self.map=map
         self.x,self.bottom=x,bottom

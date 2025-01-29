@@ -44,26 +44,26 @@ def map_regeneration(map):
                     kletka.append(')')
                 elif shitel.isnumeric():
                     kletka[0]='sand'
-                    route.append([dest+spisoc[-1].get_product_size()[0]/2,height+spisoc[-1].get_product_size()[0]/2,int(shitel)])
+                    route.append([dest + plitki[-1].get_product_size()[0] / 2, height + plitki[-1].get_product_size()[0] / 2, int(shitel)])
 
 
 
 
-            spisoc.append(plitochniy_zavod.Tsekh(kletka[0],kletka[1],kletka[2],kletka[3]))
+            plitki.append(plitochniy_zavod.Tsekh(kletka[0], kletka[1], kletka[2], kletka[3]))
             if kletka[-1]=='(':
-                animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False,x=dest,bottom=height+height+spisoc[-1].get_product_size()[0])
+                animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + height + plitki[-1].get_product_size()[0])
             if kletka[-1]==')':
-                animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False,x=dest,bottom=height+spisoc[-1].get_product_size()[0])
+                animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + plitki[-1].get_product_size()[0])
 
-            if dest<pygame.display.get_window_size()[0]-spisoc[-1].get_product_size()[0]:
-                dest +=spisoc[-1].get_product_size()[0]
+            if dest<pygame.display.get_window_size()[0]-plitki[-1].get_product_size()[0]:
+                dest +=plitki[-1].get_product_size()[0]
             # else:
             # spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
 
             else:
                 dest=0
-                height+=spisoc[-1].get_product_size()[1]
-    print(len(spisoc))
+                height+=plitki[-1].get_product_size()[1]
+    print(len(plitki))
     route.sort(key=lambda element: element[2])
     for o in route:
         del o[-1]
@@ -78,7 +78,7 @@ def vibor_bashni(bashnia,shop):
 
 
 def ystanowka_portala(nomer,type):
-    with_portal=spisoc[nomer]
+    with_portal=plitki[nomer]
     if type=='red':
         with_portal.building='red_portal'
     if type=='blue':
@@ -96,7 +96,7 @@ def ystanowka_bashni(pos):
             apple=None
 
 def poisk_kletki(pos):
-    for i in spisoc:
+    for i in plitki:
         rect=i.get_rect()
         if rect.collidepoint(pos):
             return i
@@ -155,7 +155,7 @@ apple=None
 korzina=[]
 korzina.append(apple)
 
-spisoc=[]
+plitki=[]
 
 route=[]
 

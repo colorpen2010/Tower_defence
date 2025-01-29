@@ -9,7 +9,7 @@ def control():
 
     if model.apple!=None:
         model.apple.control_point(events)
-    for r in model.spisoc:
+    for r in model.plitki:
         if r.tower!= None:
             r.tower.control_point(events)
 
@@ -31,7 +31,7 @@ def control():
         if o.type == pygame.QUIT:
             exit()
         if o.type == pygame.KEYDOWN and o.key == pygame.K_SPACE:
-            for i in model.spisoc:
+            for i in model.plitki:
                 if i.tower!=None:
                     model.bullets.append(i.tower.vistrel())
         if o.type==pygame.MOUSEMOTION and model.apple!=None:
