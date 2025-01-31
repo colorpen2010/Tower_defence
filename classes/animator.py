@@ -25,7 +25,7 @@ class Animator:
             if type is 'x':
                 imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects_x(o, map, procent), flip, flip_y))
             if type is 'y':
-                imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects_y(o, map, procent), flip, flip_y))
+                imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects_x(o, map, procent), flip, flip_y))
         return imaging_this_beautiful_image
 
 
