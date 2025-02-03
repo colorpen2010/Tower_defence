@@ -3,8 +3,8 @@ import pygame,os
 from classes import animator,povorot
 
 class enem_factory():
-    def __init__(self,type,map,flipped=False,procent=1,mili_sec=100,scorost=5,spisok_tochek=None,x=100,bottom=175):
-        self.enemy=povorot.Rotating(mili_sec,map,procent,'images/Monsters/move/'+type+'_left',up_pack='images/Monsters/move/'+type+'_up',down_pack='images/Monsters/move/'+type+'_down')
+    def __init__(self,type,map,flipped=False,procents=[1,1,1,1],mili_sec=100,scorost=5,spisok_tochek=None,x=100,bottom=175):
+        self.enemy=povorot.Rotating(mili_sec,map,procents,'images/Monsters/move/'+type+'_left',up_pack='images/Monsters/move/'+type+'_up',down_pack='images/Monsters/move/'+type+'_down')
 
         self.spisok_tochek=spisok_tochek
         self.x=x

@@ -20,7 +20,7 @@ def creating_objects_x(pyt, kolithestvo_etashei, procent=1):
     # x = round(800 / pixels, 0)
 
 
-    cell_size = 800/(kolithestvo_etashei)
+    cell_size = 800/(kolithestvo_etashei)*procent
 
     image = pygame.image.load(pyt)
 
