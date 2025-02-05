@@ -14,7 +14,7 @@ class Animator:
         self.imaging_this_beautiful_image=self.downloader(pyt,map,procent,reverse,True)
 
     @staticmethod
-    def downloader(pyt,map,procent,reverse,flip,type='x',flip_y=False):
+    def downloader(pyt,map,procent,reverse,flip,flip_y=False):
         spisok=[]
         imaging_this_beautiful_image=[]
         file_list = os.listdir(pyt)
@@ -22,10 +22,7 @@ class Animator:
             spisok.append(pyt+'/' + p)
         spisok.sort(reverse=reverse)
         for o in spisok:
-            if type is 'x':
-                imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects_x(o, map, procent), flip, flip_y))
-            if type is 'y':
-                imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects_x(o, map, procent), flip, flip_y))
+            imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects_x(o, map, procent), flip, flip_y))
         return imaging_this_beautiful_image
 
 

@@ -47,6 +47,7 @@ class enem_factory():
                     self.enemy.bottom+=1
             else:
                 del self.spisok_tochek[0]
+
             # self.center[0]=self.x
             # self.center[1]=self.bottom
 
