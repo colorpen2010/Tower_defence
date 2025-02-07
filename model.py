@@ -3,6 +3,9 @@ import pygame
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
     warehouse
 
+# def razmer_plitki(nuber=0):
+#     return plitki[-1].get_product_size()[nuber]
+
 
 def map_regeneration(map):
     global house,animated_blue_portal,animated_red_portal
@@ -28,6 +31,7 @@ def map_regeneration(map):
             if len(etasch)!=0:
                 house.append(etasch)
                 etasch=[]
+    razmer_plitki = 800 / (len(house))
     for etasch in house:
         for door in etasch:
             kletka=['sand', dest, height, len(house)]
@@ -39,30 +43,32 @@ def map_regeneration(map):
                 elif shitel == '(':
                     kletka[0]='sand'
                     kletka.append('(')
+                    route.append([dest + razmer_plitki / 2, height + razmer_plitki / 2, 0])
                 elif shitel == ')':
                     kletka[0]='sand'
                     kletka.append(')')
+                    route.append([dest + razmer_plitki / 2, height + razmer_plitki / 2, 999])
                 elif shitel.isnumeric():
                     kletka[0]='sand'
-                    route.append([dest + plitki[-1].get_product_size()[0] / 2, height + plitki[-1].get_product_size()[0] / 2, int(shitel)])
+                    route.append([dest + razmer_plitki / 2, height + razmer_plitki / 2, int(shitel)])
 
 
 
 
             plitki.append(plitochniy_zavod.Tsekh(kletka[0], kletka[1], kletka[2], kletka[3]))
             if kletka[-1]=='(':
-                animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + height + plitki[-1].get_product_size()[0])
+                animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + height + razmer_plitki)
             if kletka[-1]==')':
-                animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + plitki[-1].get_product_size()[0])
+                animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
 
-            if dest<pygame.display.get_window_size()[0]-plitki[-1].get_product_size()[0]:
-                dest +=plitki[-1].get_product_size()[0]
+            if dest<pygame.display.get_window_size()[0]-razmer_plitki:
+                dest +=razmer_plitki
             # else:
             # spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
 
             else:
                 dest=0
-                height+=plitki[-1].get_product_size()[1]
+                height+=razmer_plitki
     print(len(plitki))
     route.sort(key=lambda element: element[2])
     for o in route:
@@ -133,10 +139,10 @@ _*a**)_*
 _______*"""
 
 map= """
-[(*][*4][+)][51][+_]
+[(*][*4][**][51][+_]
 [+_][+*][+_][+*][+_]
-[+_][*3][+*][62][**]
-[+_][+_][+_][+_][+_]
+[+_][*3][+*][_2][+_]
+[+_][+_][+_][)*][+_]
 """
 
 
@@ -160,6 +166,7 @@ plitki=[]
 route=[]
 
 y=80
+
 animated_blue_portal=None
 animated_red_portal=None
 map_regeneration(map)
