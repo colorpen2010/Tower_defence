@@ -57,7 +57,7 @@ def map_regeneration(map):
 
             plitki.append(plitochniy_zavod.Tsekh(kletka[0], kletka[1], kletka[2], kletka[3]))
             if kletka[-1]=='(':
-                animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + height + razmer_plitki)
+                animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
             if kletka[-1]==')':
                 animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
 
@@ -140,7 +140,7 @@ _______*"""
 
 map= """
 [(*][*4][**][51][+_]
-[+_][+*][+_][+*][+_]
+[__][+*][+_][+*][+_]
 [+_][*3][+*][_2][+_]
 [+_][+_][+_][)*][+_]
 """

@@ -3,13 +3,14 @@ import pygame,os
 from classes import animator,povorot
 
 class enem_factory():
-    def __init__(self,type,map,flipped=False,procents=[1,1,1,1],mili_sec=100,scorost=5,spisok_tochek=None,x=100,bottom=175):
-        self.enemy=povorot.Rotating(mili_sec,map,procents,'images/Monsters/move/'+type+'_left',up_pack='images/Monsters/move/'+type+'_up',down_pack='images/Monsters/move/'+type+'_down')
-
+    def __init__(self,type,map,flipped=False,procents=[1,1,1,1],mili_sec=100,scorost=5,spisok_tochek=None):
+        self.x=spisok_tochek[0][0]
+        self.bottom=spisok_tochek[0][1]
+        self.enemy=povorot.Rotating(mili_sec,map,procents,'images/Monsters/move/'+type+'_left',up_pack='images/Monsters/move/'+type+'_up',down_pack='images/Monsters/move/'+type+'_down',x=self.x,bottom=self.bottom+(800/map/2))
         self.spisok_tochek=spisok_tochek
-        self.x=x
         self.scorost=scorost
-        self.bottom=bottom
+        print(spisok_tochek)
+        self.enemy.set_center(spisok_tochek[0][0])
         # self.povort=povorot.Rotating()
 
         # self.enemy=pygame.transform.flip(flipped,False)

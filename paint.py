@@ -26,8 +26,7 @@ def risovanie():
         g.paint(model.wallet.money>=g.numprice)
     model.wallet.grafiti(800,0)
 
-    for p in model.enemys:
-        p.paint()
+
 
 
     #рисование поставленных башень
@@ -50,6 +49,9 @@ def risovanie():
             model.apple.colored_drawer(prozrathnost=200)
         else:
             model.apple.colored_drawer(True)
+
+    for p in model.enemys:
+        p.paint()
 
     if model.perecluthatel:
         shoti=0
