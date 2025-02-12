@@ -138,11 +138,17 @@ _39*82_*
 _*a**)_*
 _______*"""
 
-map= """
-[(*][*4][**][51][+_]
-[__][+*][+_][+*][+_]
-[+_][*3][+*][_2][+_]
-[+_][+_][+_][)*][+_]
+# map= """
+# [(*][*4][**][51][+_]
+# [__][+*][+_][+*][+_]
+# [+_][*3][+*][_2][+_]
+# [+_][+_][+_][)*][+_]
+# """
+
+map="""
+[)*][**][*(][__]
+[__][+*][+_][__]
+[**][**][**][__]
 """
 
 
@@ -190,8 +196,10 @@ perecluthatel = False
 xy = 50
 # enemy1 = enemy_factory.enem_factory('blue', len(house), True, 0.5, scorost=1.50, spisok_tochek=route.copy())
 # enemy2 = enemy_factory.enem_factory('purple', len(house), True, 1, scorost=0.50, spisok_tochek=route.copy(), bottom=200)
-enemy3 = enemy_factory.enem_factory('green', len(house), True, [1,1,0.5,0.5], scorost=1.25, spisok_tochek=route.copy())
+# enemy3 = enemy_factory.enem_factory('green', len(house), True, [1,1,0.5,0.5], scorost=1.25, spisok_tochek=route.copy())
 # enemy4 = enemy_factory.enem_factory('red', len(house), True, 0.9, scorost=0.80, spisok_tochek=route.copy(), bottom=200)
+
+enemy3 = enemy_factory.enem_factory('green', len(house), True, [1,1,0.5,0.5], scorost=5, spisok_tochek=route.copy())
 
 # enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
 # enemys=[enemy1,enemy2,enemy3,enemy4]
