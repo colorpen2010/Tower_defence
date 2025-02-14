@@ -43,14 +43,14 @@ def map_regeneration(map):
                 elif shitel == '(':
                     kletka[0]='sand'
                     kletka.append('(')
-                    route.append([dest + razmer_plitki / 2, height + razmer_plitki / 2, 0])
+                    route.append([int(dest + razmer_plitki / 2), int(height + razmer_plitki / 2), 0])
                 elif shitel == ')':
                     kletka[0]='sand'
                     kletka.append(')')
-                    route.append([dest + razmer_plitki / 2, height + razmer_plitki / 2, 999])
+                    route.append([int(dest + razmer_plitki / 2), int(height + razmer_plitki / 2), 999])
                 elif shitel.isnumeric():
                     kletka[0]='sand'
-                    route.append([dest + razmer_plitki / 2, height + razmer_plitki / 2, int(shitel)])
+                    route.append([int(dest + razmer_plitki / 2), int(height + razmer_plitki / 2), int(shitel)])
 
 
 
