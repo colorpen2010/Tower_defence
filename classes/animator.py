@@ -38,15 +38,15 @@ class Animator:
             self.one=0
     def get_center(self):
         center=[]
-        center.append(self.x+self.imaging_this_beautiful_image[self.one].get_size()[0] / 2)
-        center.append(self.bottom-self.imaging_this_beautiful_image[self.one].get_size()[1] / 2)
+        center.append(self.x+self.imaging_this_beautiful_image[0].get_size()[0] / 2)
+        center.append(self.bottom-self.imaging_this_beautiful_image[0].get_size()[1] / 2)
         return center
 
     def set_center(self,center_x=None,center_y=None):
         if center_x!=None:
-            self.x=center_x-self.imaging_this_beautiful_image[self.one].get_size()[0] / 2
+            self.x=center_x-self.imaging_this_beautiful_image[0].get_size()[0] / 2
         if center_y!=None:
-            self.bottom=center_y+(self.imaging_this_beautiful_image[self.one].get_size()[1] / 2)
+            self.bottom=center_y+(self.imaging_this_beautiful_image[0].get_size()[1] / 2)
 
 
 

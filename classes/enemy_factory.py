@@ -33,7 +33,7 @@ class enem_factory():
                 if self.center[1]>=self.spisok_tochek[0][1]+self.scorost:
                     self.enemy.bottom-=self.scorost
                 else:
-                    self.enemy.set_center(self.spisok_tochek[0][0])
+                    self.enemy.set_center(center_y=self.spisok_tochek[0][1])
             elif self.center[0]>self.spisok_tochek[0][0]:
                 self.enemy.move_left()
                 if self.center[0] >= self.spisok_tochek[0][0] + self.scorost:
