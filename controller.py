@@ -34,6 +34,11 @@ def control():
             for i in model.plitki:
                 if i.tower!=None:
                     model.bullets.append(i.tower.vistrel())
+
+        if o.type == pygame.KEYDOWN and o.key == pygame.K_3:
+            print('spawned monster_green')
+            model.enemy_creating('green')
+
         if o.type==pygame.MOUSEMOTION and model.apple!=None:
             i = model.poisk_kletki(pygame.mouse.get_pos())
             model.apple.x=i.x

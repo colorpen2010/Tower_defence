@@ -10,7 +10,8 @@ class enem_factory():
         self.spisok_tochek=spisok_tochek
         self.scorost=scorost
         print(spisok_tochek)
-        self.enemy.set_center(spisok_tochek[0][0])
+        self.enemy.set_center(spisok_tochek[0][0],spisok_tochek[0][1])
+        print(1)
         # self.povort=povorot.Rotating()
 
         # self.enemy=pygame.transform.flip(flipped,False)
@@ -57,3 +58,7 @@ class enem_factory():
     def paint(self):
         screen=pygame.display.get_surface()
         self.enemy.paint()
+
+
+    def spawn_tool(self,type):
+        a

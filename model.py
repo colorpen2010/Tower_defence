@@ -187,17 +187,42 @@ change = False
 perecluthatel = False
 
 
-xy = 50
-# enemy1 = enemy_factory.enem_factory('blue', len(house), True, 0.5, scorost=1.50, spisok_tochek=route.copy())
-# enemy2 = enemy_factory.enem_factory('purple', len(house), True, 1, scorost=0.50, spisok_tochek=route.copy(), bottom=200)
-# enemy3 = enemy_factory.enem_factory('green', len(house), True, [1,1,0.5,0.5], scorost=1.25, spisok_tochek=route.copy())
-# enemy4 = enemy_factory.enem_factory('red', len(house), True, 0.9, scorost=0.80, spisok_tochek=route.copy(), bottom=200)
+# xy = 50
 
-enemy3 = enemy_factory.enem_factory('green', len(house), True, [1,1,0.5,0.5], scorost=5, spisok_tochek=route.copy())
+enemys=[]
+def enemy_creating(type):
+    """
+    есть 4 вида противника:
+    blue,
+    purple,
+    green,
+    red.
+
+    there are 4 types of enemy:
+    blue,
+    purple,
+    green,
+    red.
+    :param type:
+    :return:
+    """
+    enemy = None
+    if type=='blue':
+        enemy = enemy_factory.enem_factory(type, len(house), True, [0.5, 0.5, 0.5, 0.5], scorost=2.50,
+                                            spisok_tochek=route.copy())
+    elif type=='purple':
+        enemy = enemy_factory.enem_factory(type, len(house), True, [1, 1, 1, 1], scorost=0.50,
+                                            spisok_tochek=route.copy())
+    elif type=='green':
+        enemy = enemy_factory.enem_factory(type, len(house), True, [1, 1, 0.5, 0.5], scorost=1.50,
+                                            spisok_tochek=route.copy())
+    elif type=='red':
+        enemy = enemy_factory.enem_factory(type, len(house), True, [0.8, 0.8, 0.8, 0.8], scorost=0.8,
+                                            spisok_tochek=route.copy())
+    if enemy!=None:
+        enemys.append(enemy)
 
 # enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
-# enemys=[enemy1,enemy2,enemy3,enemy4]
-enemys=[enemy3]
 
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
