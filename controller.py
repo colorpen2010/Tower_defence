@@ -35,9 +35,18 @@ def control():
                 if i.tower!=None:
                     model.bullets.append(i.tower.vistrel())
 
+        if o.type == pygame.KEYDOWN and o.key == pygame.K_1:
+            print('spawned monster_blue')
+            model.enemy_creating('blue')
+        if o.type == pygame.KEYDOWN and o.key == pygame.K_2:
+            print('spawned monster_purple')
+            model.enemy_creating('purple')
         if o.type == pygame.KEYDOWN and o.key == pygame.K_3:
             print('spawned monster_green')
             model.enemy_creating('green')
+        if o.type == pygame.KEYDOWN and o.key == pygame.K_4:
+            print('spawned monster_red')
+            model.enemy_creating('red')
 
         if o.type==pygame.MOUSEMOTION and model.apple!=None:
             i = model.poisk_kletki(pygame.mouse.get_pos())

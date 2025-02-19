@@ -27,19 +27,24 @@ def risovanie():
     model.wallet.grafiti(800,0)
 
 
+    model.animated_red_portal.paint()
+    model.animated_blue_portal.paint()
 
+    for p in  range(len(model.enemys)-1,-1,-1):
+        if model.enemys
+            model.enemys[p].paint()
 
     #рисование поставленных башень
 
     for i in model.plitki:
         if i.building == 'tower':
             i.tower.drawer()
-        if model.animated_red_portal!=None:
-            # model.animated_red_portal.paint(i.x,i.get_rect().bottom)
-            model.animated_red_portal.paint()
-        if model.animated_blue_portal!=None:
-            # model.animated_blue_portal.paint(i.x,i.get_rect().bottom)
-            model.animated_blue_portal.paint()
+
+
+
+
+
+
 
     # рисование башни на квадрате с мышкой
     j = model.poisk_kletki(pygame.mouse.get_pos())
@@ -50,8 +55,7 @@ def risovanie():
         else:
             model.apple.colored_drawer(True)
 
-    for p in model.enemys:
-        p.paint()
+
 
     if model.perecluthatel:
         shoti=0
