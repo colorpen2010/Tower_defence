@@ -6,11 +6,18 @@ pygame.init()
 screen = pygame.display.set_mode([900, 800])
 font = pygame.font.SysFont('arial', 50)
 
-
-
 import model
 
+def sortirovka(spisok):
+    otvet=spisok
+    nomer=0
+    for i in range(0,len(spisok)-1,1):
+        print(spisok[i],spisok[i+1])
+    return otvet
 
+
+resultat=sortirovka([1,9,6,3,7,1,32])
+print(resultat)
 def risovanie():
     model.clock.tick()
     fps=model.clock.get_fps()
@@ -30,20 +37,21 @@ def risovanie():
     model.animated_red_portal.paint()
     model.animated_blue_portal.paint()
 
-    for p in  range(len(model.enemys)-1,-1,-1):
-        if model.enemys
-            model.enemys[p].paint()
-
-    #рисование поставленных башень
+    images=[model.animated_red_portal,model.animated_blue_portal]
 
     for i in model.plitki:
         if i.building == 'tower':
-            i.tower.drawer()
+            images.append(i.tower)
+
+    for i in model.enemys:
+        images.append(i)
+
+    # print(images)
 
 
-
-
-
+    for p in  range(len(model.enemys)-1,-1,-1):
+        if model.enemys:
+            model.enemys[p].paint()
 
 
     # рисование башни на квадрате с мышкой
