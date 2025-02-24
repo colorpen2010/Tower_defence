@@ -8,16 +8,6 @@ font = pygame.font.SysFont('arial', 50)
 
 import model
 
-def sortirovka(spisok):
-    otvet=spisok
-    nomer=0
-    for i in range(0,len(spisok)-1,1):
-        print(spisok[i],spisok[i+1])
-    return otvet
-
-
-resultat=sortirovka([1,9,6,3,7,1,32])
-print(resultat)
 def risovanie():
     model.clock.tick()
     fps=model.clock.get_fps()

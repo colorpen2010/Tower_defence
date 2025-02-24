@@ -1,5 +1,15 @@
 import math
 
+def sortirovka(spisok):
+    while True:
+        worked = False
+        for i in range(0,len(spisok)-1,1):
+            if spisok[i]>spisok[i+1]:
+                worked=True
+                spisok[i],spisok[i+1]=spisok[i+1],spisok[i]
+        if worked==False:
+            return spisok
+
 def get_point_on_circle_right_bottom(center, start_point, angle_degrees):
     dx = start_point[0] - center[0]
     dy = start_point[1] - center[1]
