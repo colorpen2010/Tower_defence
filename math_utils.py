@@ -1,10 +1,35 @@
-import math
+import math,classes
 
-def sortirovka(spisok):
+def sravnivatel(first,second):
+    bottom=None
+    bottom2=None
+    print(type(second))
+    print(type(first))
+    if isinstance(first,classes.animator.Animator):
+        bottom=first.bottom
+    elif type(first)==classes.enemy_factory.enem_factory:
+        bottom=first.enemy.bottom
+    elif type(first)==classes.tower_class.towernicsemus3_alhabethangerald3:
+        bottom=first.bottom
+    if isinstance(second,classes.animator.Animator):
+        bottom2=second.bottom
+    elif type(second)==classes.enemy_factory.enem_factory:
+        bottom2=second.enemy.bottom
+    elif type(second)==classes.tower_class.towernicsemus3_alhabethangerald3:
+        bottom2=second.bottom
+
+    if bottom>bottom2:
+        return -1
+    if bottom==bottom2:
+        return 0
+    if bottom<bottom2:
+        return 1
+
+def sortirovka(spisok,sravnivatel=sravnivatel):
     while True:
         worked = False
         for i in range(0,len(spisok)-1,1):
-            if spisok[i]>spisok[i+1]:
+            if sravnivatel(spisok[i], spisok[i+1])==-1:
                 worked=True
                 spisok[i],spisok[i+1]=spisok[i+1],spisok[i]
         if worked==False:

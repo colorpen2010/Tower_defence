@@ -1,6 +1,7 @@
 import pygame
 
 import kakoito_resizer
+import math_utils
 
 pygame.init()
 screen = pygame.display.set_mode([900, 800])
@@ -33,15 +34,19 @@ def risovanie():
         if i.building == 'tower':
             images.append(i.tower)
 
-    for i in model.enemys:
-        images.append(i)
+    # for i in model.enemys:
+    #     images.append(i)
 
-    # print(images)
+    images+=model.enemys
 
+    print(images)
 
-    for p in  range(len(model.enemys)-1,-1,-1):
-        if model.enemys:
-            model.enemys[p].paint()
+    for i in math_utils.sortirovka(images):
+        i.paint()
+
+    # for p in  range(len(model.enemys)-1,-1,-1):
+    #     if model.enemys:
+    #         model.enemys[p].paint()
 
 
     # рисование башни на квадрате с мышкой

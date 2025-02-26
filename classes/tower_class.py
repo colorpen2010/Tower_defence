@@ -14,7 +14,7 @@ class towernicsemus3_alhabethangerald3():
         self.zapreshenaia_kartinka = image_worker.to_grayscale_with_color(self.image,[255,0,0])
         pygame.image.save(self.zapreshenaia_kartinka, 'test1.png')
 
-    def drawer(self):
+    def paint(self):
         self.animated_tower.paint()
     def colored_drawer(self, colored=False, prozrathnost=150):
         if not colored:

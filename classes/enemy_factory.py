@@ -56,9 +56,8 @@ class enem_factory():
 
 # label = text()
     def paint(self):
-        screen=pygame.display.get_surface()
         self.enemy.paint()
 
 
     def spawn_tool(self,type):
-        a
+        pass
