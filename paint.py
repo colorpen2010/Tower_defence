@@ -39,7 +39,6 @@ def risovanie():
 
     images+=model.enemys
 
-    print(images)
 
     for i in math_utils.sortirovka(images):
         i.paint()

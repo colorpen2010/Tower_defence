@@ -1,7 +1,7 @@
 import pygame
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
-    warehouse
+    warehouse,messenger
 
 # def razmer_plitki(nuber=0):
 #     return plitki[-1].get_product_size()[nuber]
@@ -69,7 +69,6 @@ def map_regeneration(map):
             else:
                 dest=0
                 height+=razmer_plitki
-    print(len(plitki))
     route.sort(key=lambda element: element[2])
     for o in route:
         del o[-1]
@@ -145,6 +144,11 @@ map= """
 [+_][+_][+_][)*][+_]
 """
 
+map="""
+[(*][)*][**][__]
+[__][+*][+_][+*]
+[+_][**][+*][__]
+"""
 
 fly=False
 
@@ -222,8 +226,17 @@ def enemy_creating(type):
     if enemy!=None:
         enemys.append(enemy)
 
+
+
 # enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
 
+
+def protivnik_doshol_do_konza(pismo,otpravitel,dop_info):
+    if pismo=='enemy_at_end':
+        print('K.V.A')
+        enemys.remove(otpravitel)
+
+messenger.messenger.podpisatsa(protivnik_doshol_do_konza)
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 

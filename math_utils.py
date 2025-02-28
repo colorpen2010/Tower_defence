@@ -3,20 +3,20 @@ import math,classes
 def sravnivatel(first,second):
     bottom=None
     bottom2=None
-    print(type(second))
-    print(type(first))
     if isinstance(first,classes.animator.Animator):
+        bottom=first.bottom
+
+    elif isinstance(first,classes.tower_class.towernicsemus3_alhabethangerald3):
         bottom=first.bottom
     elif type(first)==classes.enemy_factory.enem_factory:
         bottom=first.enemy.bottom
-    elif type(first)==classes.tower_class.towernicsemus3_alhabethangerald3:
-        bottom=first.bottom
     if isinstance(second,classes.animator.Animator):
+        bottom2=second.bottom
+    elif isinstance(second,classes.tower_class.towernicsemus3_alhabethangerald3):
         bottom2=second.bottom
     elif type(second)==classes.enemy_factory.enem_factory:
         bottom2=second.enemy.bottom
-    elif type(second)==classes.tower_class.towernicsemus3_alhabethangerald3:
-        bottom2=second.bottom
+
 
     if bottom>bottom2:
         return -1
