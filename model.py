@@ -1,4 +1,4 @@
-import pygame
+import pygame,math_utils
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
     warehouse,messenger
@@ -76,7 +76,7 @@ def map_regeneration(map):
 
 def vibor_bashni(bashnia,shop):
     global apple
-    i=poisk_kletki(pygame.mouse.get_pos())
+    i=math_utils.poisk_kletki(pygame.mouse.get_pos(),plitki)
     if shop.numprice<=wallet.money:
         apple=bashnia(i.x,i.get_rect().bottom)
         apple.shop=shop
@@ -91,7 +91,7 @@ def ystanowka_portala(nomer,type):
 
 def ystanowka_bashni(pos):
     global apple
-    i=poisk_kletki(pos)
+    i=math_utils.poisk_kletki(pos,plitki)
     if i.type == 'grass' and apple!=None and wallet.money>=apple.shop.numprice and i.building==None:
         wallet.otnimanie(apple.shop.numprice)
         i.building = 'tower'
@@ -100,11 +100,6 @@ def ystanowka_bashni(pos):
         if wallet.money<apple.shop.numprice:
             apple=None
 
-def poisk_kletki(pos):
-    for i in plitki:
-        rect=i.get_rect()
-        if rect.collidepoint(pos):
-            return i
 
 wallet=wallet.get_wallet(100 )
 
@@ -145,8 +140,8 @@ map= """
 """
 
 map="""
-[(*][)*][**][__]
-[__][+*][+_][+*]
+[(*][**][**][__]
+[__][)*][+_][+*]
 [+_][**][+*][__]
 """
 

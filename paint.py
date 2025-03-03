@@ -40,7 +40,7 @@ def risovanie():
     images+=model.enemys
 
 
-    for i in math_utils.sortirovka(images):
+    for i in math_utils.sortirovka(images,model.plitki):
         i.paint()
 
     # for p in  range(len(model.enemys)-1,-1,-1):
@@ -49,7 +49,7 @@ def risovanie():
 
 
     # рисование башни на квадрате с мышкой
-    j = model.poisk_kletki(pygame.mouse.get_pos())
+    j = math_utils.poisk_kletki(pygame.mouse.get_pos(),model.plitki)
     if j!=None and model.apple!=None:
         rect=j.get_rect()
         if j.type == 'grass' and j.building==None:

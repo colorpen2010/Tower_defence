@@ -1,8 +1,15 @@
 import math,classes
 
-def sravnivatel(first,second):
+def poisk_kletki(pos,plitki):
+    for i in plitki:
+        rect=i.get_rect()
+        if rect.collidepoint(pos):
+            return i
+
+def sravnivatel(first,kletki,second):
     bottom=None
     bottom2=None
+
     if isinstance(first,classes.animator.Animator):
         bottom=first.bottom
 
@@ -12,11 +19,17 @@ def sravnivatel(first,second):
         bottom=first.enemy.bottom
     if isinstance(second,classes.animator.Animator):
         bottom2=second.bottom
+
     elif isinstance(second,classes.tower_class.towernicsemus3_alhabethangerald3):
         bottom2=second.bottom
     elif type(second)==classes.enemy_factory.enem_factory:
         bottom2=second.enemy.bottom
 
+    if isinstance(first, classes.animator.Animator) and type(second) == classes.enemy_factory.enem_factory:
+        first_plitka = poisk_kletki(first.get_center(), kletki)
+        second_plitka = poisk_kletki(second.get_center(), kletki)
+        if first_plitka.y <= second_plitka.y:
+            return 1
 
     if bottom>bottom2:
         return -1
@@ -25,11 +38,11 @@ def sravnivatel(first,second):
     if bottom<bottom2:
         return 1
 
-def sortirovka(spisok,sravnivatel=sravnivatel):
+def sortirovka(spisok,kletki,sravnivatel=sravnivatel):
     while True:
         worked = False
         for i in range(0,len(spisok)-1,1):
-            if sravnivatel(spisok[i], spisok[i+1])==-1:
+            if sravnivatel(spisok[i],kletki, spisok[i+1])==-1:
                 worked=True
                 spisok[i],spisok[i+1]=spisok[i+1],spisok[i]
         if worked==False:

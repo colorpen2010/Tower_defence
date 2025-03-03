@@ -1,4 +1,4 @@
-import pygame, model
+import pygame, model,math_utils
 from classes import warehouse
 from classes.firetower import Fire_tower
 from classes.poisontower import Poison_tower
@@ -49,7 +49,7 @@ def control():
             model.enemy_creating('red')
 
         if o.type==pygame.MOUSEMOTION and model.apple!=None:
-            i = model.poisk_kletki(pygame.mouse.get_pos())
+            i = math_utils.poisk_kletki(pygame.mouse.get_pos(),model.plitki)
             model.apple.x=i.x
             model.apple.bottom=i.get_rect().bottom
         if o.type == pygame.KEYDOWN and o.key == pygame.K_TAB:

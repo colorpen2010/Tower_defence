@@ -57,6 +57,8 @@ class enem_factory():
     def paint(self):
         self.enemy.paint()
 
+    def get_center(self):
+        return self.enemy.get_center()
 
     def spawn_tool(self,type):
         pass
