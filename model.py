@@ -78,7 +78,7 @@ def vibor_bashni(bashnia,shop):
     global apple
     i=math_utils.poisk_kletki(pygame.mouse.get_pos(),plitki)
     if shop.numprice<=wallet.money:
-        apple=bashnia(i.x,i.get_rect().bottom)
+        apple=bashnia(i.x,i.get_rect().bottom,True)
         apple.shop=shop
 
 
@@ -133,17 +133,13 @@ _*a**)_*
 _______*"""
 
 map= """
-[(*][*4][**][51][+_]
-[__][+*][+_][+*][+_]
-[+_][*3][+*][_2][+_]
-[+_][+_][+_][)*][+_]
+[(*][*4][**][51][**]
+[**][+*][+_][+_][**]
+[**][*3][+_][_2][)*]
+[**][**][**][**][**]
 """
 
-map="""
-[(*][**][**][__]
-[__][)*][+_][+*]
-[+_][**][+*][__]
-"""
+
 
 fly=False
 

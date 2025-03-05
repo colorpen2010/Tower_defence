@@ -6,7 +6,6 @@ from classes.poisontower import Poison_tower
 
 def control():
     events = pygame.event.get()
-
     if model.apple!=None:
         model.apple.control_point(events)
     for r in model.plitki:
@@ -33,7 +32,7 @@ def control():
         if o.type == pygame.KEYDOWN and o.key == pygame.K_SPACE:
             for i in model.plitki:
                 if i.tower!=None:
-                    model.bullets.append(i.tower.vistrel())
+                    i.tower.vistrel()
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_1:
             print('spawned monster_blue')
