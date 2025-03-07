@@ -20,6 +20,8 @@ class towernicsemus3_alhabethangerald3():
         self.zapreshenaia_kartinka = image_worker.to_grayscale_with_color(self.image,[255,0,0])
         pygame.image.save(self.zapreshenaia_kartinka, 'test1.png')
 
+    def get_center(self):
+        return self.animated_tower.get_center()
     def paint(self):
         self.animated_tower.paint()
     def colored_drawer(self, colored=False, prozrathnost=150):

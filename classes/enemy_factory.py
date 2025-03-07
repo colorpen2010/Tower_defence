@@ -59,6 +59,3 @@ class enem_factory():
 
     def get_center(self):
         return self.enemy.get_center()
-
-    def spawn_tool(self,type):
-        pass

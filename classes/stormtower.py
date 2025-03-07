@@ -2,7 +2,7 @@ from classes import tower_class
 
 
 class Storm_tower(tower_class.towernicsemus3_alhabethangerald3):
-    def __init__(self):
+    def __init__(self,dont_shoot=False):
         import model
         tower_class.towernicsemus3_alhabethangerald3.__init__(self, len(model.house), False,
                                                               'images/Towers/StormIdle_cleared/00.png')

@@ -222,12 +222,15 @@ def enemy_creating(type):
 # enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
 
 
-def protivnik_doshol_do_konza(pismo,otpravitel,dop_info):
-    if pismo=='enemy_at_end':
-        print('K.V.A')
-        enemys.remove(otpravitel)
 
-messenger.messenger.podpisatsa(protivnik_doshol_do_konza)
+def messages(pismo, otpravitel, dop_info):
+    if pismo=='enemy_at_end':
+        print('E.A.E')
+        enemys.remove(otpravitel)
+    if pismo=='bullet_at_target':
+        print('B.A.T')
+        bullets.remove(otpravitel)
+messenger.messenger.podpisatsa(messages)
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
 
