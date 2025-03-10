@@ -6,9 +6,9 @@ from numpy.ma.core import angle
 
 import kakoito_resizer
 
-
 class Ammunition():
     def __init__(self,size,pyt,map,x,y,to_x,to_y,skorost):
+        self.already=False
         self.x,self.y=x,y
         self.start_pos=[x,y]
         self.end_pos=[to_x,to_y]
@@ -19,7 +19,7 @@ class Ammunition():
         self.bullet2=self.bullet
         self.wrema=pygame.event.custom_type()
         pygame.time.set_timer(self.wrema, 10)
-    def okraska(self,):
+    def okraska(self,debug=False):
         screen=pygame.display.get_surface()
         screen.blit(self.bullet2,[self.x,self.y])
 
@@ -36,11 +36,12 @@ class Ammunition():
 
 
     def traektoria(self):
-        distance=math.dist([self.x,self.y],self.end_pos)
+        distance=math.dist(self.start_pos,[self.x,self.y])
         start_distance=math.dist(self.start_pos,self.end_pos)
         angle=math_utils.get_angle_by_point([self.x, self.y], self.end_pos)
         if distance<start_distance:
             self.x,self.y=math_utils.get_point_by_angle([self.x,self.y],angle,self.skorost)
             self.bullet2=pygame.transform.rotate(self.bullet,angle+90)
-        else:
+        if distance>start_distance and self.already!=True:
             messenger.messenger.otpravit('bullet_at_target',self)
+            self.already=True

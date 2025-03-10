@@ -41,7 +41,8 @@ def risovanie():
 
 
     for i in math_utils.sortirovka(images,model.plitki):
-        i.paint()
+        i.paint(model.perecluthatel)
+
 
     # for p in  range(len(model.enemys)-1,-1,-1):
     #     if model.enemys:

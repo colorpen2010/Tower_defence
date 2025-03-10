@@ -54,7 +54,7 @@ class enem_factory():
             # self.center[1]=self.bottom
 
 # label = text()
-    def paint(self):
+    def paint(self,debug=False):
         self.enemy.paint()
 
     def get_center(self):
