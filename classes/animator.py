@@ -42,6 +42,9 @@ class Animator:
         center.append(self.bottom-self.imaging_this_beautiful_image[0].get_size()[1] / 2)
         return center
 
+    def get_rect(self):
+        return pygame.Rect(self.x,self.bottom - self.imaging_this_beautiful_image[self.one].get_height(),self.imaging_this_beautiful_image[self.one].get_width(),self.imaging_this_beautiful_image[self.one].get_height())
+
     def set_center(self,center_x=None,center_y=None):
         if center_x!=None:
             self.x=center_x-self.imaging_this_beautiful_image[0].get_size()[0] / 2
@@ -56,3 +59,5 @@ class Animator:
         screen=pygame.display.get_surface()
         screen.blit(self.imaging_this_beautiful_image[self.one],[self.x,self.bottom - self.imaging_this_beautiful_image[self.one].get_height()])
         # pygame.draw.circle(screen,[255,0,0],self.get_center(),10)
+        if debug:
+            pygame.draw.rect(screen,[0,0,0],self.get_rect(),10)

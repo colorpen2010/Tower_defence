@@ -38,10 +38,11 @@ class Ammunition():
     def traektoria(self):
         distance=math.dist(self.start_pos,[self.x,self.y])
         start_distance=math.dist(self.start_pos,self.end_pos)
-        angle=math_utils.get_angle_by_point([self.x, self.y], self.end_pos)
+        print(self.start_pos,self.end_pos,distance,start_distance,self.x,self.y,self.already)
         if distance<start_distance:
+            angle = math_utils.get_angle_by_point([self.x, self.y], self.end_pos)
             self.x,self.y=math_utils.get_point_by_angle([self.x,self.y],angle,self.skorost)
             self.bullet2=pygame.transform.rotate(self.bullet,angle+90)
-        if distance>start_distance and self.already!=True:
-            messenger.messenger.otpravit('bullet_at_target',self)
+        if distance>=start_distance and self.already!=True:
+            messenger.messenger.otpravit('bullet_at_pos',self)
             self.already=True

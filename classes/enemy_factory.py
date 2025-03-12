@@ -4,9 +4,9 @@ from classes import animator,povorot,messenger
 
 class enem_factory():
     def __init__(self,type,map,flipped=False,procents=[1,1,1,1],mili_sec=100,scorost=5,spisok_tochek=None):
-        x=spisok_tochek[0][0]
-        bottom=spisok_tochek[0][1]
-        self.enemy=povorot.Rotating(mili_sec,map,procents,'images/Monsters/move/'+type+'_left',up_pack='images/Monsters/move/'+type+'_up',down_pack='images/Monsters/move/'+type+'_down',x=x,bottom=bottom+(800/map/2))
+        self.x=spisok_tochek[0][0]
+        self.bottom=spisok_tochek[0][1]
+        self.enemy=povorot.Rotating(mili_sec,map,procents,'images/Monsters/move/'+type+'_left',up_pack='images/Monsters/move/'+type+'_up',down_pack='images/Monsters/move/'+type+'_down',x=self.x,bottom=self.bottom+(800/map/2))
         self.spisok_tochek=spisok_tochek
         self.scorost=scorost
         self.enemy.set_center(spisok_tochek[0][0],spisok_tochek[0][1])
@@ -55,7 +55,10 @@ class enem_factory():
 
 # label = text()
     def paint(self,debug=False):
-        self.enemy.paint()
+        self.enemy.paint(debug)
 
     def get_center(self):
         return self.enemy.get_center()
+
+    def get_rect(self):
+        return  self.enemy.get_rect()

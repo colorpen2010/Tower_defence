@@ -133,13 +133,16 @@ _*a**)_*
 _______*"""
 
 map= """
-[(*][*4][**][51][**]
-[**][+*][+_][+_][**]
-[**][*3][+_][_2][)*]
-[**][**][**][**][**]
+[+_][+_][+_][+_][+_][*+]
+[(*][51][*+][62][+_][*+]
+[+_][*+][+_][*+][+_][*+]
+[+_][*4][*+][73][)+][*+]
+[+_][+_][+_][+_][+_][*+]
 """
 
-
+'_ трава'
+'+ песок'
+'* незн'
 
 fly=False
 
@@ -222,14 +225,16 @@ def enemy_creating(type):
 # enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
 
 
-
 def messages(pismo, otpravitel, dop_info):
     if pismo=='enemy_at_end':
         print('E.A.E')
         enemys.remove(otpravitel)
-    if pismo=='bullet_at_target':
-        print('B.A.T')
+    if pismo=='bullet_at_pos':
+        print('B.A.P')
         bullets.remove(otpravitel)
+        for i in enemys:
+            if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):
+                enemys.remove(i)
 messenger.messenger.podpisatsa(messages)
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)

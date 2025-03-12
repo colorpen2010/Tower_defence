@@ -26,7 +26,7 @@ class towernicsemus3_alhabethangerald3():
     def get_center(self):
         return self.animated_tower.get_center()
     def paint(self,debug=False):
-        self.animated_tower.paint()
+        self.animated_tower.paint(debug)
         if debug==True:
             pygame.draw.circle(self.screen,[125,0,0],self.get_center(),self.distance,5)
     def colored_drawer(self, colored=False, prozrathnost=150):
@@ -42,7 +42,6 @@ class towernicsemus3_alhabethangerald3():
         for o in events:
             if o.type==self.event and self.dont_shoot==False:
                 self.pole_vidimosti()
-                print('working')
         self.animated_tower.control_center(events)
     def vistrel(self,enemy_coordinations=[500,500]):
         print('this is not good')
