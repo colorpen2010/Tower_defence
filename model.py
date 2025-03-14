@@ -1,7 +1,7 @@
 import pygame,math_utils
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
-    warehouse,messenger
+    warehouse,messenger,hp_System
 
 # def razmer_plitki(nuber=0):
 #     return plitki[-1].get_product_size()[nuber]
@@ -146,7 +146,6 @@ map= """
 
 fly=False
 
-
 # map="""023540
 # 153440
 # 042330
@@ -169,7 +168,7 @@ animated_blue_portal=None
 animated_red_portal=None
 map_regeneration(map)
 
-
+mainhp=hp_System.HP_system(300,152,500,500,50,25)
 
 magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.Poison_tower,vibor_bashni)
 magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',70,firetower.Fire_tower,vibor_bashni)
@@ -227,10 +226,10 @@ def enemy_creating(type):
 
 def messages(pismo, otpravitel, dop_info):
     if pismo=='enemy_at_end':
-        print('E.A.E')
+        # print('E.A.E')
         enemys.remove(otpravitel)
     if pismo=='bullet_at_pos':
-        print('B.A.P')
+        # print('B.A.P')
         bullets.remove(otpravitel)
         for i in enemys:
             if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):

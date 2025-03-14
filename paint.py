@@ -16,10 +16,11 @@ def risovanie():
     for p in model.plitki:
         p.okraska(screen)
 
-    #снаряды
 
+    model.mainhp.paint()
 
     #надписи
+
     for g in model.bazar:
         g.paint(model.wallet.money>=g.numprice)
     model.wallet.grafiti(800,0)

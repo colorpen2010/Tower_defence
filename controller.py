@@ -34,6 +34,12 @@ def control():
                 if i.tower!=None:
                     i.tower.vistrel()
 
+        if o.type == pygame.KEYDOWN and o.key == pygame.K_UP:
+            model.mainhp.hp_changing(300)
+        if o.type == pygame.KEYDOWN and o.key == pygame.K_DOWN:
+            model.mainhp.hp_changing(-15)
+
+
         if o.type == pygame.KEYDOWN and o.key == pygame.K_1:
             print('spawned monster_blue')
             model.enemy_creating('blue')
