@@ -35,7 +35,7 @@ def control():
                     i.tower.vistrel()
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_UP:
-            model.mainhp.hp_changing(300)
+            model.mainhp.hp_changing(15)
         if o.type == pygame.KEYDOWN and o.key == pygame.K_DOWN:
             model.mainhp.hp_changing(-15)
 

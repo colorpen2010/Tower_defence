@@ -8,7 +8,7 @@ from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,w
 
 
 def map_regeneration(map):
-    global house,animated_blue_portal,animated_red_portal
+    global house,animated_blue_portal,animated_red_portal,mainhp
 
     switch = False
     door = []
@@ -60,7 +60,8 @@ def map_regeneration(map):
                 animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
             if kletka[-1]==')':
                 animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
-
+                mainhp.centerx=animated_red_portal.get_center()[0]
+                mainhp.bottom=animated_red_portal.get_rect()[1]
             if dest<pygame.display.get_window_size()[0]-razmer_plitki:
                 dest +=razmer_plitki
             # else:
@@ -105,8 +106,7 @@ wallet=wallet.get_wallet(100 )
 
 house = []
 
-
-
+mainhp=hp_System.HP_system(300,152,500,500,100,30)
 clock = pygame.time.Clock()
 
 map = """253423520
@@ -168,7 +168,6 @@ animated_blue_portal=None
 animated_red_portal=None
 map_regeneration(map)
 
-mainhp=hp_System.HP_system(300,152,500,500,50,25)
 
 magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.Poison_tower,vibor_bashni)
 magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',70,firetower.Fire_tower,vibor_bashni)
@@ -228,12 +227,15 @@ def messages(pismo, otpravitel, dop_info):
     if pismo=='enemy_at_end':
         # print('E.A.E')
         enemys.remove(otpravitel)
+        mainhp.hp_changing(-15)
     if pismo=='bullet_at_pos':
         # print('B.A.P')
         bullets.remove(otpravitel)
         for i in enemys:
             if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):
                 enemys.remove(i)
+    if pismo=='death':
+        exit()
 messenger.messenger.podpisatsa(messages)
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
