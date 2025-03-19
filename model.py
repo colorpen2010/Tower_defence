@@ -31,7 +31,7 @@ def map_regeneration(map):
             if len(etasch)!=0:
                 house.append(etasch)
                 etasch=[]
-    razmer_plitki = 800 / (len(house))
+    razmer_plitki = 800 // (len(house))
     for etasch in house:
         for door in etasch:
             kletka=['sand', dest, height, len(house)]
@@ -140,9 +140,21 @@ map= """
 [+_][+_][+_][+_][+_][*+]
 """
 
+map= """
+[(*][1+][+_][4+][*+][5+][+_][*+]
+[+_][*+][+_][*+][+_][*+][+_][*+]
+[+_][*+][+_][*+][+_][*+][+_][*+]
+[+_][*+][+_][*+][+_][*+][+_][*+]
+[+_][*+][+_][*+][+_][*+][+_][*+]
+[+_][*+][+_][*+][+_][*+][+_][*+]
+[+_][2+][*+][3+][+_][6+][)*][*+]
+"""
+
+') выход'
+'( вход'
 '_ трава'
-'+ песок'
-'* незн'
+'+ ничего'
+'* песок'
 
 fly=False
 
@@ -233,6 +245,7 @@ def messages(pismo, otpravitel, dop_info):
         bullets.remove(otpravitel)
         for i in enemys:
             if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):
+                wallet.otnimanie(-7)
                 enemys.remove(i)
     if pismo=='death':
         exit()

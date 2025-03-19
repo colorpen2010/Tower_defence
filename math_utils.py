@@ -26,10 +26,10 @@ def sravnivatel(first,kletki,second):
         bottom2=second.enemy.bottom
 
     if isinstance(first, classes.animator.Animator) and type(second) == classes.enemy_factory.enem_factory:
-        first_plitka = poisk_kletki(first.get_center(), kletki)
-        second_plitka = poisk_kletki(second.get_center(), kletki)
-        if first_plitka.y <= second_plitka.y:
-            return 1
+            first_plitka = poisk_kletki(first.get_center(), kletki)
+            second_plitka = poisk_kletki([171,456], kletki)
+            if second_plitka is not None and first_plitka is not None and first_plitka.y <= second_plitka.y:
+                return 1
 
     if bottom>bottom2:
         return -1

@@ -7,6 +7,8 @@ class HP_system(pygame.Rect):
         self.nohp_color,self.hp_color=nohp_color,hp_color
         self.width2=width
 
+        self.hp_changing(0)
+
         pygame.Rect.__init__(self,x,y,width,height)
 
     def paint(self):
