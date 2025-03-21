@@ -55,8 +55,9 @@ def control():
 
         if o.type==pygame.MOUSEMOTION and model.apple!=None:
             i = math_utils.poisk_kletki(pygame.mouse.get_pos(),model.plitki)
-            model.apple.x=i.x
-            model.apple.bottom=i.get_rect().bottom
+            if i !=None:
+                model.apple.x=i.x
+                model.apple.bottom=i.get_rect().bottom
         if o.type == pygame.KEYDOWN and o.key == pygame.K_TAB:
             model.perecluthatel = not model.perecluthatel
         if o.type == pygame.KEYDOWN and o.key == pygame.K_r:

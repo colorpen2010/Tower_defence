@@ -132,7 +132,7 @@ _39*82_*
 _*a**)_*
 _______*"""
 
-map= """
+test_map_ver1= """
 [+_][+_][+_][+_][+_][*+]
 [(*][51][*+][62][+_][*+]
 [+_][*+][+_][*+][+_][*+]
@@ -140,7 +140,23 @@ map= """
 [+_][+_][+_][+_][+_][*+]
 """
 
-map= """
+test_map_ver2= """
+[+_][+_][+_][+_][+_][*+]
+[(*][*+][)+][+_][+_][*+]
+[+_][+_][+_][+_][+_][*+]
+[+_][+_][+_][+_][+_][*+]
+[+_][+_][+_][+_][+_][*+]
+"""
+
+map="""
+[+_][+_][+_][+_][+_][*+]
+[(*][*+][)+][+_][+_][*+]
+[+_][+_][+_][+_][+_][*+]
+[+_][+_][+_][+_][+_][*+]
+[+_][+_][+_][+_][+_][*+]
+"""
+
+start_map= """
 [(*][1+][+_][4+][*+][5+][+_][*+]
 [+_][*+][+_][*+][+_][*+][+_][*+]
 [+_][*+][+_][*+][+_][*+][+_][*+]
@@ -216,17 +232,17 @@ def enemy_creating(type):
     """
     enemy = None
     if type=='blue':
-        enemy = enemy_factory.enem_factory(type, len(house), True, [0.5, 0.5, 0.5, 0.5], scorost=2.50,
-                                            spisok_tochek=route.copy())
+        enemy = enemy_factory.enem_factory(type, len(house), True, [0.5, 0.5, 0.5, 0.5], scorost=2.45,
+                                            spisok_tochek=route.copy(),damage=-5,hp=2)
     elif type=='purple':
         enemy = enemy_factory.enem_factory(type, len(house), True, [1, 1, 1, 1], scorost=0.50,
-                                            spisok_tochek=route.copy())
+                                            spisok_tochek=route.copy(),damage=-20,hp=100)
     elif type=='green':
         enemy = enemy_factory.enem_factory(type, len(house), True, [1, 1, 0.5, 0.5], scorost=1.50,
-                                            spisok_tochek=route.copy())
+                                            spisok_tochek=route.copy(),damage=-10,hp=4)
     elif type=='red':
         enemy = enemy_factory.enem_factory(type, len(house), True, [0.8, 0.8, 0.8, 0.8], scorost=0.8,
-                                            spisok_tochek=route.copy())
+                                            spisok_tochek=route.copy(),damage=-15,hp=100)
     if enemy!=None:
         enemys.append(enemy)
 
@@ -239,14 +255,15 @@ def messages(pismo, otpravitel, dop_info):
     if pismo=='enemy_at_end':
         # print('E.A.E')
         enemys.remove(otpravitel)
-        mainhp.hp_changing(-15)
+        print(dop_info)
+        mainhp.hp_changing(dop_info)
     if pismo=='bullet_at_pos':
         # print('B.A.P')
         bullets.remove(otpravitel)
         for i in enemys:
             if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):
                 wallet.otnimanie(-7)
-                enemys.remove(i)
+                hp_System.HP_system.hp_changing(i.hp,-1)
     if pismo=='death':
         exit()
 messenger.messenger.podpisatsa(messages)

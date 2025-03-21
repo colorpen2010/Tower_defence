@@ -1,16 +1,18 @@
 import pygame,os
 
-from classes import animator,povorot,messenger
+from classes import animator,povorot,messenger,hp_System
 
 class enem_factory():
-    def __init__(self,type,map,flipped=False,procents=[1,1,1,1],mili_sec=100,scorost=5,spisok_tochek=None):
+    def __init__(self,type,map,flipped=False,procents=[1,1,1,1],mili_sec=100,scorost=5,spisok_tochek=None,damage=50,hp=50):
+        self.damage=damage
         self.x=spisok_tochek[0][0]
         self.bottom=spisok_tochek[0][1]
         self.enemy=povorot.Rotating(mili_sec,map,procents,'images/Monsters/move/'+type+'_left',up_pack='images/Monsters/move/'+type+'_up',down_pack='images/Monsters/move/'+type+'_down',x=self.x,bottom=self.bottom+(800/map/2))
         self.spisok_tochek=spisok_tochek
         self.scorost=scorost
         self.enemy.set_center(spisok_tochek[0][0],spisok_tochek[0][1])
-        # self.povort=povorot.Rotating()
+        self.hp=hp_System.HP_system(hp,hp,self.x,self.enemy.get_rect().y,self.get_rect().width,5)
+        # self.povort=povorot.Rotating()\
 
         # self.enemy=pygame.transform.flip(flipped,False)
     # def enemy(self):z
@@ -48,13 +50,16 @@ class enem_factory():
             else:
                 del self.spisok_tochek[0]
             if len(self.spisok_tochek)==0:
-                messenger.messenger.otpravit('enemy_at_end',self)
+                messenger.messenger.otpravit('enemy_at_end',self,self.damage)
 
             # self.center[0]=self.x
             # self.center[1]=self.bottom
 
 # label = text()
     def paint(self,debug=False):
+        self.hp.x,self.hp.y=self.enemy.x,self.get_rect().y-5
+        if debug:
+            self.hp.paint()
         self.enemy.paint(debug)
 
     def get_center(self):
