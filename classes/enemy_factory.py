@@ -11,7 +11,7 @@ class enem_factory():
         self.spisok_tochek=spisok_tochek
         self.scorost=scorost
         self.enemy.set_center(spisok_tochek[0][0],spisok_tochek[0][1])
-        self.hp=hp_System.HP_system(hp,hp,self.x,self.enemy.get_rect().y,self.get_rect().width,5)
+        self.hp=hp_System.HP_system(hp,hp,self.x,self.enemy.get_rect().y,self.get_rect().width,5,self)
         # self.povort=povorot.Rotating()\
 
         # self.enemy=pygame.transform.flip(flipped,False)

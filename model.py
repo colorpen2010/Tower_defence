@@ -140,15 +140,7 @@ test_map_ver1= """
 [+_][+_][+_][+_][+_][*+]
 """
 
-test_map_ver2= """
-[+_][+_][+_][+_][+_][*+]
-[(*][*+][)+][+_][+_][*+]
-[+_][+_][+_][+_][+_][*+]
-[+_][+_][+_][+_][+_][*+]
-[+_][+_][+_][+_][+_][*+]
-"""
-
-map="""
+test_map_ver2="""
 [+_][+_][+_][+_][+_][*+]
 [(*][*+][)+][+_][+_][*+]
 [+_][+_][+_][+_][+_][*+]
@@ -171,6 +163,22 @@ start_map= """
 '_ трава'
 '+ ничего'
 '* песок'
+
+
+
+map= """
+[+_][+_][+_][+_][+_][*+]
+[(*][51][*+][62][+_][*+]
+[+_][*+][+_][*+][+_][*+]
+[+_][*4][*+][73][)+][*+]
+[+_][+_][+_][+_][+_][*+]
+"""
+
+
+
+
+
+
 
 fly=False
 
@@ -257,15 +265,22 @@ def messages(pismo, otpravitel, dop_info):
         enemys.remove(otpravitel)
         print(dop_info)
         mainhp.hp_changing(dop_info)
-    if pismo=='bullet_at_pos':
+    if pismo=='bullet_letit':
         # print('B.A.P')
-        bullets.remove(otpravitel)
         for i in enemys:
             if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):
                 wallet.otnimanie(-7)
                 hp_System.HP_system.hp_changing(i.hp,-1)
+                bullets.remove(otpravitel)
+                break
+    if pismo=='bullet_at_pos':
+        # print('B.A.P')
+        bullets.remove(otpravitel)
     if pismo=='death':
-        exit()
+        if mainhp is otpravitel:
+            exit()
+        else:
+            enemys.remove(dop_info)
 messenger.messenger.podpisatsa(messages)
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)

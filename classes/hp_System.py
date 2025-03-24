@@ -2,9 +2,10 @@ import pygame
 from classes import messenger
 
 class HP_system(pygame.Rect):
-    def __init__(self,max_hp,tec_hp,x,y,width,height,nohp_color=[255,0,0],hp_color=[0,255,0]):
+    def __init__(self,max_hp,tec_hp,x,y,width,height,owner=None,nohp_color=[255,0,0],hp_color=[0,255,0]):
         self.max_hp,self.tec_hp,self.width=max_hp,tec_hp,width
         self.nohp_color,self.hp_color=nohp_color,hp_color
+        self.owner=owner
         self.width2=width
 
         self.hp_changing(0)
@@ -22,4 +23,4 @@ class HP_system(pygame.Rect):
                 self.tec_hp=self.max_hp
         self.width2=self.width*self.tec_hp/self.max_hp
         if self.tec_hp<=0:
-            messenger.messenger.otpravit('death',self)
+            messenger.messenger.otpravit('death',self,self.owner)
