@@ -12,7 +12,7 @@ pygame.draw.rect(nothing, [255, 0, 0], rect, 10)
 pygame.image.save(nothing, 'no_image.png')
 
 class Tsekh:
-    def __init__(self,type,x,y,map):
+    def __init__(self,type,x,y,colithestvo_etashey):
         self.building=None
         self.type=type
         self.tower=None
@@ -31,9 +31,9 @@ class Tsekh:
                 raise Exception('Ошибка 404 Объект не найден "'+path+'"')
 
         if self.no_image==False:
-            self.plitka=kakoito_resizer.creating_objects_x(path, map)
+            self.plitka=kakoito_resizer.creating_objects_x(path, colithestvo_etashey)
         else:
-            self.nothing=kakoito_resizer.creating_objects_x('no_image.png', map)
+            self.nothing=kakoito_resizer.creating_objects_x('no_image.png', colithestvo_etashey)
 
         pass
 

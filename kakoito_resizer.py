@@ -8,6 +8,11 @@ def sheti(money):
         output = str(round(money / 1000000, 1)) + 'M'
     return output
 
+def cell_size_giver(kolithestvo_etashei, procent=1):
+    return 800/(kolithestvo_etashei)*procent
+
+
+
 def creating_objects_x(pyt, kolithestvo_etashei, procent=1):
     """
     создаёт картинку нужного размера
@@ -16,11 +21,10 @@ def creating_objects_x(pyt, kolithestvo_etashei, procent=1):
     :return:
     """
 
-
+    cell_size=cell_size_giver(kolithestvo_etashei,procent)
     # x = round(800 / pixels, 0)
 
 
-    cell_size = 800/(kolithestvo_etashei)*procent
 
     image = pygame.image.load(pyt)
 
