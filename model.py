@@ -209,7 +209,7 @@ magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.P
 magaz2=shop.Magazin(803,190,'images/UI/TowerButtons/button_2.png',70,firetower.Fire_tower,vibor_bashni)
 magaz3=shop.Magazin(803,300,'images/UI/TowerButtons/button_3.png',140,stormtower.Storm_tower,vibor_bashni)
 magaz4=shop.Magazin(803,410,'images/UI/TowerButtons/button_4.png',240,icetower.Ice_tower,vibor_bashni)
-bazar=[magaz,magaz2,magaz3,magaz4]
+bazar=[magaz,magaz2]
 
 
 
@@ -232,8 +232,8 @@ def enemy_creating(type):
 
     there are 4 types of enemy:
     blue,
-    purple,
     green,
+    purple,
     red.
     :param type:
     :return:
@@ -270,7 +270,7 @@ def messages(pismo, otpravitel, dop_info):
         for i in enemys:
             if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):
                 wallet.otnimanie(-7)
-                hp_System.HP_system.hp_changing(i.hp,-1)
+                hp_System.HP_system.hp_changing(i.hp,-otpravitel.damage)
                 bullets.remove(otpravitel)
                 break
     if pismo=='bullet_at_pos':

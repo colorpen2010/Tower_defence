@@ -7,8 +7,9 @@ from numpy.ma.core import angle
 import kakoito_resizer
 
 class Ammunition():
-    def __init__(self,size,pyt,map,x,y,to_x,to_y,skorost):
+    def __init__(self,size,pyt,map,x,y,to_x,to_y,skorost,damage):
         self.already=False
+        self.damage=damage
         self.x,self.y=x,y
         self.start_pos=[x,y]
         self.end_pos=[to_x,to_y]
