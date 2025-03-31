@@ -1,12 +1,13 @@
-import pygame,math_utils
+import pygame,math_utils,yaml
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
     warehouse,messenger,hp_System
 
 # def razmer_plitki(nuber=0):
 #     return plitki[-1].get_product_size()[nuber]
-
-
+f=open("config.yaml",'r',encoding="utf-8")
+a=yaml.safe_load(f)
+print(a)
 def map_regeneration(map):
     global house,animated_blue_portal,animated_red_portal,mainhp
 
@@ -27,7 +28,7 @@ def map_regeneration(map):
                 door=[]
             elif i!='[':
                 door.append(i)
-        if i == '\n':
+        if i == ' ':
             if len(etasch)!=0:
                 house.append(etasch)
                 etasch=[]
@@ -148,7 +149,7 @@ test_map_ver2="""
 [+_][+_][+_][+_][+_][*+]
 """
 
-start_map= """
+tutorial_map= """
 [(*][1+][+_][4+][*+][5+][+_][*+]
 [+_][*+][+_][*+][+_][*+][+_][*+]
 [+_][*+][+_][*+][+_][*+][+_][*+]
@@ -202,7 +203,7 @@ y=80
 
 animated_blue_portal=None
 animated_red_portal=None
-map_regeneration(map)
+map_regeneration(a['map'])
 
 
 magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.Poison_tower,vibor_bashni)
@@ -263,14 +264,13 @@ def messages(pismo, otpravitel, dop_info):
     if pismo=='enemy_at_end':
         # print('E.A.E')
         enemys.remove(otpravitel)
-        print(dop_info)
         mainhp.hp_changing(dop_info)
     if pismo=='bullet_letit':
         # print('B.A.P')
         for i in enemys:
             if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):
                 wallet.otnimanie(-7)
-                hp_System.HP_system.hp_changing(i.hp,-otpravitel.damage)
+                hp_System.HP_system.hp_changing(i.hp,-  otpravitel.damage)
                 bullets.remove(otpravitel)
                 break
     if pismo=='bullet_at_pos':

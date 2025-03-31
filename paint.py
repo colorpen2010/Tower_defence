@@ -13,8 +13,6 @@ def risovanie():
     model.clock.tick()
     fps=model.clock.get_fps()
     pygame.display.flip()
-    print(model.mainhp.tec_hp)
-
     for p in model.plitki:
         p.okraska(screen)
 
