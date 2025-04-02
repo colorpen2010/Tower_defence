@@ -3,6 +3,9 @@ from classes import warehouse
 from classes.firetower import Fire_tower
 from classes.poisontower import Poison_tower
 
+ev=pygame.event.custom_type()
+pygame.time.set_timer(ev, 3000)
+
 
 def control():
     events = pygame.event.get()
@@ -11,6 +14,13 @@ def control():
     for r in model.plitki:
         if r.tower!= None:
             r.tower.control_point(events)
+
+    first_enemy=model.config['types'][0]
+    b=list(first_enemy.keys())
+    print(b)
+    # count= types['green'][0]
+
+            # count-=1
 
     for p in model.enemys:
         p.control(events)
@@ -33,6 +43,9 @@ def control():
             for i in model.plitki:
                 if i.tower!=None:
                     i.tower.vistrel()
+
+        if o.type == ev:
+            model.enemy_creating(b[0])
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_UP:
             model.mainhp.hp_changing(15)

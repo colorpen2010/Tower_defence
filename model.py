@@ -6,8 +6,8 @@ from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,w
 # def razmer_plitki(nuber=0):
 #     return plitki[-1].get_product_size()[nuber]
 f=open("config.yaml",'r',encoding="utf-8")
-a=yaml.safe_load(f)
-print(a)
+config=yaml.safe_load(f)
+print(config)
 def map_regeneration(map):
     global house,animated_blue_portal,animated_red_portal,mainhp
 
@@ -203,7 +203,7 @@ y=80
 
 animated_blue_portal=None
 animated_red_portal=None
-map_regeneration(a['map'])
+map_regeneration(config['map'])
 
 
 magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.Poison_tower,vibor_bashni)
