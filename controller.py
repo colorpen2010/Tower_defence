@@ -6,8 +6,12 @@ from classes.poisontower import Poison_tower
 ev=pygame.event.custom_type()
 pygame.time.set_timer(ev, 3000)
 
+first_enemy = model.config['types'][0]
+b = list(first_enemy.keys())
+count = model.config['types'][0][b[0]]
 
 def control():
+    global count,b,first_enemy
     events = pygame.event.get()
     if model.apple!=None:
         model.apple.control_point(events)
@@ -15,9 +19,18 @@ def control():
         if r.tower!= None:
             r.tower.control_point(events)
 
-    first_enemy=model.config['types'][0]
-    b=list(first_enemy.keys())
-    print(b)
+
+    # print(count)
+        if count<=0 and model.config['types'] != []:
+            del model.config['types'][0]
+            if model.config['types'] != []:
+                first_enemy = model.config['types'][0]
+                b = list(first_enemy.keys())
+                count = model.config['types'][0][b[0]]
+
+    print(count)
+
+    # print(b)
     # count= types['green'][0]
 
             # count-=1
@@ -45,7 +58,10 @@ def control():
                     i.tower.vistrel()
 
         if o.type == ev:
-            model.enemy_creating(b[0])
+            if model.config['types'] != {}:
+                if count>0:
+                    model.enemy_creating(b[0])
+                    count-=1
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_UP:
             model.mainhp.hp_changing(15)
