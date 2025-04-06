@@ -107,7 +107,7 @@ wallet=wallet.get_wallet(100 )
 
 house = []
 
-mainhp=hp_System.HP_system(300,152,500,500,100,30)
+mainhp=hp_System.HP_system(20,20,500,500,100,30)
 clock = pygame.time.Clock()
 
 map = """253423520
@@ -223,7 +223,7 @@ perecluthatel = False
 # xy = 50
 
 enemys=[]
-def enemy_creating(type):
+def enemy_creating(type,hp):
     """
     есть 4 вида противника:
     blue,
@@ -242,16 +242,16 @@ def enemy_creating(type):
     enemy = None
     if type=='blue':
         enemy = enemy_factory.enem_factory(type, len(house), True, [0.5, 0.5, 0.5, 0.5], scorost=2.45,
-                                            spisok_tochek=route.copy(),damage=-5,hp=2)
+                                            spisok_tochek=route.copy(),damage=-5,hp=hp)
     elif type=='purple':
         enemy = enemy_factory.enem_factory(type, len(house), True, [1, 1, 1, 1], scorost=0.50,
-                                            spisok_tochek=route.copy(),damage=-20,hp=100)
+                                            spisok_tochek=route.copy(),damage=-20,hp=hp)
     elif type=='green':
         enemy = enemy_factory.enem_factory(type, len(house), True, [1, 1, 0.5, 0.5], scorost=1.50,
-                                            spisok_tochek=route.copy(),damage=-10,hp=4)
+                                            spisok_tochek=route.copy(),damage=-10,hp=hp)
     elif type=='red':
         enemy = enemy_factory.enem_factory(type, len(house), True, [0.8, 0.8, 0.8, 0.8], scorost=0.8,
-                                            spisok_tochek=route.copy(),damage=-15,hp=100)
+                                            spisok_tochek=route.copy(),damage=-15,hp=hp)
     if enemy!=None:
         enemys.append(enemy)
 
@@ -269,7 +269,6 @@ def messages(pismo, otpravitel, dop_info):
         # print('B.A.P')
         for i in enemys:
             if i.get_rect().collidepoint(otpravitel.x,otpravitel.y):
-                wallet.otnimanie(-7)
                 hp_System.HP_system.hp_changing(i.hp,-  otpravitel.damage)
                 bullets.remove(otpravitel)
                 break
@@ -281,6 +280,9 @@ def messages(pismo, otpravitel, dop_info):
             exit()
         else:
             enemys.remove(dop_info)
+            wallet.otnimanie(-7)
+
+
 messenger.messenger.podpisatsa(messages)
 
 background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)

@@ -7,11 +7,14 @@ ev=pygame.event.custom_type()
 pygame.time.set_timer(ev, 3000)
 
 first_enemy = model.config['types'][0]
-b = list(first_enemy.keys())
-count = model.config['types'][0][b[0]]
+enemy_type = list(first_enemy.keys())[0]
+enemy_settings=first_enemy[enemy_type]
+print(enemy_settings)
+count = enemy_settings['count']
+print(count)
 
 def control():
-    global count,b,first_enemy
+    global count,enemy_type,first_enemy,enemy_settings
     events = pygame.event.get()
     if model.apple!=None:
         model.apple.control_point(events)
@@ -25,10 +28,10 @@ def control():
             del model.config['types'][0]
             if model.config['types'] != []:
                 first_enemy = model.config['types'][0]
-                b = list(first_enemy.keys())
-                count = model.config['types'][0][b[0]]
+                enemy_type = list(first_enemy.keys())[0]
+                enemy_settings = first_enemy[enemy_type]
+                count = enemy_settings['count']
 
-    print(count)
 
     # print(b)
     # count= types['green'][0]
@@ -60,7 +63,7 @@ def control():
         if o.type == ev:
             if model.config['types'] != {}:
                 if count>0:
-                    model.enemy_creating(b[0])
+                    model.enemy_creating(enemy_type, enemy_settings['hp'])
                     count-=1
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_UP:

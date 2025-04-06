@@ -57,9 +57,10 @@ class enem_factory():
 
 # label = text()
     def paint(self,debug=False):
-        self.hp.x,self.hp.y=self.enemy.x,self.get_rect().y-5
+        self.hp.centerx,self.hp.y=self.enemy.get_center()[0],self.get_rect().y-5
         if debug:
-            self.hp.paint()
+            pass
+        self.hp.paint()
         self.enemy.paint(debug)
 
     def get_center(self):
