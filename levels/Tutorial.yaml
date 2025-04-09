@@ -9,11 +9,11 @@ map: "[(*][1+][+_][4+][*+][5+][+_][*+]
 [+_][2+][*+][3+][+_][6+][)*][*+] "
 types:
     - green:
-        count: 2
-        hp: 5
+        count: 25
+        hp: 3
     - red:
         count: 1
-        hp: 20
+        hp: 12
     - green:
-        count: 2
-        hp: 10
+        count: 15
+        hp: 6

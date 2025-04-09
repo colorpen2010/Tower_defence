@@ -5,7 +5,7 @@ from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,w
 
 # def razmer_plitki(nuber=0):
 #     return plitki[-1].get_product_size()[nuber]
-f=open("config.yaml",'r',encoding="utf-8")
+f=open("levels/Tutorial.yaml", 'r', encoding="utf-8")
 config=yaml.safe_load(f)
 print(config)
 def map_regeneration(map):
@@ -107,7 +107,7 @@ wallet=wallet.get_wallet(100 )
 
 house = []
 
-mainhp=hp_System.HP_system(20,20,500,500,100,30)
+mainhp=hp_System.HP_system(50,50,500,500,100,30)
 clock = pygame.time.Clock()
 
 map = """253423520
