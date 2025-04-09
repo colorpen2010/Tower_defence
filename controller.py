@@ -74,7 +74,8 @@ def control():
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_1:
             print('spawned monster_blue')
-            model.enemy_creating('blue')
+            pygame.display.set_mode([2000,2000])
+            # model.enemy_creating('blue')
         if o.type == pygame.KEYDOWN and o.key == pygame.K_2:
             print('spawned monster_purple')
             model.enemy_creating('purple')

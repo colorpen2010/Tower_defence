@@ -1,4 +1,4 @@
-import pygame,math_utils,yaml
+import pygame,math_utils,yaml,os
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
     warehouse,messenger,hp_System
@@ -8,6 +8,7 @@ from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,w
 f=open("levels/Tutorial.yaml", 'r', encoding="utf-8")
 config=yaml.safe_load(f)
 print(config)
+level=0
 def map_regeneration(map):
     global house,animated_blue_portal,animated_red_portal,mainhp
 
@@ -18,6 +19,7 @@ def map_regeneration(map):
 
     height = 0
     dest = height
+    house=[]
 
     for i in map:
         if i == '[' or switch==True:
@@ -109,29 +111,6 @@ house = []
 
 mainhp=hp_System.HP_system(50,50,500,500,100,30)
 clock = pygame.time.Clock()
-
-map = """253423520
-310011030
-225432050
-301100140
-204534230
-301101020
-245345020
-323424530"""
-# map2 = """430320
-# 341230
-# 430320
-# 231530
-# 430230"""
-
-future_map_idea_1= """
-_______*
-_(***1_*
-_4***5_*
-_**_76_*
-_39*82_*
-_*a**)_*
-_______*"""
 
 test_map_ver1= """
 [+_][+_][+_][+_][+_][*+]
@@ -261,6 +240,7 @@ def enemy_creating(type,hp):
 
 
 def messages(pismo, otpravitel, dop_info):
+    global level,config
     if pismo=='enemy_at_end':
         # print('E.A.E')
         enemys.remove(otpravitel)
@@ -280,6 +260,19 @@ def messages(pismo, otpravitel, dop_info):
             exit()
         else:
             enemys.remove(dop_info)
+            if enemys==[]:
+                if os.path.exists("levels/map_"+str(level+1)+".yaml"):
+                    level += 1
+                else:
+                    exit()
+                if os.path.exists("levels/map_"+str(level)+".yaml"):
+                    f = open("levels/map_"+str(level)+".yaml", 'r', encoding="utf-8")
+                    config = yaml.safe_load(f)
+                    print(config)
+                    wallet.set_money(100)
+                    wallet.otnimanie(-100)
+                    mainhp.hp_changing(mainhp.max_hp-mainhp.tec_hp)
+                    map_regeneration(config['map'])
             wallet.otnimanie(-7)
 
 

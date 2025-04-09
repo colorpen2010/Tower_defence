@@ -19,10 +19,18 @@ class Wallet():
         self.money=wallet
         self.outmoney=kakoito_resizer.sheti(self.money)
         self.outmoney = fontik.render('$' + str(self.outmoney), True, [0, 0, 0])
+    def _render(self):
+        self.outmoney=fontik.render('$' + str(kakoito_resizer.sheti(self.money)), True, [0, 0, 0])
 
     def otnimanie(self,zena):
         self.money-=zena
-        self.outmoney=fontik.render('$' + str(kakoito_resizer.sheti(self.money)), True, [0, 0, 0])
+        self._render()
+
+
+
+    def set_money(self,amount):
+        self.money=amount
+        self._render()
 
 
     def grafiti(self,x,y):
