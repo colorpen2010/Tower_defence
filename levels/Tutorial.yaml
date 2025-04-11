@@ -13,7 +13,10 @@ types:
         hp: 3
     - red:
         count: 1
-        hp: 12
+        hp: 20
     - green:
         count: 15
         hp: 6
+    - red:
+        count: 1
+        hp: 40
