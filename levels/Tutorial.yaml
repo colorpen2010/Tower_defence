@@ -11,9 +11,3 @@ types:
     - green:
         count: 1
         hp: 1
-    - red:
-        count: 1
-        hp: 1
-    - green:
-        count: 1
-        hp: 1

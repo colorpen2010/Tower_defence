@@ -1,93 +1,26 @@
 import pygame,math_utils,yaml,os
 
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
-    warehouse,messenger,hp_System
+    warehouse,messenger,hp_System,level
 
+tutorial_level=level.Level()
 # def razmer_plitki(nuber=0):
 #     return plitki[-1].get_product_size()[nuber]
 f=open("levels/Tutorial.yaml", 'r', encoding="utf-8")
 config=yaml.safe_load(f)
 print(config)
 level=0
-def map_regeneration(map):
-    global house,animated_blue_portal,animated_red_portal,mainhp
-
-    switch = False
-    door = []
-    etasch = []
-
-
-    height = 0
-    dest = height
-    house=[]
-
-    for i in map:
-        if i == '[' or switch==True:
-            switch=True
-            if i==']':
-                switch=False
-                etasch.append(door)
-                door=[]
-            elif i!='[':
-                door.append(i)
-        if i == ' ':
-            if len(etasch)!=0:
-                house.append(etasch)
-                etasch=[]
-    razmer_plitki = 800 // (len(house))
-    for etasch in house:
-        for door in etasch:
-            kletka=['sand', dest, height, len(house)]
-            for shitel in door:
-                if shitel == '*':
-                    kletka[0]='sand'
-                elif shitel == '_':
-                    kletka[0]='grass'
-                elif shitel == '(':
-                    kletka[0]='sand'
-                    kletka.append('(')
-                    route.append([int(dest + razmer_plitki / 2), int(height + razmer_plitki / 2), 0])
-                elif shitel == ')':
-                    kletka[0]='sand'
-                    kletka.append(')')
-                    route.append([int(dest + razmer_plitki / 2), int(height + razmer_plitki / 2), 999])
-                elif shitel.isnumeric():
-                    kletka[0]='sand'
-                    route.append([int(dest + razmer_plitki / 2), int(height + razmer_plitki / 2), int(shitel)])
-
-
-
-
-            plitki.append(plitochniy_zavod.Tsekh(kletka[0], kletka[1], kletka[2], kletka[3]))
-            if kletka[-1]=='(':
-                animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
-            if kletka[-1]==')':
-                animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
-                mainhp.centerx=animated_red_portal.get_center()[0]
-                mainhp.bottom=animated_red_portal.get_rect()[1]
-            if dest<pygame.display.get_window_size()[0]-razmer_plitki:
-                dest +=razmer_plitki
-            # else:
-            # spisoc.append(plitochniy_zavod.Tsekh('grass',dest,height,map))
-
-            else:
-                dest=0
-                height+=razmer_plitki
-    route.sort(key=lambda element: element[2])
-    for o in route:
-        del o[-1]
-        #     # self.y=self.x
 
 def vibor_bashni(bashnia,shop):
     global apple
-    i=math_utils.poisk_kletki(pygame.mouse.get_pos(),plitki)
+    i=math_utils.poisk_kletki(pygame.mouse.get_pos(),tutorial_level.plitki)
     if shop.numprice<=wallet.money:
         apple=bashnia(i.x,i.get_rect().bottom,True)
         apple.shop=shop
 
 
 def ystanowka_portala(nomer,type):
-    with_portal=plitki[nomer]
+    with_portal=tutorial_level.plitki[nomer]
     if type=='red':
         with_portal.building='red_portal'
     if type=='blue':
@@ -95,7 +28,7 @@ def ystanowka_portala(nomer,type):
 
 def ystanowka_bashni(pos):
     global apple
-    i=math_utils.poisk_kletki(pos,plitki)
+    i=math_utils.poisk_kletki(pos,tutorial_level.plitki)
     if i.type == 'grass' and apple!=None and wallet.money>=apple.shop.numprice and i.building==None:
         wallet.otnimanie(apple.shop.numprice)
         i.building = 'tower'
@@ -109,7 +42,6 @@ wallet=wallet.get_wallet(100 )
 
 house = []
 
-mainhp=hp_System.HP_system(50,50,500,500,100,30)
 clock = pygame.time.Clock()
 
 test_map_ver1= """
@@ -174,15 +106,12 @@ apple=None
 korzina=[]
 korzina.append(apple)
 
-plitki=[]
 
-route=[]
 
 y=80
 
-animated_blue_portal=None
-animated_red_portal=None
-map_regeneration(config['map'])
+
+tutorial_level.map_generation(config['map'])
 
 
 magaz=shop.Magazin(803,80,'images/UI/TowerButtons/button_1.png',35,poisontower.Poison_tower,vibor_bashni)
@@ -221,16 +150,16 @@ def enemy_creating(type,hp):
     enemy = None
     if type=='blue':
         enemy = enemy_factory.enem_factory(type, len(house), True, [0.5, 0.5, 0.5, 0.5], scorost=2.45,
-                                            spisok_tochek=route.copy(),damage=-5,hp=hp)
+                                            spisok_tochek=tutorial_level.route.copy(),damage=-5,hp=hp)
     elif type=='purple':
         enemy = enemy_factory.enem_factory(type, len(house), True, [1, 1, 1, 1], scorost=0.50,
-                                            spisok_tochek=route.copy(),damage=-20,hp=hp)
+                                            spisok_tochek=tutorial_level.route.copy(),damage=-20,hp=hp)
     elif type=='green':
         enemy = enemy_factory.enem_factory(type, len(house), True, [1, 1, 0.5, 0.5], scorost=1.50,
-                                            spisok_tochek=route.copy(),damage=-10,hp=hp)
+                                            spisok_tochek=tutorial_level.route.copy(),damage=-10,hp=hp)
     elif type=='red':
         enemy = enemy_factory.enem_factory(type, len(house), True, [0.8, 0.8, 0.8, 0.8], scorost=0.8,
-                                            spisok_tochek=route.copy(),damage=-15,hp=hp)
+                                            spisok_tochek=tutorial_level.route.copy(),damage=-15,hp=hp)
     if enemy!=None:
         enemys.append(enemy)
 
@@ -272,7 +201,7 @@ def messages(pismo, otpravitel, dop_info):
                     wallet.set_money(100)
                     wallet.otnimanie(-100)
                     mainhp.hp_changing(mainhp.max_hp-mainhp.tec_hp)
-                    map_regeneration(config['map'])
+                    tutorial_level.map_generation(config['map'])
             wallet.otnimanie(-7)
 
 

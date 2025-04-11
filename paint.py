@@ -13,11 +13,11 @@ def risovanie():
     model.clock.tick()
     fps=model.clock.get_fps()
     pygame.display.flip()
-    for p in model.plitki:
+    for p in model.tutorial_level.plitki:
         p.okraska(screen)
 
 
-    model.mainhp.paint()
+
 
     #надписи
 
@@ -26,23 +26,18 @@ def risovanie():
     model.wallet.grafiti(800,0)
 
 
-    model.animated_red_portal.paint()
-    model.animated_blue_portal.paint()
 
-    images=[model.animated_red_portal,model.animated_blue_portal]
 
-    for i in model.plitki:
-        if i.building == 'tower':
-            images.append(i.tower)
+    images=[model.tutorial_level.animated_red_portal,model.tutorial_level.animated_blue_portal]
+
+    # for i in model.plitki:
+    #     if i.building == 'tower':
+    #         images.append(i.tower)
 
     # for i in model.enemys:
     #     images.append(i)
 
     images+=model.enemys
-
-
-    for i in math_utils.sortirovka(images,model.plitki):
-        i.paint(model.perecluthatel)
 
 
     # for p in  range(len(model.enemys)-1,-1,-1):
@@ -51,13 +46,14 @@ def risovanie():
 
 
     # рисование башни на квадрате с мышкой
-    j = math_utils.poisk_kletki(pygame.mouse.get_pos(),model.plitki)
+    j = math_utils.poisk_kletki(pygame.mouse.get_pos(),model.tutorial_level.plitki)
     if j!=None and model.apple!=None:
         rect=j.get_rect()
         if j.type == 'grass' and j.building==None:
             model.apple.colored_drawer(prozrathnost=200)
         else:
             model.apple.colored_drawer(True)
+    model.tutorial_level.paint(model.perecluthatel,images)
 
 
 

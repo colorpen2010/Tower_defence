@@ -18,7 +18,7 @@ def control():
     events = pygame.event.get()
     if model.apple!=None:
         model.apple.control_point(events)
-    for r in model.plitki:
+    for r in model.tutorial_level.plitki:
         if r.tower!= None:
             r.tower.control_point(events)
 
@@ -41,10 +41,7 @@ def control():
     for p in model.enemys:
         p.control(events)
 
-    if model.animated_blue_portal!=None:
-        model.animated_blue_portal.control_center(events)
-    if model.animated_red_portal!=None:
-        model.animated_red_portal.control_center(events)
+    model.tutorial_level.controller(events)
     for m in model.bullets:
         m.controler(events)
 
