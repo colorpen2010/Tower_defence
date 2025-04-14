@@ -1,12 +1,7 @@
 import math,classes
 
-def poisk_kletki(pos,plitki):
-    for i in plitki:
-        rect=i.get_rect()
-        if rect.collidepoint(pos):
-            return i
 
-def sravnivatel(first,kletki,second):
+def sravnivatel(first,kletki,second,level):
     bottom=None
     bottom2=None
 
@@ -26,8 +21,8 @@ def sravnivatel(first,kletki,second):
         bottom2=second.enemy.bottom
 
     if isinstance(first, classes.animator.Animator) and type(second) == classes.enemy_factory.enem_factory:
-            first_plitka = poisk_kletki(first.get_center(), kletki)
-            second_plitka = poisk_kletki([171,456], kletki)
+            first_plitka = level.poisk_kletki(first.get_center())
+            second_plitka = level.poisk_kletki([171,456])
             if second_plitka is not None and first_plitka is not None and first_plitka.y <= second_plitka.y:
                 return 1
 
@@ -38,11 +33,11 @@ def sravnivatel(first,kletki,second):
     if bottom<bottom2:
         return 1
 
-def sortirovka(spisok,kletki,sravnivatel=sravnivatel):
+def sortirovka(spisok,kletki,sravnivatel=sravnivatel,level=None):
     while True:
         worked = False
         for i in range(0,len(spisok)-1,1):
-            if sravnivatel(spisok[i],kletki, spisok[i+1])==-1:
+            if level!=None and sravnivatel(spisok[i],kletki, spisok[i+1],level)==-1:
                 worked=True
                 spisok[i],spisok[i+1]=spisok[i+1],spisok[i]
         if worked==False:

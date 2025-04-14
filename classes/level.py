@@ -3,17 +3,16 @@ from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,w
     warehouse,messenger,hp_System,level
 
 class Level:
-    def __init__(self):
+    def __init__(self,config_map):
 
         self.animated_blue_portal = None
         self.animated_red_portal = None
         self.plitki = []
         self.mainhp = hp_System.HP_system(50, 50, 500, 500, 100, 30)
         self.route = []
+        self._map_generation(config_map)
 
-    def map_generation(self, map):
-        global house,animated_blue_portal,animated_red_portal,mainhp
-
+    def _map_generation(self, map):
         switch = False
         door = []
         etasch = []
@@ -62,11 +61,11 @@ class Level:
 
                 self.plitki.append(plitochniy_zavod.Tsekh(kletka[0], kletka[1], kletka[2], kletka[3]))
                 if kletka[-1]=='(':
-                    animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
+                    self.animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
                 if kletka[-1]==')':
-                    animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
-                    self.mainhp.centerx=animated_red_portal.get_center()[0]
-                    self.mainhp.bottom=animated_red_portal.get_rect()[1]
+                    self.animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
+                    self.mainhp.centerx=self.animated_red_portal.get_center()[0]
+                    self.mainhp.bottom=self.animated_red_portal.get_rect()[1]
                 if dest<pygame.display.get_window_size()[0]-razmer_plitki:
                     dest +=razmer_plitki
                 # else:
@@ -78,19 +77,26 @@ class Level:
                 self.route.sort(key=lambda element: element[2])
         for o in self.route:
             del o[-1]
+        self.house=house
             #     # self.y=self.x
 
     def paint(self,perecluthatel,images):
         screen=pygame.display.get_surface()
 
-        for i in math_utils.sortirovka(images,self.plitki):
-            i.paint(perecluthatel)
-
         for p in self.plitki:
             p.okraska(screen)
+
+
+        images.append(self.animated_red_portal)
+        images.append(self.animated_blue_portal)
+
+        for i in math_utils.sortirovka(images,self.plitki,level=self):
+            i.paint(perecluthatel)
+
+
+
         self.mainhp.paint()
-        animated_red_portal.paint()
-        animated_blue_portal.paint()
+
 
     def controller(self,events):
         if self.animated_blue_portal != None:
@@ -98,8 +104,11 @@ class Level:
         if self.animated_red_portal != None:
             self.animated_red_portal.control_center(events)
 
-    def give_your_towers(self):
-        spisok=[]
+    def give_your_number_of_etashey(self):
+        return len(self.house)
+
+    def poisk_kletki(self,pos):
         for i in self.plitki:
-            spisok.append(i)
-        return spisok
+            rect = i.get_rect()
+            if rect.collidepoint(pos):
+                return i
