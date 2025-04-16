@@ -81,7 +81,7 @@ def control():
             model.enemy_creating('red',2)
 
         if o.type == pygame.MOUSEMOTION and model.apple != None:
-            i = math_utils.poisk_kletki(pygame.mouse.get_pos(), model.plitki)
+            i = model.tutorial_level.poisk_kletki(pygame.mouse.get_pos())
             if i != None:
                 model.apple.x = i.x
                 model.apple.bottom = i.get_rect().bottom

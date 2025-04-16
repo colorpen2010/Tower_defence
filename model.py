@@ -1,121 +1,27 @@
 import pygame, math_utils, yaml, os
 
-from classes import  enemy_factory, shop, wallet, firetower, poisontower, \
+from classes import hp_System,enemy_factory, shop, wallet, firetower, poisontower, \
     stormtower, icetower, messenger, level
-
-
-
-f = open("levels/Tutorial.yaml", 'r', encoding="utf-8")
-config = yaml.safe_load(f)
-
-tutorial_level = level.Level(config['map'])
-
-map_number = 0
-
 
 
 def vibor_bashni(bashnia, shop):
     global apple
     i = tutorial_level.poisk_kletki(pygame.mouse.get_pos())
     if shop.numprice <= wallet.money:
-        apple = bashnia(i.x, i.get_rect().bottom, True)
+        apple = bashnia(i.x, i.get_rect().bottom,tutorial_level.give_your_number_of_etashey(), True)
         apple.shop = shop
-
-
-def ystanowka_portala(nomer, type):
-    with_portal = tutorial_level.plitki[nomer]
-    if type == 'red':
-        with_portal.building = 'red_portal'
-    if type == 'blue':
-        with_portal.building = 'blue_portal'
-
 
 def ystanowka_bashni(pos):
     global apple
-    i = math_utils.poisk_kletki(pos, tutorial_level.plitki)
+    i = tutorial_level.poisk_kletki(pos)
     if i.type == 'grass' and apple != None and wallet.money >= apple.shop.numprice and i.building == None:
         wallet.otnimanie(apple.shop.numprice)
         i.building = 'tower'
         tyipiok = type(apple)
-        i.tower = tyipiok(i.x, i.get_rect().bottom)
+        i.tower = tyipiok(i.x, i.get_rect().bottom,tutorial_level.give_your_number_of_etashey())
         if wallet.money < apple.shop.numprice:
             apple = None
 
-
-wallet = wallet.get_wallet(100)
-
-clock = pygame.time.Clock()
-
-test_map_ver1 = """
-[+_][+_][+_][+_][+_][*+]
-[(*][51][*+][62][+_][*+]
-[+_][*+][+_][*+][+_][*+]
-[+_][*4][*+][73][)+][*+]
-[+_][+_][+_][+_][+_][*+]
-"""
-
-test_map_ver2 = """
-[+_][+_][+_][+_][+_][*+]
-[(*][*+][)+][+_][+_][*+]
-[+_][+_][+_][+_][+_][*+]
-[+_][+_][+_][+_][+_][*+]
-[+_][+_][+_][+_][+_][*+]
-"""
-
-tutorial_map = """
-[(*][1+][+_][4+][*+][5+][+_][*+]
-[+_][*+][+_][*+][+_][*+][+_][*+]
-[+_][*+][+_][*+][+_][*+][+_][*+]
-[+_][*+][+_][*+][+_][*+][+_][*+]
-[+_][*+][+_][*+][+_][*+][+_][*+]
-[+_][*+][+_][*+][+_][*+][+_][*+]
-[+_][2+][*+][3+][+_][6+][)*][*+]
-"""
-
-') выход'
-'( вход'
-'_ трава'
-'+ ничего'
-'* песок'
-
-map = """
-[+_][+_][+_][+_][+_][*+]
-[(*][51][*+][62][+_][*+]
-[+_][*+][+_][*+][+_][*+]
-[+_][*4][*+][73][)+][*+]
-[+_][+_][+_][+_][+_][*+]
-"""
-
-fly = False
-
-# map="""023540
-# 153440
-# 042330
-# 013220
-# 202530"""
-
-bullets = []
-apple = None
-
-korzina = []
-korzina.append(apple)
-
-y = 80
-
-
-magaz = shop.Magazin(803, 80, 'images/UI/TowerButtons/button_1.png', 35, poisontower.Poison_tower, vibor_bashni)
-magaz2 = shop.Magazin(803, 190, 'images/UI/TowerButtons/button_2.png', 70, firetower.Fire_tower, vibor_bashni)
-magaz3 = shop.Magazin(803, 300, 'images/UI/TowerButtons/button_3.png', 140, stormtower.Storm_tower, vibor_bashni)
-magaz4 = shop.Magazin(803, 410, 'images/UI/TowerButtons/button_4.png', 240, icetower.Ice_tower, vibor_bashni)
-bazar = [magaz, magaz2]
-
-change = False
-
-perecluthatel = False
-
-# xy = 50
-
-enemys = []
 
 
 def enemy_creating(type, hp):
@@ -155,9 +61,6 @@ def enemy_creating(type, hp):
         enemys.append(enemy)
 
 
-# enemy2 = enemy_factory.enem_factory('images/Monsters/move/purple_left/00.png',map,True,1,scorost=1,spisok_tochek=spisok_tochek.copy(),bottom=200)
-
-mainhp = tutorial_level.mainhp
 
 
 def messages(pismo, otpravitel, dop_info):
@@ -190,16 +93,46 @@ def messages(pismo, otpravitel, dop_info):
                     f = open("levels/map_" + str(map_number) + ".yaml", 'r', encoding="utf-8")
                     config = yaml.safe_load(f)
                     print(config)
-                    wallet.set_money(100)
-                    wallet.otnimanie(-100)
+                    wallet.otnimanie(-15)
                     mainhp.hp_changing(mainhp.max_hp - mainhp.tec_hp)
                     tutorial_level=level.Level(config['map'])
             wallet.otnimanie(-7)
 
 
+
+f = open("levels/Tutorial.yaml", 'r', encoding="utf-8")
+config = yaml.safe_load(f)
+
+tutorial_level = level.Level(config['map'])
+
+map_number = 0
+
+
+
+
+wallet = wallet.get_wallet(100)
+
+clock = pygame.time.Clock()
+
+
+
+bullets = []
+apple = None
+
+y = 80
+
+mainhp = tutorial_level.mainhp
+
+magaz = shop.Magazin(803, 80, 'images/UI/TowerButtons/button_1.png', 35, poisontower.Poison_tower, vibor_bashni)
+magaz2 = shop.Magazin(803, 190, 'images/UI/TowerButtons/button_2.png', 70, firetower.Fire_tower, vibor_bashni)
+magaz3 = shop.Magazin(803, 300, 'images/UI/TowerButtons/button_3.png', 140, stormtower.Storm_tower, vibor_bashni)
+magaz4 = shop.Magazin(803, 410, 'images/UI/TowerButtons/button_4.png', 240, icetower.Ice_tower, vibor_bashni)
+bazar = [magaz, magaz2]
+
+perecluthatel = False
+
+
+enemys = []
+
+
 messenger.messenger.podpisatsa(messages)
-
-background = pygame.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
-
-# ystanowka_portala(26,'red')
-# ystanowka_portala(2,'blue')

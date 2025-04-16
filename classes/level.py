@@ -85,13 +85,16 @@ class Level:
 
         for p in self.plitki:
             p.okraska(screen)
-
+            if p.tower!=None:
+                images.append(p.tower)
 
         images.append(self.animated_red_portal)
         images.append(self.animated_blue_portal)
 
         for i in math_utils.sortirovka(images,self.plitki,level=self):
             i.paint(perecluthatel)
+
+
 
 
 
