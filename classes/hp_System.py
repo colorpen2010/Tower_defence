@@ -24,3 +24,6 @@ class HP_system(pygame.Rect):
         self.width2=self.width*self.tec_hp/self.max_hp
         if self.tec_hp<=0:
             messenger.messenger.otpravit('death',self,self.owner)
+
+    def set_max_hp(self):
+        self.tec_hp=self.max_hp

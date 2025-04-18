@@ -19,7 +19,7 @@ def control():
     events = pygame.event.get()
     if model.apple != None:
         model.apple.control_point(events)
-    for r in model.tutorial_level.plitki:
+    for r in model.tec_level.plitki:
         if r.tower != None:
             r.tower.control_point(events)
 
@@ -40,7 +40,7 @@ def control():
     for p in model.enemys:
         p.control(events)
 
-    model.tutorial_level.controller(events)
+    model.tec_level.controller(events)
     for m in model.bullets:
         m.controler(events)
 
@@ -81,7 +81,7 @@ def control():
             model.enemy_creating('red',2)
 
         if o.type == pygame.MOUSEMOTION and model.apple != None:
-            i = model.tutorial_level.poisk_kletki(pygame.mouse.get_pos())
+            i = model.tec_level.poisk_kletki(pygame.mouse.get_pos())
             if i != None:
                 model.apple.x = i.x
                 model.apple.bottom = i.get_rect().bottom

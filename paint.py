@@ -20,7 +20,7 @@ def risovanie():
 
     images = []
     images += model.enemys
-    model.tutorial_level.paint(model.perecluthatel, images)
+    model.tec_level.paint(model.perecluthatel, images)
 
     for g in model.bazar:
         g.paint(model.wallet.money >= g.numprice)
@@ -29,7 +29,7 @@ def risovanie():
 
 
     # рисование башни на квадрате с мышкой
-    j = model.tutorial_level.poisk_kletki(pygame.mouse.get_pos())
+    j = model.tec_level.poisk_kletki(pygame.mouse.get_pos())
     if j != None and model.apple != None:
         rect = j.get_rect()
         if j.type == 'grass' and j.building == None:

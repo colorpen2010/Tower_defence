@@ -19,4 +19,4 @@ types:
         hp: 1
     - red:
         count: 1
-        hp: 20
+        hp: 30
