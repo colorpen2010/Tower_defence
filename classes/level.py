@@ -1,6 +1,6 @@
 import pygame,math_utils,yaml,os
 from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,wallet,firetower,poisontower,stormtower,icetower,\
-    warehouse,messenger,hp_System,level
+    warehouse,messenger,hp_System,level,portal
 
 class Level:
     def __init__(self,config_map):
@@ -61,9 +61,11 @@ class Level:
 
                 self.plitki.append(plitochniy_zavod.Tsekh(kletka[0], kletka[1], kletka[2], kletka[3]))
                 if kletka[-1]=='(':
-                    self.animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
+                    # self.animated_blue_portal = animator.Animator('images/Portal/Idle__/blue_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
+                    self.animated_blue_portal = portal.Portal('start',len(house),dest,height+razmer_plitki)
                 if kletka[-1]==')':
-                    self.animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
+                    # self.animated_red_portal = animator.Animator('images/Portal/Idle__/red_idle', 40, len(house), False, x=dest, bottom=height + razmer_plitki)
+                    self.animated_red_portal = portal.Portal('finish',len(house),dest,height+razmer_plitki)
                     self.mainhp.centerx=self.animated_red_portal.get_center()[0]
                     self.mainhp.bottom=self.animated_red_portal.get_rect()[1]
                 if dest<pygame.display.get_window_size()[0]-razmer_plitki:
@@ -87,10 +89,8 @@ class Level:
             p.okraska(screen)
             if p.tower!=None:
                 images.append(p.tower)
-
         images.append(self.animated_red_portal)
         images.append(self.animated_blue_portal)
-
         for i in math_utils.sortirovka(images,self.plitki,level=self):
             i.paint(perecluthatel)
 

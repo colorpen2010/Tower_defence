@@ -5,14 +5,14 @@ def sravnivatel(first,kletki,second,level):
     bottom=None
     bottom2=None
 
-    if isinstance(first,classes.animator.Animator):
+    if isinstance(first,classes.portal.Portal):
         bottom=first.bottom
 
     elif isinstance(first,classes.tower_class.towernicsemus3_alhabethangerald3):
         bottom=first.bottom
     elif type(first)==classes.enemy_factory.enem_factory:
         bottom=first.enemy.bottom
-    if isinstance(second,classes.animator.Animator):
+    if isinstance(second,classes.portal.Portal):
         bottom2=second.bottom
 
     elif isinstance(second,classes.tower_class.towernicsemus3_alhabethangerald3):
@@ -20,10 +20,10 @@ def sravnivatel(first,kletki,second,level):
     elif type(second)==classes.enemy_factory.enem_factory:
         bottom2=second.enemy.bottom
 
-    if isinstance(first, classes.animator.Animator) and type(second) == classes.enemy_factory.enem_factory:
+    if isinstance(first, classes.portal.Portal) and type(second) == classes.enemy_factory.enem_factory:
             first_plitka = level.poisk_kletki(first.get_center())
             second_plitka = level.poisk_kletki([171,456])
-            if second_plitka is not None and first_plitka is not None and first_plitka.y <= second_plitka.y:
+            if second_plitka is not None and first_plitka is not None and first.type=='start':
                 return 1
 
     if bottom>bottom2:
@@ -33,11 +33,11 @@ def sravnivatel(first,kletki,second,level):
     if bottom<bottom2:
         return 1
 
-def sortirovka(spisok,kletki,sravnivatel=sravnivatel,level=None):
+def sortirovka(spisok,kletki,level,sravnivatel=sravnivatel):
     while True:
         worked = False
         for i in range(0,len(spisok)-1,1):
-            if level!=None and sravnivatel(spisok[i],kletki, spisok[i+1],level)==-1:
+            if sravnivatel(spisok[i],kletki, spisok[i+1],level)==-1:
                 worked=True
                 spisok[i],spisok[i+1]=spisok[i+1],spisok[i]
         if worked==False:
