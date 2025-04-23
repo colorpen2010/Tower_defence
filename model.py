@@ -1,7 +1,7 @@
 import pygame, math_utils, yaml, os
 
 from classes import hp_System, enemy_factory, shop, wallet, firetower, poisontower, \
-    stormtower, icetower, messenger, level
+    stormtower, icetower, messenger, level, portal
 
 
 def vibor_bashni(bashnia, shop):
@@ -24,7 +24,7 @@ def ystanowka_bashni(pos):
             apple = None
 
 
-def enemy_creating(type, hp):
+def enemy_creating(type, hp,ret=False):
     """
     есть 4 вида противника:
     blue,
@@ -57,8 +57,10 @@ def enemy_creating(type, hp):
         enemy = enemy_factory.enem_factory(type, tec_level.give_your_number_of_etashey(), True,
                                            [0.8, 0.8, 0.8, 0.8], scorost=0.8,
                                            spisok_tochek=tec_level.route.copy(), damage=-15, hp=hp)
-    if enemy != None:
+    if enemy != None and ret is False:
         enemys.append(enemy)
+    else:
+        return enemy
 
 def try_to_load_config(number):
     if os.path.exists("levels/map_" + str(number) + ".yaml"):
@@ -98,10 +100,19 @@ def messages(pismo, otpravitel, dop_info):
             tec_level=try_to_load_config(map_number)
             if tec_level is None:
                 exit()
+
+
+
+
+
+
 f = open("levels/Tutorial.yaml", 'r', encoding="utf-8")
 config = yaml.safe_load(f)
 
 tec_level = level.Level(config['map'])
+
+
+
 
 map_number = 0
 
@@ -127,3 +138,12 @@ perecluthatel = False
 enemys = []
 
 messenger.messenger.podpisatsa(messages)
+
+# blue=enemy_creating('blue',1,True)
+# green=enemy_creating('green',2,True)
+# blue_portal=portal.Portal('start',10,5,12+3)
+# red_portal=portal.Portal('finish',10,2,5+4)
+# objects=[blue,green,blue_portal,red_portal]
+# print(math_utils.sravnivatel(blue_portal,[],blue,tec_level)==1)
+# print(math_utils.sravnivatel(blue_portal,[],green,tec_level)==1)
+# print(math_utils.sravnivatel(red_portal,[],blue,tec_level)==1)

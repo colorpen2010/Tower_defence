@@ -1,6 +1,7 @@
 import math,classes
 
 
+
 def sravnivatel(first,kletki,second,level):
     bottom=None
     bottom2=None
@@ -20,11 +21,12 @@ def sravnivatel(first,kletki,second,level):
     elif type(second)==classes.enemy_factory.enem_factory:
         bottom2=second.enemy.bottom
 
-    if isinstance(first, classes.portal.Portal) and type(second) == classes.enemy_factory.enem_factory:
+    if type(first) == classes.enemy_factory.enem_factory and isinstance(second , classes.portal.Portal):
             first_plitka = level.poisk_kletki(first.get_center())
             second_plitka = level.poisk_kletki([171,456])
-            if second_plitka is not None and first_plitka is not None and first.type=='start':
-                return 1
+            # if second_plitka is not None and first_plitka is not None and first.type=='start':
+            if second.type=='start':
+                return -1
 
     if bottom>bottom2:
         return -1
@@ -37,6 +39,7 @@ def sortirovka(spisok,kletki,level,sravnivatel=sravnivatel):
     while True:
         worked = False
         for i in range(0,len(spisok)-1,1):
+            print(type(spisok[i]),type(spisok[i+1]),sravnivatel(spisok[i],kletki, spisok[i+1],level))
             if sravnivatel(spisok[i],kletki, spisok[i+1],level)==-1:
                 worked=True
                 spisok[i],spisok[i+1]=spisok[i+1],spisok[i]
