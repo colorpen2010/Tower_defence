@@ -4,7 +4,7 @@ from classes import animator, enemy_factory, tower_class,plitochniy_zavod,shop,w
 
 class Level:
     def __init__(self,config_map):
-
+        self.font = pygame.font.SysFont('arial', 50)
         self.animated_blue_portal = None
         self.animated_red_portal = None
         self.plitki = []
@@ -93,7 +93,13 @@ class Level:
         images.append(self.animated_blue_portal)
         for i in math_utils.sortirovka(images,self.plitki,level=self):
             i.paint(perecluthatel)
-
+        if perecluthatel:
+            shoti = 0
+            for u in self.route:
+                pygame.draw.circle(screen, [0, 0, 0], u, 10)
+                pos = self.font.render(str(shoti), True, [255, 0, 0])
+                screen.blit(pos, u)
+                shoti += 1
 
 
 

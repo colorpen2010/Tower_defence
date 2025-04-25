@@ -22,17 +22,15 @@ def sravnivatel(first,kletki,second,level):
         bottom2=second.enemy.bottom
 
     if type(first) == classes.enemy_factory.enem_factory and isinstance(second , classes.portal.Portal):
-            first_plitka = level.poisk_kletki(first.get_center())
-            second_plitka = level.poisk_kletki([171,456])
-            # if second_plitka is not None and first_plitka is not None and first.type=='start':
-            if second.type=='start':
-                return -1
+            return -1
+    if isinstance(first , classes.portal.Portal) and type(second) == classes.enemy_factory.enem_factory:
+        return 1
 
-    if bottom>bottom2:
+    elif bottom>bottom2:
         return -1
-    if bottom==bottom2:
+    elif bottom==bottom2:
         return 0
-    if bottom<bottom2:
+    elif bottom<bottom2:
         return 1
 
 def sortirovka(spisok,kletki,level,sravnivatel=sravnivatel):
