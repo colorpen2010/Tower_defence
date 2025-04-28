@@ -19,12 +19,12 @@ def risovanie():
     # надписи
 
     images = []
-    images += model.enemys
+    images += model.tutorial_wave.enemys
     model.tec_level.paint(model.perecluthatel, images)
 
     for g in model.bazar:
-        g.paint(model.wallet.money >= g.numprice)
-    model.wallet.grafiti(800, 0)
+        g.paint(model.tec_level.wallet.money >= g.numprice)
+    model.tec_level.wallet.grafiti(800, 0)
 
 
 

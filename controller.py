@@ -4,14 +4,7 @@ from classes.firetower import Fire_tower
 from classes.poisontower import Poison_tower
 
 ev = pygame.event.custom_type()
-pygame.time.set_timer(ev, 3000)
 
-first_enemy = model.config['types'][0]
-enemy_type = list(first_enemy.keys())[0]
-enemy_settings = first_enemy[enemy_type]
-print(enemy_settings)
-count = enemy_settings['count']
-print(count)
 
 
 def control():
@@ -24,14 +17,7 @@ def control():
             r.tower.control_point(events)
 
         # print(count)
-        if count <= 0 and model.config['types'] != []:
-            del model.config['types'][0]
-            if model.config['types'] != []:
-                first_enemy = model.config['types'][0]
-                enemy_type = list(first_enemy.keys())[0]
-                enemy_settings = first_enemy[enemy_type]
-                count = enemy_settings['count']
-
+    model.tutorial_wave.controller(events)
     # print(b)
     # count= types['green'][0]
 
@@ -55,11 +41,7 @@ def control():
                 if i.tower != None:
                     i.tower.vistrel()
 
-        if o.type == ev:
-            if model.config['types'] != {}:
-                if count > 0:
-                    model.enemy_creating(enemy_type, enemy_settings['hp'])
-                    count -= 1
+
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_UP:
             model.mainhp.hp_changing(15)

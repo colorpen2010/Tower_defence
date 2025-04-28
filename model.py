@@ -1,7 +1,7 @@
 import pygame, math_utils, yaml, os
 
 from classes import hp_System, enemy_factory, shop, wallet, firetower, poisontower, \
-    stormtower, icetower, messenger, level, portal
+    stormtower, icetower, messenger, level, portal,wave
 
 
 def vibor_bashni(bashnia, shop):
@@ -24,43 +24,7 @@ def ystanowka_bashni(pos):
             apple = None
 
 
-def enemy_creating(type, hp,ret=False):
-    """
-    есть 4 вида противника:
-    blue,
-    purple,
-    green,
-    red.
 
-    there are 4 types of enemy:
-    blue,
-    green,
-    purple,
-    red.
-    :param type:
-    :return:
-    """
-    enemy = None
-    if type == 'blue':
-        enemy = enemy_factory.enem_factory(type, tec_level.give_your_number_of_etashey(), True,
-                                           [0.5, 0.5, 0.5, 0.5], scorost=2.45,
-                                           spisok_tochek=tec_level.route.copy(), damage=-5, hp=hp)
-    elif type == 'purple':
-        enemy = enemy_factory.enem_factory(type, tec_level.give_your_number_of_etashey(), True, [1, 1, 1, 1],
-                                           scorost=0.50,
-                                           spisok_tochek=tec_level.route.copy(), damage=-20, hp=hp)
-    elif type == 'green':
-        enemy = enemy_factory.enem_factory(type, tec_level.give_your_number_of_etashey(), True, [1, 1, 0.5, 0.5],
-                                           scorost=1.50,
-                                           spisok_tochek=tec_level.route.copy(), damage=-10, hp=hp)
-    elif type == 'red':
-        enemy = enemy_factory.enem_factory(type, tec_level.give_your_number_of_etashey(), True,
-                                           [0.8, 0.8, 0.8, 0.8], scorost=0.8,
-                                           spisok_tochek=tec_level.route.copy(), damage=-15, hp=hp)
-    if enemy != None and ret is False:
-        enemys.append(enemy)
-    else:
-        return enemy
 
 def try_to_load_config(number):
     if os.path.exists("levels/map_" + str(number) + ".yaml"):
@@ -75,10 +39,6 @@ def try_to_load_config(number):
 
 def messages(pismo, otpravitel, dop_info):
     global map_number, config,tec_level
-    if pismo == 'enemy_at_end':
-        # print('E.A.E')
-        enemys.remove(otpravitel)
-        mainhp.hp_changing(dop_info)
     if pismo == 'bullet_letit':
         # print('B.A.P')
         for i in enemys:
@@ -92,14 +52,12 @@ def messages(pismo, otpravitel, dop_info):
 
     if pismo == 'death' and mainhp is otpravitel:        exit()
 
-    if pismo == 'death':
-        enemys.remove(dop_info)
-        wallet.otnimanie(-15)
-        if enemys == []:
-            map_number += 1
-            tec_level=try_to_load_config(map_number)
-            if tec_level is None:
-                exit()
+
+    if pismo == 'wave_no_enemys':
+        map_number += 1
+        tec_level=try_to_load_config(map_number)
+        if tec_level is None:
+            exit()
 
 
 
@@ -111,12 +69,10 @@ config = yaml.safe_load(f)
 
 tec_level = level.Level(config['map'])
 
-
-
+tutorial_wave=wave.Wave(tec_level,config['types'])
 
 map_number = 0
 
-wallet = wallet.get_wallet(100)
 
 clock = pygame.time.Clock()
 
