@@ -1,13 +1,13 @@
 import pygame, math_utils, yaml, os
 
-from classes import hp_System, enemy_factory, shop, wallet, firetower, poisontower, \
+from classes import hp_System, enemy_factory, shop, firetower, poisontower, \
     stormtower, icetower, messenger, level, portal,wave
 
 
 def vibor_bashni(bashnia, shop):
     global apple
     i = tec_level.poisk_kletki(pygame.mouse.get_pos())
-    if shop.numprice <= wallet.money:
+    if shop.numprice <= tec_level.wallet.money:
         apple = bashnia(i.x, i.get_rect().bottom, tec_level.give_your_number_of_etashey(), True)
         apple.shop = shop
 
@@ -15,12 +15,12 @@ def vibor_bashni(bashnia, shop):
 def ystanowka_bashni(pos):
     global apple
     i = tec_level.poisk_kletki(pos)
-    if i.type == 'grass' and apple != None and wallet.money >= apple.shop.numprice and i.building == None:
-        wallet.otnimanie(apple.shop.numprice)
+    if i.type == 'grass' and apple != None and tec_level.wallet.money >= apple.shop.numprice and i.building == None:
+        tec_level.wallet.otnimanie(apple.shop.numprice)
         i.building = 'tower'
         tyipiok = type(apple)
         i.tower = tyipiok(i.x, i.get_rect().bottom, tec_level.give_your_number_of_etashey())
-        if wallet.money < apple.shop.numprice:
+        if tec_level.wallet.money < apple.shop.numprice:
             apple = None
 
 
@@ -30,9 +30,7 @@ def try_to_load_config(number):
     if os.path.exists("levels/map_" + str(number) + ".yaml"):
         f = open("levels/map_" + str(map_number) + ".yaml", 'r', encoding="utf-8")
         config = yaml.safe_load(f)
-        print(config)
-        wallet.set_money(100)
-        mainhp.set_max_hp()
+        # print(config)
         return level.Level(config['map'])
     else:
         return None
@@ -69,7 +67,7 @@ config = yaml.safe_load(f)
 
 tec_level = level.Level(config['map'])
 
-tutorial_wave=wave.Wave(tec_level,config['types'])
+tec_wave=wave.Wave(tec_level, config['types'])
 
 map_number = 0
 
@@ -91,10 +89,8 @@ bazar = [magaz, magaz2]
 
 perecluthatel = False
 
-enemys = []
 
 messenger.messenger.podpisatsa(messages)
-
 # blue=enemy_creating('blue',1,True)
 # green=enemy_creating('green',2,True)
 # blue_portal=portal.Portal('start',10,5,12+3)

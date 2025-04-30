@@ -17,14 +17,13 @@ def control():
             r.tower.control_point(events)
 
         # print(count)
-    model.tutorial_wave.controller(events)
+    model.tec_wave.controller(events)
     # print(b)
     # count= types['green'][0]
 
     # count-=1
 
-    for p in model.enemys:
-        p.control(events)
+
 
     model.tec_level.controller(events)
     for m in model.bullets:
@@ -36,10 +35,6 @@ def control():
     for o in events:
         if o.type == pygame.QUIT:
             exit()
-        if o.type == pygame.KEYDOWN and o.key == pygame.K_SPACE:
-            for i in model.plitki:
-                if i.tower != None:
-                    i.tower.vistrel()
 
 
 
@@ -70,7 +65,7 @@ def control():
         if o.type == pygame.KEYDOWN and o.key == pygame.K_TAB:
             model.perecluthatel = not model.perecluthatel
         if o.type == pygame.KEYDOWN and o.key == pygame.K_r:
-            model.wallet.otnimanie(-1000)
+            model.tec_level.wallet.otnimanie(-1000)
         if o.type == pygame.MOUSEBUTTONDOWN and o.button == pygame.BUTTON_LEFT:
             model.ystanowka_bashni(o.pos)
         if o.type == pygame.KEYDOWN and o.key == pygame.K_ESCAPE:

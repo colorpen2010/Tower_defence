@@ -19,7 +19,7 @@ def risovanie():
     # надписи
 
     images = []
-    images += model.tutorial_wave.enemys
+    images += model.tec_wave.enemys
     model.tec_level.paint(model.perecluthatel, images)
 
     for g in model.bazar:

@@ -37,7 +37,7 @@ def sortirovka(spisok,kletki,level,sravnivatel=sravnivatel):
     while True:
         worked = False
         for i in range(0,len(spisok)-1,1):
-            print(type(spisok[i]),type(spisok[i+1]),sravnivatel(spisok[i],kletki, spisok[i+1],level))
+            # print(type(spisok[i]),type(spisok[i+1]),sravnivatel(spisok[i],kletki, spisok[i+1],level))
             if sravnivatel(spisok[i],kletki, spisok[i+1],level)==-1:
                 worked=True
                 spisok[i],spisok[i+1]=spisok[i+1],spisok[i]
