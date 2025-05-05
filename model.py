@@ -31,12 +31,14 @@ def try_to_load_config(number):
         f = open("levels/map_" + str(map_number) + ".yaml", 'r', encoding="utf-8")
         config = yaml.safe_load(f)
         # print(config)
-        return level.Level(config['map'])
+        tec_level=level.Level(config['map'])
+        tec_wave = wave.Wave(tec_level, config['types'])
+        return tec_level,tec_wave
     else:
         return None
 
 def messages(pismo, otpravitel, dop_info):
-    global map_number, config,tec_level
+    global map_number, config,tec_level,tec_wave
         # print('B.A.P')
 
 
@@ -46,8 +48,10 @@ def messages(pismo, otpravitel, dop_info):
 
     if pismo == 'wave_no_enemys':
         map_number += 1
-        tec_level=try_to_load_config(map_number)
-        if tec_level is None:
+        resultat=try_to_load_config(map_number)
+        if resultat!= None:
+            tec_level, tec_wave=resultat
+        else:
             exit()
 
 

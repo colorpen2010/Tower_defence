@@ -73,20 +73,23 @@ class Wave():
                 self.enemy_spawning()
 
     def enemy_spawning(self):
-        if self.types != {}:
+        if len(self.types)!=0:
             if self.count > 0:
                 self.enemy_creating(self.enemy_type, self.enemy_settings['hp'])
                 self.count -= 1
 
+
+
+
     def enemy_changing(self):
-        if self.types != []:
+        if len(self.types) !=0:
             self.first_enemy = self.types[0]
             self.enemy_type = list(self.first_enemy.keys())[0]
             self.enemy_settings = self.first_enemy[self.enemy_type]
             self.count = self.enemy_settings['count']
             print(self.first_enemy, self.enemy_type, self.enemy_settings)
     def messages(self, pismo, otpravitel, dop_info):
-        if pismo == 'bullet_at_pos':
+        if pismo == 'bullet_at_pos' and otpravitel in self.bullets:
             # print('B.A.P')
             self.bullets.remove(otpravitel)
         if pismo == 'bullet_letit':
@@ -95,10 +98,17 @@ class Wave():
                     hp_System.HP_system.hp_changing(i.hp, -  otpravitel.damage)
                     self.bullets.remove(otpravitel)
                     break
-        if pismo == 'enemy_at_end':
+        if pismo == 'enemy_at_end' and otpravitel in self.enemys:
             # print('E.A.E')
             self.enemys.remove(otpravitel)
             self.tec_level.mainhp.hp_changing(dop_info)
-        if pismo == 'death':
+            self.level_switch()
+        if pismo == 'death' and dop_info in self.enemys:
             self.enemys.remove(dop_info)
             self.tec_level.wallet.otnimanie(-15)
+            self.level_switch()
+
+
+    def level_switch(self):
+        if self.count == 0 and len(self.enemys) == 0 and len(self.types) == 0:
+            messenger.messenger.otpravit('wave_no_enemys', self)
