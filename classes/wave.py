@@ -1,5 +1,5 @@
 import pygame
-from classes import enemy_factory, messenger
+from classes import enemy_factory, messenger,hp_System
 
 
 class Wave():
@@ -9,6 +9,7 @@ class Wave():
         self.types = types
         self.ev = pygame.event.custom_type()
         self.enemy_changing()
+        self.bullets = []
 
         pygame.time.set_timer(self.ev, 3000)
         messenger.messenger.podpisatsa(self.messages)
@@ -52,7 +53,13 @@ class Wave():
         else:
             return enemy
 
+    def paint(self):
+        for m in self.bullets:
+            m.okraska()
+
     def controller(self, events):
+        for m in self.bullets:
+            m.controler(events)
         for p in self.enemys:
             p.control(events)
         for o in events:
@@ -79,11 +86,19 @@ class Wave():
             self.count = self.enemy_settings['count']
             print(self.first_enemy, self.enemy_type, self.enemy_settings)
     def messages(self, pismo, otpravitel, dop_info):
-        global map_number, config, tec_level
+        if pismo == 'bullet_at_pos':
+            # print('B.A.P')
+            self.bullets.remove(otpravitel)
+        if pismo == 'bullet_letit':
+            for i in self.enemys:
+                if i.get_rect().collidepoint(otpravitel.x, otpravitel.y):
+                    hp_System.HP_system.hp_changing(i.hp, -  otpravitel.damage)
+                    self.bullets.remove(otpravitel)
+                    break
         if pismo == 'enemy_at_end':
             # print('E.A.E')
             self.enemys.remove(otpravitel)
-            tec_level.mainhp.hp_changing(dop_info)
+            self.tec_level.mainhp.hp_changing(dop_info)
         if pismo == 'death':
             self.enemys.remove(dop_info)
-            tec_level.wallet.otnimanie(-15)
+            self.tec_level.wallet.otnimanie(-15)

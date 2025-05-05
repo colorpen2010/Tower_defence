@@ -26,8 +26,7 @@ def control():
 
 
     model.tec_level.controller(events)
-    for m in model.bullets:
-        m.controler(events)
+
 
     for q in model.bazar:
         q.controller(events)

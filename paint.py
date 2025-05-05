@@ -21,6 +21,7 @@ def risovanie():
     images = []
     images += model.tec_wave.enemys
     model.tec_level.paint(model.perecluthatel, images)
+    model.tec_wave.paint()
 
     for g in model.bazar:
         g.paint(model.tec_level.wallet.money >= g.numprice)
@@ -42,5 +43,4 @@ def risovanie():
         show_fps = font.render(str(int(fps)), True, [255, 0, 0])
         screen.blit(show_fps, [10, 20])
 
-    for m in model.bullets:
-        m.okraska()
+

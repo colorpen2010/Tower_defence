@@ -15,7 +15,7 @@ types:
         count: 1
         hp: 12
     - blue:
-          count: 1
+          count: 50
           hp: 1
     - purple:
           count: 1

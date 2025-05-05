@@ -37,16 +37,9 @@ def try_to_load_config(number):
 
 def messages(pismo, otpravitel, dop_info):
     global map_number, config,tec_level
-    if pismo == 'bullet_letit':
         # print('B.A.P')
-        for i in enemys:
-            if i.get_rect().collidepoint(otpravitel.x, otpravitel.y):
-                hp_System.HP_system.hp_changing(i.hp, -  otpravitel.damage)
-                bullets.remove(otpravitel)
-                break
-    if pismo == 'bullet_at_pos':
-        # print('B.A.P')
-        bullets.remove(otpravitel)
+
+
 
     if pismo == 'death' and mainhp is otpravitel:        exit()
 
@@ -74,7 +67,6 @@ map_number = 0
 
 clock = pygame.time.Clock()
 
-bullets = []
 apple = None
 
 y = 80
