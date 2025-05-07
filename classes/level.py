@@ -9,6 +9,7 @@ class Level:
         self.animated_red_portal = None
         self.plitki = []
         self.wallet = wallet.get_wallet(100)
+        self.wallet.set_money(100)
         self.mainhp = hp_System.HP_system(50, 50, 500, 500, 100, 30)
         self.route = []
         self._map_generation(config_map)

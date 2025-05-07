@@ -38,7 +38,7 @@ def try_to_load_config(number):
         return None
 
 def messages(pismo, otpravitel, dop_info):
-    global map_number, config,tec_level,tec_wave
+    global map_number, config,tec_level,tec_wave,apple
         # print('B.A.P')
 
 
@@ -49,6 +49,7 @@ def messages(pismo, otpravitel, dop_info):
     if pismo == 'wave_no_enemys':
         map_number += 1
         resultat=try_to_load_config(map_number)
+        apple = None
         if resultat!= None:
             tec_level, tec_wave=resultat
         else:
