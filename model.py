@@ -4,6 +4,7 @@ from classes import hp_System, enemy_factory, shop, firetower, poisontower, \
     stormtower, icetower, messenger, level, portal,wave
 
 
+
 def vibor_bashni(bashnia, shop):
     global apple
     i = tec_level.poisk_kletki(pygame.mouse.get_pos())

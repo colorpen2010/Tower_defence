@@ -1,5 +1,5 @@
 import pygame, model, math_utils
-from classes import warehouse
+from classes import messenger
 from classes.firetower import Fire_tower
 from classes.poisontower import Poison_tower
 
@@ -41,6 +41,8 @@ def control():
             model.mainhp.hp_changing(15)
         if o.type == pygame.KEYDOWN and o.key == pygame.K_DOWN:
             model.mainhp.hp_changing(-15)
+        if o.type == pygame.KEYDOWN and o.key == pygame.K_LEFT:
+            messenger.messenger.otpravit('wave_no_enemys',events)
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_1:
             print('spawned monster_blue')
