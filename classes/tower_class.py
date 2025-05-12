@@ -1,5 +1,5 @@
 import image_worker, pygame, os, kakoito_resizer,math
-from classes import animator,warehouse
+from classes import animator,warehouse,timer_launcher
 
 class towernicsemus3_alhabethangerald3():
     def __init__(self,enemy_spisok, map,reversed,x,bottom,pyt='images/Images_for_tests/tower/Tower_Entity.png',milisec=3000,dont_shoot=False):
@@ -14,7 +14,7 @@ class towernicsemus3_alhabethangerald3():
         self.dont_shoot=dont_shoot
         self.event=pygame.event.custom_type()
         self.milisec=milisec
-        pygame.time.set_timer(self.event,self.milisec)
+        timer_launcher.timer_worker.create_timer(self.event,self.milisec)
 
         self.bottom=bottom
         self.reversed=reversed

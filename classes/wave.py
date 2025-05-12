@@ -1,5 +1,5 @@
 import pygame
-from classes import enemy_factory, messenger,hp_System
+from classes import enemy_factory, messenger,hp_System,timer_launcher
 
 
 class Wave():
@@ -11,7 +11,7 @@ class Wave():
         self.enemy_changing()
         self.bullets = []
 
-        pygame.time.set_timer(self.ev, 3000)
+        timer_launcher.timer_worker.create_timer(self.ev, 3000)
         messenger.messenger.podpisatsa(self.messages)
 
     def enemy_creating(self, type, hp, ret=False):
@@ -92,7 +92,7 @@ class Wave():
         if pismo == 'bullet_at_pos' and otpravitel in self.bullets:
             # print('B.A.P')
             self.bullets.remove(otpravitel)
-        if pismo == 'bullet_letit':
+        if pismo == 'bullet_letit' and otpravitel in self.bullets:
             for i in self.enemys:
                 if i.get_rect().collidepoint(otpravitel.x, otpravitel.y):
                     hp_System.HP_system.hp_changing(i.hp, -  otpravitel.damage)

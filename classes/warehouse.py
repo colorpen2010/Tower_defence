@@ -1,8 +1,7 @@
 import math,math_utils
-from classes import messenger
+from classes import messenger,timer_launcher
 
 import pygame,time
-from numpy.ma.core import angle
 
 import kakoito_resizer
 
@@ -19,7 +18,7 @@ class Ammunition():
         self.bullet=kakoito_resizer.creating_objects_x(pyt, map, size)
         self.bullet2=self.bullet
         self.wrema=pygame.event.custom_type()
-        pygame.time.set_timer(self.wrema, 10)
+        timer_launcher.timer_worker.create_timer(self.wrema, 10)
     def okraska(self,debug=False):
         screen=pygame.display.get_surface()
         screen.blit(self.bullet2,[self.x,self.y])

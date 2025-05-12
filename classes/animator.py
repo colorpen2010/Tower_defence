@@ -1,5 +1,5 @@
 import pygame
-from pygame.examples.vgrade import timer
+from classes import timer_launcher
 
 import kakoito_resizer,os
 
@@ -10,7 +10,7 @@ class Animator:
         self.x,self.bottom=x,bottom
         self.one=0
         self.wrema=pygame.event.custom_type()
-        pygame.time.set_timer(self.wrema, mili_sec)
+        timer_launcher.timer_worker.create_timer(self.wrema,mili_sec)
         self.imaging_this_beautiful_image=self.downloader(pyt,map,procent,reverse,True)
 
     @staticmethod
