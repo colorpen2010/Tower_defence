@@ -30,7 +30,7 @@ class Ammunition():
                 self.mouse_mode= not self.mouse_mode
             if self.fly and i.type == self.wrema:
                 self.traektoria()
-                break
+                # break
         if self.mouse_mode:
             self.end_pos[0]=pygame.mouse.get_pos()[0]
             self.end_pos[1]=pygame.mouse.get_pos()[1]

@@ -80,9 +80,9 @@ y = 80
 mainhp = tec_level.mainhp
 
 magaz = shop.Magazin(803, 80, 'images/UI/TowerButtons/button_1.png', 35, poisontower.Poison_tower, vibor_bashni)
-magaz2 = shop.Magazin(803, 190, 'images/UI/TowerButtons/button_2.png', 70, firetower.Fire_tower, vibor_bashni)
-magaz3 = shop.Magazin(803, 300, 'images/UI/TowerButtons/button_3.png', 140, stormtower.Storm_tower, vibor_bashni)
-magaz4 = shop.Magazin(803, 410, 'images/UI/TowerButtons/button_4.png', 240, icetower.Ice_tower, vibor_bashni)
+magaz2 = shop.Magazin(803, 190, 'images/UI/TowerButtons/button_2.png', 100, firetower.Fire_tower, vibor_bashni)
+magaz3 = shop.Magazin(803, 300, 'images/UI/TowerButtons/button_3.png', 135, stormtower.Storm_tower, vibor_bashni)
+magaz4 = shop.Magazin(803, 410, 'images/UI/TowerButtons/button_4.png', 235, icetower.Ice_tower, vibor_bashni)
 bazar = [magaz, magaz2]
 
 perecluthatel = False
