@@ -22,6 +22,9 @@ def risovanie():
     images += model.tec_wave.enemys
     model.tec_level.paint(model.perecluthatel, images)
     model.tec_wave.paint()
+    model.normal.risyem(screen)
+    model.speed.risyem(screen)
+    model.super_speed.risyem(screen)
 
     for g in model.bazar:
         g.paint(model.tec_level.wallet.money >= g.numprice)

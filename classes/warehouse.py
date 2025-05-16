@@ -19,10 +19,15 @@ class Ammunition():
         self.bullet2=self.bullet
         self.wrema=pygame.event.custom_type()
         timer_launcher.timer_worker.create_timer(self.wrema, 10)
+
+
     def okraska(self,debug=False):
         screen=pygame.display.get_surface()
         screen.blit(self.bullet2,[self.x,self.y])
 
+
+    def __del__(self):
+        timer_launcher.timer_worker.delete_timer(self.wrema)
 
     def controler(self,events):
         for i in events:

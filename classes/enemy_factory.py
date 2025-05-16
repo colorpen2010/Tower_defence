@@ -66,6 +66,9 @@ class enem_factory():
         self.hp.paint()
         self.enemy.paint(debug)
 
+    def __del__(self):
+        timer_launcher.timer_worker.delete_timer(self.walking)
+
     def get_center(self):
         return self.enemy.get_center()
 

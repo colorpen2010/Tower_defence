@@ -16,9 +16,17 @@ class Time():
         for event in self.timer_events:
             self.shoti(event[0],event[1])
 
+    def delete_timer(self,event_number):
+        pygame.time.set_timer(event_number,0)
+        for o in self.timer_events:
+            if o[0]==event_number:
+                self.timer_events.remove(o)
+
+
     def shoti(self,event_number,miliseconds):
         procent_result = self.procent / 100 * miliseconds
-        self.timer = pygame.time.set_timer(event_number, int(procent_result))
+        pygame.time.set_timer(event_number,0)
+        pygame.time.set_timer(event_number, int(procent_result))
 
 
 timer_worker=Time()

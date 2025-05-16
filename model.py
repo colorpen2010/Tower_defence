@@ -1,7 +1,7 @@
 import pygame, math_utils, yaml, os
 
 from classes import hp_System, enemy_factory, shop, firetower, poisontower, \
-    stormtower, icetower, messenger, level, portal,wave
+    stormtower, icetower, messenger, level, portal,wave,buttons,timer_launcher
 
 
 
@@ -74,6 +74,11 @@ map_number = 0
 clock = pygame.time.Clock()
 
 apple = None
+
+normal=buttons.Knopka(50,50,"images/UI/speedup/1.png",timer_launcher.timer_worker.timers_change,dop_info={"procent": 100})
+speed=buttons.Knopka(100,50,"images/UI/speedup/2.png",timer_launcher.timer_worker.timers_change,dop_info={"procent": 50})
+super_speed=buttons.Knopka(150,50,"images/UI/speedup/4.png",timer_launcher.timer_worker.timers_change,dop_info={"procent": 25})
+
 
 y = 80
 

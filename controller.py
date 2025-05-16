@@ -30,10 +30,14 @@ def control():
 
     for q in model.bazar:
         q.controller(events)
-
+    print(len(events),len(timer_launcher.timer_worker.timer_events))
     for o in events:
         if o.type == pygame.QUIT:
             exit()
+
+        model.normal.controller(events)
+        model.speed.controller(events)
+        model.super_speed.controller(events)
 
 
 
@@ -43,12 +47,8 @@ def control():
             model.mainhp.hp_changing(-15)
         if o.type == pygame.KEYDOWN and o.key == pygame.K_LEFT:
             messenger.messenger.otpravit('wave_no_enemys',events)
-        if o.type == pygame.KEYDOWN and o.key == pygame.K_a:
-            timer_launcher.timer_worker.timers_change(50)
-        if o.type == pygame.KEYDOWN and o.key == pygame.K_s:
-            timer_launcher.timer_worker.timers_change(100)
-        if o.type == pygame.KEYDOWN and o.key == pygame.K_d:
-            timer_launcher.timer_worker.timers_change(200)
+        # if o.type == pygame.KEYDOWN and o.key == pygame.K_a:
+
 
         if o.type == pygame.KEYDOWN and o.key == pygame.K_1:
             print('spawned monster_blue')
