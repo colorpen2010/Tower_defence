@@ -16,6 +16,8 @@ def control():
         if r.tower != None:
             r.tower.control_point(events)
 
+    timer_launcher.timer_worker.controller(events)
+
         # print(count)
     model.tec_wave.controller(events)
     # print(b)

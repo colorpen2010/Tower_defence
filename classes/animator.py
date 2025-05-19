@@ -10,7 +10,7 @@ class Animator:
         self.x,self.bottom=x,bottom
         self.one=0
         self.wrema=pygame.event.custom_type()
-        timer_launcher.timer_worker.create_timer(self.wrema,mili_sec)
+        timer_launcher.timer_worker.create_timer(self.wrema,mili_sec,self.smena_kartinki)
         self.imaging_this_beautiful_image=self.downloader(pyt,map,procent,reverse,True)
 
     @staticmethod
@@ -28,9 +28,9 @@ class Animator:
 
 
     def control_center(self,events):
-        for o in events:
-            if o.type == self.wrema:
-                self.smena_kartinki()
+        pass
+    #     for o in events:
+    #         if o.type == self.wrema:
     def smena_kartinki(self):
         if len(self.imaging_this_beautiful_image)-1>self.one:
                 self.one+=1

@@ -6,10 +6,13 @@ class Time():
     def __init__(self):
         self.timer_events=[]
         self.procent=100
+        self.center=pygame.event.custom_type()
+        pygame.time.set_timer(self.center,10)
 
-    def create_timer(self,event_number,miliseconds):
-        self.shoti(event_number, miliseconds)
-        self.timer_events.append([event_number,miliseconds])
+    def create_timer(self,event_number,miliseconds,deef=None):
+        # self.shoti(event_number, miliseconds)
+        if deef!=None:
+            self.timer_events.append([event_number,miliseconds,0,deef])
 
     def timers_change(self,procent):
         self.procent=procent
@@ -24,9 +27,22 @@ class Time():
 
 
     def shoti(self,event_number,miliseconds):
-        procent_result = self.procent / 100 * miliseconds
-        pygame.time.set_timer(event_number,0)
-        pygame.time.set_timer(event_number, int(procent_result))
+        pass
+        # procent_result = self.procent / 100 * miliseconds
+        # pygame.time.set_timer(event_number,0)
+        # pygame.time.set_timer(event_number, int(procent_result))
+
+
+    def controller(self,events):
+        for o in events:
+            if o.type == self.center:
+                for i in self.timer_events:
+                    i[2]+=10
+                    if i[2]>=i[1]:
+                        i[3]()
+                        i[2]-=i[1]
+
+        print(self.timer_events)
 
 
 timer_worker=Time()
