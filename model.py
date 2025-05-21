@@ -9,6 +9,8 @@ def vibor_bashni(bashnia, shop):
     global apple
     i = tec_level.poisk_kletki(pygame.mouse.get_pos())
     if shop.numprice <= tec_level.wallet.money:
+        if apple is not None:
+            apple.kill_me()
         apple = bashnia(i.x, i.get_rect().bottom, tec_level.give_your_number_of_etashey(), True)
         apple.shop = shop
 
@@ -22,6 +24,7 @@ def ystanowka_bashni(pos):
         tyipiok = type(apple)
         i.tower = tyipiok(i.x, i.get_rect().bottom, tec_level.give_your_number_of_etashey())
         if tec_level.wallet.money < apple.shop.numprice:
+            apple.kill_me()
             apple = None
 
 
@@ -50,6 +53,7 @@ def messages(pismo, otpravitel, dop_info):
     if pismo == 'wave_no_enemys':
         map_number += 1
         resultat=try_to_load_config(map_number)
+        apple.kill_me()
         apple = None
         if resultat!= None:
             tec_level, tec_wave=resultat
@@ -72,7 +76,6 @@ map_number = 0
 
 
 clock = pygame.time.Clock()
-
 apple = None
 
 normal=buttons.Knopka(50,50,"images/UI/speedup/1.png",timer_launcher.timer_worker.timers_change,dop_info={"procent": 100})

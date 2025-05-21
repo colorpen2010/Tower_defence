@@ -11,7 +11,7 @@ class Wave():
         self.enemy_changing()
         self.bullets = []
 
-        timer_launcher.timer_worker.create_timer(self.ev, 3000)
+        timer_launcher.timer_worker.create_timer(self.ev, 3000,self.smena_i_spawn)
         messenger.messenger.podpisatsa(self.messages)
 
     def enemy_creating(self, type, hp, ret=False):
@@ -62,15 +62,16 @@ class Wave():
             m.controler(events)
         for p in self.enemys:
             p.control(events)
-        for o in events:
+        # for o in events:
             #таймер
-            if o.type == self.ev:
-                if self.count <= 0 and self.types != []:
-                    # print(self.count, self.types)
-                    del self.types[0]
-                    self.enemy_changing()
 
-                self.enemy_spawning()
+    def smena_i_spawn(self):
+        if self.count <= 0 and self.types != []:
+            # print(self.count, self.types)
+            del self.types[0]
+            self.enemy_changing()
+
+        self.enemy_spawning()
 
     def enemy_spawning(self):
         if len(self.types)!=0:
@@ -91,19 +92,23 @@ class Wave():
     def messages(self, pismo, otpravitel, dop_info):
         if pismo == 'bullet_at_pos' and otpravitel in self.bullets:
             # print('B.A.P')
+            otpravitel.kill_me()
             self.bullets.remove(otpravitel)
         if pismo == 'bullet_letit' and otpravitel in self.bullets:
             for i in self.enemys:
                 if i.get_rect().collidepoint(otpravitel.x, otpravitel.y):
                     hp_System.HP_system.hp_changing(i.hp, -  otpravitel.damage)
+                    otpravitel.kill_me()
                     self.bullets.remove(otpravitel)
                     break
         if pismo == 'enemy_at_end' and otpravitel in self.enemys:
             # print('E.A.E')
+            otpravitel.kill_me()
             self.enemys.remove(otpravitel)
             self.tec_level.mainhp.hp_changing(dop_info)
             self.level_switch()
         if pismo == 'death' and dop_info in self.enemys:
+            dop_info.kill_me()
             self.enemys.remove(dop_info)
             self.tec_level.wallet.otnimanie(-15)
             self.level_switch()

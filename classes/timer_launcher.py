@@ -20,7 +20,7 @@ class Time():
             self.shoti(event[0],event[1])
 
     def delete_timer(self,event_number):
-        pygame.time.set_timer(event_number,0)
+    #     pygame.time.set_timer(event_number,0)
         for o in self.timer_events:
             if o[0]==event_number:
                 self.timer_events.remove(o)

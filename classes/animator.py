@@ -25,12 +25,11 @@ class Animator:
             imaging_this_beautiful_image.append(pygame.transform.flip(kakoito_resizer.creating_objects_x(o, map, procent), flip, flip_y))
         return imaging_this_beautiful_image
 
-
+    def kill_me(self):
+        timer_launcher.timer_worker.delete_timer(self.wrema)
 
     def control_center(self,events):
         pass
-    #     for o in events:
-    #         if o.type == self.wrema:
     def smena_kartinki(self):
         if len(self.imaging_this_beautiful_image)-1>self.one:
                 self.one+=1

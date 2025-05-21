@@ -14,7 +14,7 @@ class towernicsemus3_alhabethangerald3():
         self.dont_shoot=dont_shoot
         self.event=pygame.event.custom_type()
         self.milisec=milisec
-        timer_launcher.timer_worker.create_timer(self.event,self.milisec)
+        timer_launcher.timer_worker.create_timer(self.event,self.milisec,self.pole_vidimosti)
 
         self.bottom=bottom
         self.reversed=reversed
@@ -28,7 +28,8 @@ class towernicsemus3_alhabethangerald3():
         self.zapreshenaia_kartinka = image_worker.to_grayscale_with_color(self.image,[255,0,0])
         pygame.image.save(self.zapreshenaia_kartinka, 'test1.png')
 
-    def __del__(self):
+    def kill_me(self):
+        self.animated_tower.kill_me()
         timer_launcher.timer_worker.delete_timer(self.event)
 
     def get_center(self):
@@ -47,9 +48,6 @@ class towernicsemus3_alhabethangerald3():
 
     def control_point(self, events,):
 
-        for o in events:
-            if o.type==self.event and self.dont_shoot==False:
-                self.pole_vidimosti()
         self.animated_tower.control_center(events)
     def vistrel(self,enemy_coordinations=[500,500]):
         print('this is not good')
@@ -57,6 +55,8 @@ class towernicsemus3_alhabethangerald3():
 
 
     def pole_vidimosti(self):
+        if self.dont_shoot == True:
+            return
         for i in self.enemy_spisok:
             vrange=math.dist(self.center_strelbi,i.get_center())
             if vrange<=self.radius:
