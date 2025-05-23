@@ -8,6 +8,7 @@ class Time():
         self.procent=100
         self.center=pygame.event.custom_type()
         pygame.time.set_timer(self.center,10)
+        self.time=10
 
     def create_timer(self,event_number,miliseconds,deef=None):
         # self.shoti(event_number, miliseconds)
@@ -15,9 +16,10 @@ class Time():
             self.timer_events.append([event_number,miliseconds,0,deef])
 
     def timers_change(self,procent):
-        self.procent=procent
-        for event in self.timer_events:
-            self.shoti(event[0],event[1])
+        self.time=procent
+        # self.procent=procent
+        # for event in self.timer_events:
+        #     self.shoti(event[0],event[1])
 
     def delete_timer(self,event_number):
     #     pygame.time.set_timer(event_number,0)
@@ -37,10 +39,21 @@ class Time():
         for o in events:
             if o.type == self.center:
                 for i in self.timer_events:
-                    i[2]+=10
-                    if i[2]>=i[1]:
-                        i[3]()
-                        i[2]-=i[1]
+                    i[2] += self.time
+                while self.everybody_move_your_body(self.timer_events)==1:
+
+                    pass
+
+    def everybody_move_your_body(self,timer_events):
+        for i in self.timer_events:
+            if i[2] >= i[1]:
+                i[3]()
+                i[2] -= i[1]
+                result=1
+            else:
+                result=0
+        return result
+
 
         print(self.timer_events)
 
