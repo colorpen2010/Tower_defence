@@ -9,7 +9,6 @@ class Time():
         self.center=pygame.event.custom_type()
         pygame.time.set_timer(self.center,10)
         self.time=10
-
     def create_timer(self,event_number,miliseconds,deef=None):
         # self.shoti(event_number, miliseconds)
         if deef!=None:
@@ -38,20 +37,20 @@ class Time():
     def controller(self,events):
         for o in events:
             if o.type == self.center:
-                for i in self.timer_events:
-                    i[2] += self.time
-                while self.everybody_move_your_body(self.timer_events)==1:
-
+                self.tec_time=self.time
+                while self.everybody_move_your_body()==1 or self.tec_time>0:
                     pass
 
-    def everybody_move_your_body(self,timer_events):
+
+    def everybody_move_your_body(self):
+        result = 0
+        self.tec_time -= 10
         for i in self.timer_events:
+            i[2] += 10
             if i[2] >= i[1]:
                 i[3]()
                 i[2] -= i[1]
                 result=1
-            else:
-                result=0
         return result
 
 
