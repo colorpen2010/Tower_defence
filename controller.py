@@ -37,9 +37,10 @@ def control():
         if o.type == pygame.QUIT:
             exit()
 
-        model.normal.controller(events)
-        model.speed.controller(events)
-        model.super_speed.controller(events)
+        # model.normal.controller(events)
+        # model.speed.controller(events)
+        # model.super_speed.controller(events)
+        model.time_button.controller(events)
 
 
 

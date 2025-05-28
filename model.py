@@ -1,7 +1,8 @@
 import pygame, math_utils, yaml, os
 
 from classes import hp_System, enemy_factory, shop, firetower, poisontower, \
-    stormtower, icetower, messenger, level, portal,wave,buttons,timer_launcher
+    stormtower, icetower, messenger, level, portal,wave,buttons,timer_launcher,\
+    button_with_layers
 
 
 
@@ -53,8 +54,9 @@ def messages(pismo, otpravitel, dop_info):
     if pismo == 'wave_no_enemys':
         map_number += 1
         resultat=try_to_load_config(map_number)
-        apple.kill_me()
-        apple = None
+        if apple is not None:
+            apple.kill_me()
+            apple = None
         if resultat!= None:
             tec_level, tec_wave=resultat
         else:
@@ -78,9 +80,11 @@ map_number = 0
 clock = pygame.time.Clock()
 apple = None
 
-normal=buttons.Knopka(50,50,"images/UI/speedup/1.png",timer_launcher.timer_worker.timers_change,dop_info={"procent": 100})
-speed=buttons.Knopka(100,50,"images/UI/speedup/2.png",timer_launcher.timer_worker.timers_change,dop_info={"procent": 50})
-super_speed=buttons.Knopka(150,50,"images/UI/speedup/4.png",timer_launcher.timer_worker.timers_change,dop_info={"procent": 25})
+normal=buttons.Knopka(50,50,"images/UI/speedup/1.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 10})
+speed=buttons.Knopka(50,50,"images/UI/speedup/2.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 30})
+super_speed=buttons.Knopka(50,50,"images/UI/speedup/4.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 60})
+
+time_button=button_with_layers.Button_with_layers([normal,speed,super_speed])
 
 
 y = 80

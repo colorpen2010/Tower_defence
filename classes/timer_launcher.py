@@ -14,8 +14,8 @@ class Time():
         if deef!=None:
             self.timer_events.append([event_number,miliseconds,0,deef])
 
-    def timers_change(self,procent):
-        self.time=procent
+    def timers_change(self,milisec):
+        self.time=milisec
         # self.procent=procent
         # for event in self.timer_events:
         #     self.shoti(event[0],event[1])
@@ -38,19 +38,20 @@ class Time():
         for o in events:
             if o.type == self.center:
                 self.tec_time=self.time
-                while self.everybody_move_your_body()==1 or self.tec_time>0:
+                while self.everybody_move_your_body()==1:
                     pass
 
 
     def everybody_move_your_body(self):
-        result = 0
+        result = 1
         self.tec_time -= 10
         for i in self.timer_events:
             i[2] += 10
             if i[2] >= i[1]:
                 i[3]()
                 i[2] -= i[1]
-                result=1
+        if self.tec_time<=0:
+            result=0
         return result
 
 

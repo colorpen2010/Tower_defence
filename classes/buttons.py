@@ -21,3 +21,4 @@ class Knopka():
             if o.type==pygame.MOUSEBUTTONDOWN and self.rect.collidepoint(o.pos):
                 self.deystvitel(**self.dop_info)
                 events.remove(o)
+                return 1
