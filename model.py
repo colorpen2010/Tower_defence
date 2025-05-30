@@ -80,21 +80,21 @@ map_number = 0
 clock = pygame.time.Clock()
 apple = None
 
-normal=buttons.Knopka(50,50,"images/UI/speedup/1.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 10})
-speed=buttons.Knopka(50,50,"images/UI/speedup/2.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 30})
-super_speed=buttons.Knopka(50,50,"images/UI/speedup/4.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 60})
+normal=buttons.Knopka(823,50,"images/UI/speedup/4.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 10})
+speed=buttons.Knopka(823,50,"images/UI/speedup/1.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 30})
+super_speed=buttons.Knopka(823,50,"images/UI/speedup/2.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 60})
 
-time_button=button_with_layers.Button_with_layers([normal,speed,super_speed])
+time_button=button_with_layers.Button_with_layers([speed,super_speed,normal])
 
 
 y = 80
 
 mainhp = tec_level.mainhp
 
-magaz = shop.Magazin(803, 80, 'images/UI/TowerButtons/button_1.png', 35, poisontower.Poison_tower, vibor_bashni)
-magaz2 = shop.Magazin(803, 190, 'images/UI/TowerButtons/button_2.png', 100, firetower.Fire_tower, vibor_bashni)
-magaz3 = shop.Magazin(803, 300, 'images/UI/TowerButtons/button_3.png', 135, stormtower.Storm_tower, vibor_bashni)
-magaz4 = shop.Magazin(803, 410, 'images/UI/TowerButtons/button_4.png', 235, icetower.Ice_tower, vibor_bashni)
+magaz = shop.Magazin(803, 140, 'images/UI/TowerButtons/button_1.png', 35, poisontower.Poison_tower, vibor_bashni)
+magaz2 = shop.Magazin(803, 250, 'images/UI/TowerButtons/button_2.png', 100, firetower.Fire_tower, vibor_bashni)
+magaz3 = shop.Magazin(803, 360, 'images/UI/TowerButtons/button_3.png', 135, stormtower.Storm_tower, vibor_bashni)
+magaz4 = shop.Magazin(803, 460, 'images/UI/TowerButtons/button_4.png', 235, icetower.Ice_tower, vibor_bashni)
 bazar = [magaz, magaz2]
 
 perecluthatel = False
