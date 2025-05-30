@@ -44,6 +44,8 @@ class Level:
                 for shitel in door:
                     if shitel == '*':
                         kletka[0]='sand'
+                    elif shitel == '^':
+                        kletka[0]='wall'
                     elif shitel == '_':
                         kletka[0]='grass'
                     elif shitel == '(':

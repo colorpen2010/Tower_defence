@@ -41,7 +41,7 @@ class Wave():
                                                spisok_tochek=self.tec_level.route.copy(), damage=-20, hp=hp)
         elif type == 'green':
             enemy = enemy_factory.enem_factory(type, self.tec_level.give_your_number_of_etashey(), True,
-                                               [1, 1, 0.5, 0.5],
+                                               [0.9, 0.9, 0.4, 0.4],
                                                scorost=1.50,
                                                spisok_tochek=self.tec_level.route.copy(), damage=-10, hp=hp)
         elif type == 'red':

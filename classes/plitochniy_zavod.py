@@ -43,7 +43,7 @@ class Tsekh:
         else:
             return self.nothing.get_size()
     def get_rect(self):
-        return pygame.Rect([self.x,self.y],self.plitka.get_size())
+        return pygame.Rect([self.x,self.y],self.get_product_size())
 
     def paint_tower(self,debug):
         if self.tower!=None:
