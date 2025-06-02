@@ -14,16 +14,21 @@ map: "[_+][_+][_+][_+][_+][_+][_+][_+][_+][_+][*+]
 types:
   - green:
       count: 30
-      hp: 6
+      hp: 4
+      damage: 3
   - red:
       count: 1
       hp: 12
+      damage: 4
   - green:
       count: 15
-      hp: 10
+      hp: 8
+      damage: 4
   - blue:
       count: 6
       hp: 2
+      damage: 2
   - red:
       count: 2
       hp: 30
+      damage: 5

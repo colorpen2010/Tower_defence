@@ -7,16 +7,28 @@ map: "[+_][+_][+_][+_][+_][*+]
 types:
     - green:
         count: 30
-        hp: 3
+        hp: 6
+        damage: 6
+        spawning_speed: 1
+        speed: 2
     - blue:
         count: 6
-        hp: 1
+        hp: 2
+        damage: 2
+
     - green:
         count: 5
-        hp: 6
+        hp: 12
+        damage: 8
+
     - blue:
         count: 3
-        hp: 1
+        hp: 3
+        damage: 3
+
     - red:
         count: 1
         hp: 30
+        damage: 10
+        spawning_speed: 1
+        speed: 2

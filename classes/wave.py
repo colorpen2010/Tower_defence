@@ -14,7 +14,7 @@ class Wave():
         timer_launcher.timer_worker.create_timer(self.ev, 3000,self.smena_i_spawn)
         messenger.messenger.podpisatsa(self.messages)
 
-    def enemy_creating(self, type, hp, ret=False):
+    def enemy_creating(self, type, hp, damage,speed=None, ret=False):
         """
         есть 4 вида противника:
         blue,
@@ -30,24 +30,26 @@ class Wave():
         :param type:
         :return:
         """
-        enemy = None
+        def_sps={'blue':2.45,'green':1.50,'purple':0.50,'red':0.80}
+        if speed is None:
+            speed=def_sps[type]
         if type == 'blue':
             enemy = enemy_factory.enem_factory(type, self.tec_level.give_your_number_of_etashey(), True,
-                                               [0.5, 0.5, 0.5, 0.5], scorost=2.45,
-                                               spisok_tochek=self.tec_level.route.copy(), damage=-5, hp=hp)
+                                               [0.5, 0.5, 0.5, 0.5], scorost=speed,
+                                               spisok_tochek=self.tec_level.route.copy(), damage=-damage, hp=hp)
         elif type == 'purple':
             enemy = enemy_factory.enem_factory(type, self.tec_level.give_your_number_of_etashey(), True, [1, 1, 1, 1],
-                                               scorost=0.50,
-                                               spisok_tochek=self.tec_level.route.copy(), damage=-20, hp=hp)
+                                               scorost=speed,
+                                               spisok_tochek=self.tec_level.route.copy(), damage=-damage, hp=hp)
         elif type == 'green':
             enemy = enemy_factory.enem_factory(type, self.tec_level.give_your_number_of_etashey(), True,
                                                [0.9, 0.9, 0.4, 0.4],
-                                               scorost=1.50,
-                                               spisok_tochek=self.tec_level.route.copy(), damage=-10, hp=hp)
+                                               scorost=speed,
+                                               spisok_tochek=self.tec_level.route.copy(), damage=-damage, hp=hp)
         elif type == 'red':
             enemy = enemy_factory.enem_factory(type, self.tec_level.give_your_number_of_etashey(), True,
-                                               [0.8, 0.8, 0.8, 0.8], scorost=0.8,
-                                               spisok_tochek=self.tec_level.route.copy(), damage=-15, hp=hp)
+                                               [0.8, 0.8, 0.8, 0.8], scorost=speed,
+                                               spisok_tochek=self.tec_level.route.copy(), damage=-damage, hp=hp)
         if enemy != None and ret is False:
             self.enemys.append(enemy)
         else:
@@ -76,7 +78,8 @@ class Wave():
     def enemy_spawning(self):
         if len(self.types)!=0:
             if self.count > 0:
-                self.enemy_creating(self.enemy_type, self.enemy_settings['hp'])
+                speed=self.enemy_settings['speed'] if 'speed' in self.enemy_settings else None
+                self.enemy_creating(self.enemy_type, self.enemy_settings['hp'],self.enemy_settings['damage'],speed)
                 self.count -= 1
 
 

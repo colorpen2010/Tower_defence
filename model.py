@@ -1,3 +1,5 @@
+import random
+
 import pygame, math_utils, yaml, os
 
 from classes import hp_System, enemy_factory, shop, firetower, poisontower, \
@@ -85,6 +87,9 @@ speed=buttons.Knopka(823,50,"images/UI/speedup/1.png",timer_launcher.timer_worke
 super_speed=buttons.Knopka(823,50,"images/UI/speedup/2.png",timer_launcher.timer_worker.timers_change,dop_info={"milisec": 60})
 
 time_button=button_with_layers.Button_with_layers([speed,super_speed,normal])
+
+fun=random.randint(0,100)
+
 
 
 y = 80

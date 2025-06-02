@@ -26,7 +26,7 @@ class towernicsemus3_alhabethangerald3():
         self.center_strelbi=[self.get_center()[0],self.bottom-self.ypos/2]
 
         self.zapreshenaia_kartinka = image_worker.to_grayscale_with_color(self.image,[255,0,0])
-        pygame.image.save(self.zapreshenaia_kartinka, 'test1.png')
+        # pygame.image.save(self.zapreshenaia_kartinka, 'test1.png')
 
     def kill_me(self):
         self.animated_tower.kill_me()

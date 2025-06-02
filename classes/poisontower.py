@@ -9,5 +9,5 @@ class Poison_tower(tower_class.towernicsemus3_alhabethangerald3):
         tower_class.towernicsemus3_alhabethangerald3.__init__(self,model.tec_wave.enemys,visota, True,x,bottom,
                                                               'images/Towers/PoisonIdle_cleared/00.png',dont_shoot=dont_shoot,)
     def vistrel(self,enemy_coordinations=[500,500]):
-        model.tec_wave.bullets.append(warehouse.Ammunition(0.4,'images/ammo/PoisonTower.png',self.visota, self.get_center()[0], self.get_center()[1] ,enemy_coordinations[0], enemy_coordinations[1], 2.55,1))
+        model.tec_wave.bullets.append(warehouse.Ammunition(0.4,'images/ammo/PoisonTower.png',self.visota, self.get_center()[0], self.get_center()[1] ,enemy_coordinations[0], enemy_coordinations[1], 2.55,2))
 
