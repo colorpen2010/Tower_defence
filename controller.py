@@ -32,7 +32,7 @@ def control():
 
     for q in model.bazar:
         q.controller(events)
-    print(len(events),len(timer_launcher.timer_worker.timer_events))
+    # print(len(events),len(timer_launcher.timer_worker.timer_events))
     for o in events:
         if o.type == pygame.QUIT:
             exit()

@@ -25,6 +25,7 @@ class Time():
         for o in self.timer_events:
             if o[0]==event_number:
                 self.timer_events.remove(o)
+                print(self.timer_events)
 
 
     def shoti(self,event_number,miliseconds):
@@ -55,7 +56,7 @@ class Time():
         return result
 
 
-        print(self.timer_events)
+        # print(self.timer_events)
 
 
 timer_worker=Time()

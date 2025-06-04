@@ -12,6 +12,12 @@ class Wave():
         self.bullets = []
 
         timer_launcher.timer_worker.create_timer(self.ev, 3000,self.smena_i_spawn)
+        if 'spawn_speed' in self.enemy_settings:
+            timer_launcher.timer_worker.delete_timer(self.ev)
+            timer_launcher.timer_worker.create_timer(self.ev, self.enemy_settings['spawn_speed'], self.smena_i_spawn)
+        else:
+            timer_launcher.timer_worker.delete_timer(self.ev)
+            timer_launcher.timer_worker.create_timer(self.ev, 3000, self.smena_i_spawn)
         messenger.messenger.podpisatsa(self.messages)
 
     def enemy_creating(self, type, hp, damage,speed=None, ret=False):
@@ -64,6 +70,7 @@ class Wave():
             m.controler(events)
         for p in self.enemys:
             p.control(events)
+
         # for o in events:
             #таймер
 
@@ -73,6 +80,8 @@ class Wave():
             del self.types[0]
             self.enemy_changing()
 
+
+
         self.enemy_spawning()
 
     def enemy_spawning(self):
@@ -81,6 +90,7 @@ class Wave():
                 speed=self.enemy_settings['speed'] if 'speed' in self.enemy_settings else None
                 self.enemy_creating(self.enemy_type, self.enemy_settings['hp'],self.enemy_settings['damage'],speed)
                 self.count -= 1
+                print('spawned enemy ' + self.enemy_type)
 
 
 
@@ -88,10 +98,23 @@ class Wave():
     def enemy_changing(self):
         if len(self.types) !=0:
             self.first_enemy = self.types[0]
+            # self.next_enemy = self.types[1]
             self.enemy_type = list(self.first_enemy.keys())[0]
             self.enemy_settings = self.first_enemy[self.enemy_type]
+            # self.next_enemy_type = list(self.next_enemy.keys())[0]
+            # self.next_enemy_settings = self.types[1][self.next_enemy_type]
             self.count = self.enemy_settings['count']
             print(self.first_enemy, self.enemy_type, self.enemy_settings)
+            if 'spawn_speed' in self.enemy_settings:
+                timer_launcher.timer_worker.delete_timer(self.ev)
+                # timer_launcher.timer_worker.create_timer(self.ev, self.enemy_settings['spawn_speed'],
+                #                                          self.smena_i_spawn)
+                print('spawn speed: ' + str(self.enemy_settings['spawn_speed']))
+
+            else:
+                timer_launcher.timer_worker.delete_timer(self.ev)
+                # timer_launcher.timer_worker.create_timer(self.ev, 3000, self.smena_i_spawn)
+                print('spawn speed: 3000')
     def messages(self, pismo, otpravitel, dop_info):
         if pismo == 'bullet_at_pos' and otpravitel in self.bullets:
             # print('B.A.P')
