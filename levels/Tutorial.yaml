@@ -15,8 +15,8 @@ types:
         count: 20
         hp: 4
         damage: 2
-        speed: 5
-        spawn_speed: 150
+        speed: 2
+        spawn_speed: 2000
     - red:
         count: 1
         hp: 12
@@ -28,5 +28,6 @@ types:
           damage: 1
     - red:
           count: 1
-          hp: 24
+          hp: 48
           damage: 3
+          spawn_speed: 5000

@@ -9,6 +9,7 @@ def sheti(money):
     return output
 
 def cell_size_giver(kolithestvo_etashei, procent=1):
+
     return 800/(kolithestvo_etashei)*procent
 
 

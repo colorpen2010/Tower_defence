@@ -6,7 +6,7 @@ import pygame,time
 import kakoito_resizer
 
 class Ammunition():
-    def __init__(self,size,pyt,map,x,y,to_x,to_y,skorost,damage):
+    def __init__(self, size, pyt, map, x, y, to_x, to_y, skorost_v_procentah, damage):
         self.already=False
         self.damage=damage
         self.x,self.y=x,y
@@ -14,8 +14,12 @@ class Ammunition():
         self.end_pos=[to_x,to_y]
         self.fly=True
         self.mouse_mode = False
-        self.skorost=skorost
+        # cell_size = kakoito_resizer.cell_size_giver(map, size)
+        # self.speed_result=kakoito_resizer.cell_size_giver(map,skorost_v_procentah)
+        self.speed_result=12
+        print("speed result is "+str(self.speed_result))
         self.bullet=kakoito_resizer.creating_objects_x(pyt, map, size)
+        print(str(map))
         self.bullet2=self.bullet
         self.wrema=pygame.event.custom_type()
         timer_launcher.timer_worker.create_timer(self.wrema, 10,self.traektoria)
@@ -47,7 +51,7 @@ class Ammunition():
         # print(self.start_pos,self.end_pos,distance,start_distance,self.x,self.y,self.already)
         if distance<start_distance:
             angle = math_utils.get_angle_by_point( [self.x, self.y], self.end_pos)
-            self.x,self.y=math_utils.get_point_by_angle([self.x,self.y],angle,self.skorost)
+            self.x,self.y=math_utils.get_point_by_angle([self.x,self.y], angle, self.speed_result)
             self.bullet2=pygame.transform.rotate(self.bullet,angle+90)
             messenger.messenger.otpravit('bullet_letit',self)
 

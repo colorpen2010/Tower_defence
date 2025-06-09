@@ -9,8 +9,8 @@ types:
         count: 30
         hp: 6
         damage: 6
-        spawning_speed: 1
-        speed: 2
+        spawning_speed: 300
+        speed: 4
     - blue:
         count: 6
         hp: 2
