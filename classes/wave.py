@@ -1,4 +1,6 @@
 import pygame
+
+import kakoito_resizer
 from classes import enemy_factory, messenger,hp_System,timer_launcher
 
 
@@ -113,18 +115,24 @@ class Wave():
                 timer_launcher.timer_worker.delete_timer(self.ev)
                 timer_launcher.timer_worker.create_timer(self.ev, 3000, self.smena_i_spawn)
                 print('spawn speed: 3000')
+
+    def enemy_killer(self,otpravitel):
+        for i in self.enemys:
+            # if i.get_rect().collidepoint(otpravitel.x, otpravitel.y):
+            if kakoito_resizer.check_pixel_collision(i.enemy,[i.x,i.bottom],otpravitel.bullet,[otpravitel.x,otpravitel.y]):
+                hp_System.HP_system.hp_changing(i.hp, -  otpravitel.damage)
+                otpravitel.kill_me()
+                self.bullets.remove(otpravitel)
+                break
+
     def messages(self, pismo, otpravitel, dop_info):
         if pismo == 'bullet_at_pos' and otpravitel in self.bullets:
             # print('B.A.P')
+            self.enemy_killer(otpravitel)
             otpravitel.kill_me()
             self.bullets.remove(otpravitel)
         if pismo == 'bullet_letit' and otpravitel in self.bullets:
-            for i in self.enemys:
-                if i.get_rect().collidepoint(otpravitel.x, otpravitel.y):
-                    hp_System.HP_system.hp_changing(i.hp, -  otpravitel.damage)
-                    otpravitel.kill_me()
-                    self.bullets.remove(otpravitel)
-                    break
+           self.enemy_killer(otpravitel)
         if pismo == 'enemy_at_end' and otpravitel in self.enemys:
             # print('E.A.E')
             otpravitel.kill_me()

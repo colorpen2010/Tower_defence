@@ -15,8 +15,8 @@ class Ammunition():
         self.fly=True
         self.mouse_mode = False
         # cell_size = kakoito_resizer.cell_size_giver(map, size)
-        # self.speed_result=kakoito_resizer.cell_size_giver(map,skorost_v_procentah)
-        self.speed_result=12
+        self.speed_result=kakoito_resizer.cell_size_giver(map,skorost_v_procentah)
+        # self.speed_result=12
         print("speed result is "+str(self.speed_result))
         self.bullet=kakoito_resizer.creating_objects_x(pyt, map, size)
         print(str(map))

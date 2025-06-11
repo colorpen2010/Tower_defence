@@ -13,6 +13,36 @@ def cell_size_giver(kolithestvo_etashei, procent=1):
     return 800/(kolithestvo_etashei)*procent
 
 
+def check_pixel_collision(image1, pos1, image2, pos2):
+    """
+    Проверяет, пересекаются ли непрозрачные пиксели двух изображений.
+
+    :param image1: Surface первого изображения
+    :param pos1: (x, y) позиция первого изображения на экране
+    :param image2: Surface второго изображения
+    :param pos2: (x, y) позиция второго изображения на экране
+    :return: True, если пересекаются хотя бы одним непрозрачным пикселем, иначе False
+    """
+    mask1 = pygame.mask.from_surface(image1)
+    mask2 = pygame.mask.from_surface(image2)
+
+    offset_x = pos2[0] - pos1[0]
+    offset_y = pos2[1] - pos1[1]
+
+    overlap_point = mask1.overlap(mask2, (offset_x, offset_y))
+
+    return overlap_point is not None
+
+def sprites_collide(sprite1, sprite2):
+
+    res = pygame.sprite.collide_mask(sprite1, sprite2)
+    if not res:
+        return False
+
+    res = [*res]
+    res[0] += sprite1.rect.left
+    res[1] += sprite1.rect.top
+    return res
 
 def creating_objects_x(pyt, kolithestvo_etashei, procent=1):
     """
