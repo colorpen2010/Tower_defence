@@ -50,7 +50,7 @@ def messages(pismo, otpravitel, dop_info):
 
 
 
-    if pismo == 'death' and mainhp is otpravitel:        exit()
+    if pismo == 'death' and tec_level.mainhp is otpravitel:        exit('You lose!')
 
 
     if pismo == 'wave_no_enemys':
@@ -62,7 +62,7 @@ def messages(pismo, otpravitel, dop_info):
         if resultat!= None:
             tec_level, tec_wave=resultat
         else:
-            exit()
+            exit('You win!')
 
 
 
@@ -94,7 +94,6 @@ fun=random.randint(0,100)
 
 y = 80
 
-mainhp = tec_level.mainhp
 
 magaz = shop.Magazin(803, 140, 'images/UI/TowerButtons/button_1.png', 35, poisontower.Poison_tower, vibor_bashni)
 magaz2 = shop.Magazin(803, 250, 'images/UI/TowerButtons/button_2.png', 100, firetower.Fire_tower, vibor_bashni)

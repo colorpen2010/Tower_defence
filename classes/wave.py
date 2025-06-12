@@ -63,9 +63,9 @@ class Wave():
         else:
             return enemy
 
-    def paint(self):
+    def paint(self,debug):
         for m in self.bullets:
-            m.okraska()
+            m.okraska(debug)
 
     def controller(self, events):
         for m in self.bullets:
@@ -119,7 +119,7 @@ class Wave():
     def enemy_killer(self,otpravitel):
         for i in self.enemys:
             # if i.get_rect().collidepoint(otpravitel.x, otpravitel.y):
-            if kakoito_resizer.check_pixel_collision(i.enemy,[i.x,i.bottom],otpravitel.bullet,[otpravitel.x,otpravitel.y]):
+            if kakoito_resizer.check_pixel_collision(i.get_image(),i.get_rect(),otpravitel.bullet,[otpravitel.x,otpravitel.y]):
                 hp_System.HP_system.hp_changing(i.hp, -  otpravitel.damage)
                 otpravitel.kill_me()
                 self.bullets.remove(otpravitel)

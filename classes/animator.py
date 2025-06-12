@@ -42,7 +42,10 @@ class Animator:
         return center
 
     def get_rect(self):
-        return pygame.Rect(self.x,self.bottom - self.imaging_this_beautiful_image[self.one].get_height(),self.imaging_this_beautiful_image[self.one].get_width(),self.imaging_this_beautiful_image[self.one].get_height())
+        return pygame.Rect(self.x,self.bottom - self.imaging_this_beautiful_image[self.one].get_height(),self.imaging_this_beautiful_image[self.one].get_width(),self.imaging_this_beautiful_image[self.one].get_height())\
+
+    def get_image(self):
+        return self.imaging_this_beautiful_image[self.one]
 
     def set_center(self,center_x=None,center_y=None):
         if center_x!=None:

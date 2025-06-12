@@ -28,7 +28,8 @@ class Ammunition():
     def okraska(self,debug=False):
         screen=pygame.display.get_surface()
         screen.blit(self.bullet2,[self.x,self.y])
-
+        if debug == True:
+            pygame.draw.rect(screen, [0, 0, 0], self.get_rect(), 10)
 
     def kill_me(self):
         timer_launcher.timer_worker.delete_timer(self.wrema)
@@ -41,6 +42,9 @@ class Ammunition():
         if self.mouse_mode:
             self.end_pos[0]=pygame.mouse.get_pos()[0]
             self.end_pos[1]=pygame.mouse.get_pos()[1]
+
+    def get_rect(self):
+        return pygame.Rect(self.x,self.y,self.bullet2.get_width(),self.bullet2.get_height())
 
 
     def traektoria(self):

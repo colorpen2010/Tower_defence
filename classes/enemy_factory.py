@@ -78,5 +78,8 @@ class enem_factory():
     def get_center(self):
         return self.enemy.get_center()
 
+    def get_image(self):
+        return self.enemy.get_image()
+
     def get_rect(self):
         return  self.enemy.get_rect()

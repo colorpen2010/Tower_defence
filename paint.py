@@ -21,7 +21,7 @@ def risovanie():
     images = []
     images += model.tec_wave.enemys
     model.tec_level.paint(model.perecluthatel, images)
-    model.tec_wave.paint()
+    model.tec_wave.paint(model.perecluthatel)
     # model.normal.risyem(screen)
     # model.speed.risyem(screen)
     # model.super_speed.risyem(screen)
