@@ -57,7 +57,6 @@ class Level:
                         kletka.append(')')
                         self.route.append([int(dest + razmer_plitki / 2), int(height + razmer_plitki / 2), 999])
                     elif shitel.isnumeric():
-                        kletka[0]='sand'
                         self.route.append([int(dest + razmer_plitki / 2), int(height + razmer_plitki / 2), int(shitel)])
 
 

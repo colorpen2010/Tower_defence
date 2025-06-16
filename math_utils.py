@@ -2,9 +2,38 @@ import math,classes
 
 
 
+def get_obj_type(obj):
+    if isinstance(obj, classes.portal.Portal):
+        t="P"
+        bottom = obj.bottom
+        rect = obj.get_rect()
+    elif isinstance(obj,classes.tower_class.towernicsemus3_alhabethangerald3):
+        t="T"
+        bottom = obj.bottom
+        rect = obj.get_rect()
+    elif type(obj) == classes.enemy_factory.enem_factory:
+        t="E"
+        bottom = obj.enemy.bottom
+        rect = obj.enemy.get_rect()
+    return t, bottom, rect
+
 def sravnivatel(first,kletki,second,level):
-    bottom=None
-    bottom2=None
+    first_type, first_bottom, first_rect=get_obj_type(first)
+    second_type, second_bottom, second_rect = get_obj_type(second)
+    collide = first_rect.colliderect(second_rect)
+
+
+    if collide and first_type=="E" and second_type=="P":
+        return -1
+    elif collide and first_type=="P" and second_type=="E":
+        return 1
+
+    if first_bottom>second_bottom:
+        return -1
+    elif first_bottom==second_bottom:
+        return 0
+    elif first_bottom<second_bottom:
+        return 1
 
     if isinstance(first,classes.portal.Portal):
         bottom=first.bottom

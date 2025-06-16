@@ -34,6 +34,10 @@ class towernicsemus3_alhabethangerald3():
 
     def get_center(self):
         return self.animated_tower.get_center()
+
+    def get_rect(self):
+        return self.animated_tower.get_rect()
+
     def paint(self,debug=False):
         self.animated_tower.paint(debug)
         if debug==True:
